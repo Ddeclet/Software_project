@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Horas de oficina - AcademicConnect</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <script src="https://kit.fontawesome.com/a2d9d6bc50.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+  <!-- Barra superior -->
+  <header> 
+    <div class="logo"> 
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Academic_cap.svg/2048px-Academic_cap.svg.png" alt="Logo">
+      <h1>AcademicConnect</h1>
+    </div>
+    <nav>
+      <div class="profile-icon"><i class="fa-solid fa-user"></i></div>
+      <a href="{{ url_for('index') }}">Inicio</a>
+      <a href="{{ url_for('calendario') }}">Calendario</a>
+      <a href="{{ url_for('horas') }}" class="active">Horas de oficina</a>
+      <i class="fa-solid fa-right-from-bracket"></i>
+    </nav>
+  </header>
+
+  <main class="hours-main">
+    <h2>Departamentos</h2>
+    <p class="intro">
+      Escoja de qué departamento pertenece el profesor/a que quiere gestionar una cita.
+    </p>
+
+    <!-- CARD GRANDE -->
+    <div class="dept-big-card">
+      <div class="dept-big-header">
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/6/69/Seal_of_the_University_of_Puerto_Rico.svg"
+          alt="UPR"
+          class="dept-big-logo"
+        >
+        <h3>Departamentos Académicos</h3>
+      </div>
+
+      <div class="dept-big-body">
+        <!-- fila 1 -->
+        <div class="dept-row-images">
+          <!-- CCOM -->
+          <div class="dept-img-card">
+            <img src="https://images.pexels.com/photos/3861972/pexels-photo-3861972.jpeg?auto=compress&cs=tinysrgb&w=600" alt="CCOM">
+            <span>CCOM</span>
+          </div>
+
+          <!-- GTEC -->
+          <div class="dept-img-card">
+            <img src="https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=600" alt="GTEC">
+            <span>GTEC</span>
+          </div>
+
+          <!-- MATE -->
+          <div class="dept-img-card">
+            <img src="https://images.pexels.com/photos/4144923/pexels-photo-4144923.jpeg?auto=compress&cs=tinysrgb&w=600" alt="MATE">
+            <span>MATE</span>
+          </div>
+        </div>
+
+        <!-- fila 2 -->
+        <div class="dept-row-images second-row">
+          <!-- ENFE -->
+          <div class="dept-img-card">
+            <img src="https://images.pexels.com/photos/8460150/pexels-photo-8460150.jpeg?auto=compress&cs=tinysrgb&w=600" alt="ENFE">
+            <span>ENFE</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div class="footer-logo">
+    UPR Arecibo
+  </div>
+  <footer>
+    Copyright - All rights reserved
+  </footer>
+
+</body>
+</html>

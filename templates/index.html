@@ -10,16 +10,16 @@
 <body>
 
   <!-- Barra superior -->
-  <header>
+  <header> 
     <div class="logo">
       <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Academic_cap.svg/2048px-Academic_cap.svg.png" alt="Logo">
       <h1>AcademicConnect</h1>
     </div>
     <nav>
       <div class="profile-icon"><i class="fa-solid fa-user"></i></div>
-      <a href="{{ url_for('index') }}">Inicio</a>
+      <a href="{{ url_for('index') }}" class="active">Inicio</a>
       <a href="{{ url_for('calendario') }}">Calendario</a>
-      <a href="#">Horas de oficina</a>
+      <a href="{{ url_for('horas') }}">Horas de oficina</a>
       <i class="fa-solid fa-right-from-bracket"></i>
     </nav>
   </header>
@@ -30,6 +30,18 @@
     <p class="intro">
       Bienvenido a Academic Connect, tu aplicación para gestionar el calendario académico y las horas de oficina de los profesores.
     </p>
+
+    <!-- BOTONES RÁPIDOS -->
+    <div class="quick-actions">
+      <a class="quick-btn" href="{{ url_for('calendario') }}">
+        <i class="fa-solid fa-calendar-days"></i>
+        Calendario
+      </a>
+      <a class="quick-btn" href="{{ url_for('horas') }}">
+        <i class="fa-solid fa-user-tie"></i>
+        Horas de oficina
+      </a>
+    </div>
 
     <div class="cards-container">
       <!-- Calendario -->
@@ -67,11 +79,8 @@
     UPR Arecibo
   </div>
   <footer>
-    Copyright - All rights reserved
+    Copyright - All rights reserved 
   </footer>
 
-  <script>
-    console.log("AcademicConnect cargado correctamente");
-  </script>
 </body>
 </html>

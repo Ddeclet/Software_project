@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Iniciar sesión - AcademicConnect</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <script src="https://kit.fontawesome.com/a2d9d6bc50.js" crossorigin="anonymous"></script>
+</head>
+<body class="login-body">
+ 
+  <div class="login-container"> 
+    <!-- Logo superior -->
+    <div class="login-logo">
+      <div class="logo-circle">
+        <i class="fa-solid fa-calendar-days"></i>
+      </div>
+      <span class="logo-text">AC</span>
+    </div>
+
+    <h1 class="login-title">Iniciar sesión</h1>
+
+    <!-- Formulario de inicio de sesión -->
+    <form class="login-form" action="{{ url_for('login') }}" method="POST">
+      <label for="email">Correo electrónico</label>
+      <input type="email" id="email" name="email" placeholder="sebastian.soto5@upr.edu" required>
+
+      <label for="password">Contraseña</label>
+      <input type="password" id="password" name="password" placeholder="**********" required>
+
+      <a href="#" class="forgot-link">forgot password</a>
+
+      <button type="submit" class="login-btn">Login</button>
+    </form>
+
+    <p class="login-footer-text">
+      ¿No tienes cuenta?
+      <a href="#" class="signup-link">Sign Up</a>
+    </p>
+  </div>
+
+</body>
+</html>
