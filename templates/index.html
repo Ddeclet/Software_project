@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AcademicConnect</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <script src="https://kit.fontawesome.com/a2d9d6bc50.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+  <!-- Barra superior -->
+  <header>
+    <div class="logo">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Academic_cap.svg/2048px-Academic_cap.svg.png" alt="Logo">
+      <h1>AcademicConnect</h1>
+    </div>
+    <nav>
+      <div class="profile-icon"><i class="fa-solid fa-user"></i></div>
+      <a href="{{ url_for('index') }}">Inicio</a>
+      <a href="{{ url_for('calendario') }}">Calendario</a>
+      <a href="#">Horas de oficina</a>
+      <i class="fa-solid fa-right-from-bracket"></i>
+    </nav>
+  </header>
+
+  <!-- Contenido principal -->
+  <main>
+    <h2>Inicio</h2>
+    <p class="intro">
+      Bienvenido a Academic Connect, tu aplicación para gestionar el calendario académico y las horas de oficina de los profesores.
+    </p>
+
+    <div class="cards-container">
+      <!-- Calendario -->
+      <div class="card">
+        <h3>Calendario</h3>
+        <h4>Calendario Académico</h4>
+        <div class="event"><i class="fa-solid fa-calendar-days"></i> 10 Agosto - Inicio de Clases</div>
+        <div class="event"><i class="fa-solid fa-calendar-days"></i> 13 Oct - Feriado: Día de la Raza</div>
+        <div class="event"><i class="fa-solid fa-calendar-days"></i> 15 Dic - Finales</div>
+      </div>
+
+      <!-- Horas de oficina -->
+      <div class="card">
+        <h3>Horas de Oficina</h3>
+        <div class="office-hour">
+          <i class="fa-solid fa-user-tie"></i>
+          <div>
+            <strong>Prof. Luis Colón Colón</strong> - Lunes<br>
+            10:00am - 12:00pm
+          </div>
+        </div>
+        <div class="office-hour">
+          <i class="fa-solid fa-user-tie"></i>
+          <div>
+            <strong>Prof. Juan López Gerena</strong> - Miércoles<br>
+            9:00am - 12:00pm
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Pie -->
+  <div class="footer-logo">
+    UPR Arecibo
+  </div>
+  <footer>
+    Copyright - All rights reserved
+  </footer>
+
+  <script>
+    console.log("AcademicConnect cargado correctamente");
+  </script>
+</body>
+</html>

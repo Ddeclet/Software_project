@@ -1,0 +1,223 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background-color: #fff;
+  color: #222;
+}
+
+/* Barra superior */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #555;
+  color: white;
+  padding: 10px 40px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo img {
+  width: 40px;
+  height: 40px;
+}
+
+.logo h1 {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+nav a {
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+.profile-icon {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background-color: #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+
+/* Contenido principal */
+main {
+  padding: 40px 60px;
+}
+
+h2 {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+p.intro {
+  margin-bottom: 40px;
+  font-size: 16px;
+}
+
+.cards-container {
+  display: flex;
+  gap: 40px;
+}
+
+.card {
+  flex: 1;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 2px 2px 6px rgba(0,0,0,0.1);
+}
+
+.card h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.card h4 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #444;
+}
+
+.event, .office-hour {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.event i, .office-hour i {
+  font-size: 20px;
+  color: #333;
+}
+
+/* Footer */
+footer {
+  background-color: #555;
+  color: white;
+  padding: 15px 30px;
+  text-align: center;
+  font-size: 14px;
+  margin-top: 50px;
+}
+
+.footer-logo {
+  background-color: #eaeaea;
+  padding: 30px;
+  text-align: center;
+  color: #333;
+  font-weight: bold;
+}
+
+/* ==========================
+   Página de Calendario
+========================== */
+.calendar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: white;
+  margin-bottom: 20px;
+}
+
+.calendar-header .info-icon {
+  background-color: #ffcc00;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  color: white;
+}
+
+.calendar-header h2 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.calendar-header h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 400;
+  color: #555;
+}
+
+.sync-btn {
+  background-color: #ffcc00;
+  color: black;
+  font-weight: 600;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 20px;
+  cursor: pointer;
+  box-shadow: 1px 2px 4px rgba(0,0,0,0.2);
+}
+
+.sync-btn:hover {
+  background-color: #ffdb4d;
+}
+
+/* Calendario */
+.calendar-container {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 30px;
+  box-shadow: 2px 2px 6px rgba(0,0,0,0.1);
+  background-color: white;
+}
+
+.calendar-container h4 {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+}
+
+.day {
+  border: 1px solid #ddd;
+  min-height: 80px;
+  text-align: left;
+  padding: 8px;
+  font-size: 14px;
+  border-radius: 4px;
+  background-color: #fafafa;
+}
+
+.day.event.yellow {
+  background-color: #ffe699;
+}
+
+.day.event.green {
+  background-color: #b7e1cd;
+}
+
+.day.empty {
+  background-color: transparent;
+  border: none;
+}

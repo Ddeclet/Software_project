@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calendario Académico - AcademicConnect</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <script src="https://kit.fontawesome.com/a2d9d6bc50.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+  <!-- Barra superior -->
+  <header>
+    <div class="logo">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Academic_cap.svg/2048px-Academic_cap.svg.png" alt="Logo">
+      <h1>AcademicConnect</h1>
+    </div>
+    <nav>
+      <div class="profile-icon"><i class="fa-solid fa-user"></i></div>
+      <a href="{{ url_for('index') }}">Inicio</a>
+      <a href="{{ url_for('calendario') }}">Calendario</a>
+      <a href="#">Horas de oficina</a>
+      <i class="fa-solid fa-right-from-bracket"></i>
+    </nav>
+  </header>
+
+  <!-- Contenido principal -->
+  <main>
+    <div class="calendar-header">
+      <div class="info-icon"><i class="fa-solid fa-circle-info"></i></div>
+      <div>
+        <h2>Calendario Académico</h2>
+        <h3>Primer Semestre 2025–2026</h3>
+      </div>
+      <button class="sync-btn">Sincronizar calendario</button>
+    </div>
+
+    <section class="calendar-container">
+      <h4>OCTUBRE 2025</h4>
+      <div class="calendar-grid">
+        <!-- Filas del calendario -->
+        <div class="day empty"></div><div class="day empty"></div><div class="day">1</div><div class="day">2</div><div class="day">3</div><div class="day">4</div><div class="day">5</div>
+        <div class="day event yellow">6</div><div class="day">7</div><div class="day">8</div><div class="day">9</div><div class="day">10</div><div class="day">11</div><div class="day">12</div>
+        <div class="day event yellow"><b>13</b><br>Feriado: Día de la Raza</div>
+        <div class="day">14</div><div class="day">15</div><div class="day">16</div><div class="day">17</div><div class="day">18</div><div class="day">19</div>
+        <div class="day">20</div><div class="day">21</div><div class="day">22</div><div class="day event yellow"><b>23</b><br>Evaluación Parcial</div>
+        <div class="day">24</div>
+        <div class="day event green"><b>26</b><br>Reunión general de facultad</div>
+        <div class="day">27</div><div class="day event yellow"><b>28</b><br>Receso académico</div><div class="day">29</div><div class="day">30</div><div class="day">31</div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Pie -->
+  <div class="footer-logo">
+    UPR Arecibo
+  </div>
+  <footer>
+    Copyright - All rights reserved
+  </footer>
+
+</body>
+</html>
