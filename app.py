@@ -23,4 +23,4 @@ def horas():
     return render_template("horasDeOficina.html")
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True) 
