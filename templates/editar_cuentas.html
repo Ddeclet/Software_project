@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<title>Editar cuentas - AcademicConnect</title>
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+		<script src="https://kit.fontawesome.com/a2d9d6bc50.js" crossorigin="anonymous"></script>
+	</head>
+	<body>
+		
+		<!-- Barra superior -->
+		<header>
+			<div class="logo">
+				<img src="{{ url_for('static', filename='images/logoAC.png') }}" alt="Logo" class="logo-ac">
+				<h1 class="brand-title">AcademicConnect</h1>
+			</div>
+			<nav>
+				<a href="{{ url_for('superadmin_home') }}" class="nav-link">Inicio</a>
+				<div class="profile-container">
+					<img src="{{ url_for('static', filename='images/perfil.png') }}" alt="Perfil" class="profile-img">
+				</div>
+				<a href="{{ url_for('login') }}">
+					<img src="{{ url_for('static', filename='images/logout.png') }}" alt="Logout" class="logout-icon">
+				</a>
+			</nav>
+		</header>
+		
+		<!-- Contenido principal -->
+		<main class="editar-cuentas-main">
+			<h2>Elige la cuenta a editar</h2>
+			
+			<div class="user-list-container">
+				<!-- Profesores -->
+				<div class="user-row">
+					<img src="{{ url_for('static', filename='images/perfil.png') }}" alt="Usuario" class="user-avatar">
+					<div class="user-info">
+						<strong>Luis Colón Colón</strong> (luis.colon19@upr.edu)
+					</div>
+					<div class="user-icons">
+						<img src="{{ url_for('static', filename='images/EditarCuenta.png') }}" alt="Editar cuenta" class="action-icon">
+						<img src="{{ url_for('static', filename='images/Calendario.png') }}" alt="Calendario" class="action-icon">
+					</div>
+				</div>
+				
+				<div class="user-row">
+					<img src="{{ url_for('static', filename='images/perfil.png') }}" alt="Usuario" class="user-avatar">
+					<div class="user-info">
+						<strong>Eliana Valenzuela Andrade</strong> (eliana.valenzuela@upr.edu)
+					</div>
+					<div class="user-icons">
+						<img src="{{ url_for('static', filename='images/EditarCuenta.png') }}" alt="Editar cuenta" class="action-icon">
+						<img src="{{ url_for('static', filename='images/Calendario.png') }}" alt="Calendario" class="action-icon">
+					</div>
+				</div>
+				
+				<div class="user-row">
+					<img src="{{ url_for('static', filename='images/perfil.png') }}" alt="Usuario" class="user-avatar">
+					<div class="user-info">
+						<strong>Juan Lopez Gerena</strong> (juano.lopez@upr.edu)
+					</div>
+					<div class="user-icons">
+						<img src="{{ url_for('static', filename='images/EditarCuenta.png') }}" alt="Editar cuenta" class="action-icon">
+						<img src="{{ url_for('static', filename='images/Calendario.png') }}" alt="Calendario" class="action-icon">
+					</div>
+				</div>
+				
+				<div class="user-row">
+					<img src="{{ url_for('static', filename='images/perfil.png') }}" alt="Usuario" class="user-avatar">
+					<div class="user-info">
+						<strong>Aixa Ramirez Toledo</strong> (aixa.ramirez@upr.edu)
+					</div>
+					<div class="user-icons">
+						<img src="{{ url_for('static', filename='images/EditarCuenta.png') }}" alt="Editar cuenta" class="action-icon">
+						<img src="{{ url_for('static', filename='images/Calendario.png') }}" alt="Calendario" class="action-icon">
+					</div>
+				</div>
+				
+				<div class="user-row">
+					<img src="{{ url_for('static', filename='images/perfil.png') }}" alt="Usuario" class="user-avatar">
+					<div class="user-info">
+						<strong>Emilio Pérez Arnau</strong> (emilio.perez@upr.edu)
+					</div>
+					<div class="user-icons">
+						<img src="{{ url_for('static', filename='images/EditarCuenta.png') }}" alt="Editar cuenta" class="action-icon">
+						<img src="{{ url_for('static', filename='images/Calendario.png') }}" alt="Calendario" class="action-icon">
+					</div>
+				</div>
+				
+				
+			</div>
+		</main>
+		
+		<!-- Footer -->
+		<div class="upraviso">
+			<div class="upr-wordmark">UPR<br><span>ARECIBO</span></div>
+		</div>
+		
+		<footer class="superadmin-footer">
+			Copyright - All rights reserved
+		</footer>
+	</body>
+</html>

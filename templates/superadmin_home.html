@@ -30,27 +30,32 @@
   </header>
 
   <!-- Contenido -->
-  <main class="superadmin-main">
-    <h2>Inicio</h2>
-    <h3 class="superadmin-subtitle">Sección de superadministración</h3>
-
-    <div class="superadmin-cards">
-      <a class="superadmin-card" href="{{ url_for('calendario') }}">
-        <span class="superadmin-card-title">Modificar calendario académico</span>
-        <img src="{{ url_for('static', filename='images/Calendario.png') }}" alt="Calendario" class="superadmin-card-images">
-      </a>
-
-      <a class="superadmin-card" href="#">
-        <span class="superadmin-card-title">Crear cuenta</span>
-        <img src="{{ url_for('static', filename='images/Cuenta.png') }}" alt="Cuenta" class="superadmin-card-images">
-      </a>
-
-      <a class="superadmin-card" href="#">
-        <span class="superadmin-card-title">Modificar cuenta</span>
-        <img src="{{ url_for('static', filename='images/EditarCuenta.png') }}" alt="Editar Cuenta" class="superadmin-card-images">
-      </a>
-    </div>
-  </main>
+<!-- superadmin_home.html -->
+<main class="superadmin-main">
+	<h2>Inicio</h2>
+	<h3 class="superadmin-subtitle">Sección de superadministración</h3>
+	
+	<div class="superadmin-cards">
+		
+		<!-- Editar Calendario -->
+		<a class="superadmin-card" href="{{ url_for('calendario') }}">
+			<span class="superadmin-card-title">Modificar calendario académico</span>
+			<img src="{{ url_for('static', filename='images/Calendario.png') }}" alt="Calendario">
+		</a>
+		
+		<!-- Crear Cuenta -->
+		<a class="superadmin-card" href="#">
+			<span class="superadmin-card-title">Crear cuenta</span>
+			<img src="{{ url_for('static', filename='images/Cuenta.png') }}" alt="Cuenta">
+		</a>
+		
+		<!-- Editar Cuenta -->
+		<a class="superadmin-card" href="{{ url_for('editar_cuentas') }}">
+			<span class="superadmin-card-title">Modificar cuenta</span>
+			<img src="{{ url_for('static', filename='images/EditarCuenta.png') }}" alt="Editar cuenta">
+		</a>
+	</div>
+</main>
 
   <!-- Franja “UPR Arecibo” -->
   <div class="upraviso">

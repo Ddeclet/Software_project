@@ -73,5 +73,9 @@ def horas():
         return redirect(url_for("login"))
     return render_template("horasDeOficina.html")
 
+@app.route("/editar_cuentas")
+def editar_cuentas():
+    return render_template("editar_cuentas.html")
+
 if __name__ == "__main__":
     app.run(debug=True)
