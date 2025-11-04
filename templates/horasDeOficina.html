@@ -3,78 +3,101 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Horas de oficina - AcademicConnect</title>
+  <title>Departamentos Académicos - AcademicConnect</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
   <script src="https://kit.fontawesome.com/a2d9d6bc50.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
   <!-- Barra superior -->
-  <header> 
-    <div class="logo"> 
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Academic_cap.svg/2048px-Academic_cap.svg.png" alt="Logo">
+  <header>
+    <div class="logo">
+      <img src="{{ url_for('static', filename='images/logoAC.png') }}" alt="Logo">
       <h1>AcademicConnect</h1>
     </div>
     <nav>
       <div class="profile-icon"><i class="fa-solid fa-user"></i></div>
       <a href="{{ url_for('index') }}">Inicio</a>
       <a href="{{ url_for('calendario') }}">Calendario</a>
-      <a href="{{ url_for('horas') }}" class="active">Horas de oficina</a>
+      <a href="{{ url_for('horas') }}" class="active">Departamentos</a>
       <i class="fa-solid fa-right-from-bracket"></i>
     </nav>
   </header>
 
+  <!-- Contenido principal -->
   <main class="hours-main">
-    <h2>Departamentos</h2>
-    <p class="intro">
-      Escoja de qué departamento pertenece el profesor/a que quiere gestionar una cita.
-    </p>
-
-    <!-- CARD GRANDE -->
     <div class="dept-big-card">
       <div class="dept-big-header">
-        <img
-          src="https://upload.wikimedia.org/wikipedia/commons/6/69/Seal_of_the_University_of_Puerto_Rico.svg"
-          alt="UPR"
-          class="dept-big-logo"
-        >
+        <img src="{{ url_for('static', filename='images/UPRA.png') }}" 
+             alt="UPR Logo" class="dept-big-logo">
         <h3>Departamentos Académicos</h3>
       </div>
 
       <div class="dept-big-body">
-        <!-- fila 1 -->
+        <!-- Primera fila -->
         <div class="dept-row-images">
-          <!-- CCOM -->
           <div class="dept-img-card">
-            <img src="https://images.pexels.com/photos/3861972/pexels-photo-3861972.jpeg?auto=compress&cs=tinysrgb&w=600" alt="CCOM">
+            <img src="{{ url_for('static', filename='images/CCOM.png') }}" alt="CCOM">
             <span>CCOM</span>
           </div>
-
-          <!-- GTEC -->
           <div class="dept-img-card">
-            <img src="https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=600" alt="GTEC">
+            <img src="{{ url_for('static', filename='images/GTEC.png') }}" alt="GTEC">
             <span>GTEC</span>
           </div>
-
-          <!-- MATE -->
           <div class="dept-img-card">
-            <img src="https://images.pexels.com/photos/4144923/pexels-photo-4144923.jpeg?auto=compress&cs=tinysrgb&w=600" alt="MATE">
+            <img src="{{ url_for('static', filename='images/MATE.png') }}" alt="MATE">
             <span>MATE</span>
+          </div>
+          <div class="dept-img-card">
+            <img src="{{ url_for('static', filename='images/ENFE.png') }}" alt="ENFE">
+            <span>ENFE</span>
           </div>
         </div>
 
-        <!-- fila 2 -->
+        <!-- Segunda fila -->
         <div class="dept-row-images second-row">
-          <!-- ENFE -->
           <div class="dept-img-card">
-            <img src="https://images.pexels.com/photos/8460150/pexels-photo-8460150.jpeg?auto=compress&cs=tinysrgb&w=600" alt="ENFE">
-            <span>ENFE</span>
+            <img src="{{ url_for('static', filename='images/ADEM.png') }}" alt="ADEM">
+            <span>ADEM</span>
+          </div>
+          <div class="dept-img-card">
+            <img src="{{ url_for('static', filename='images/Biologia.png') }}" alt="Biología">
+            <span>Biología</span>
+          </div>
+          <div class="dept-img-card">
+            <img src="{{ url_for('static', filename='images/CISO.png') }}" alt="CISO">
+            <span>Ciencias Sociales</span>
+          </div>
+          <div class="dept-img-card">
+            <img src="{{ url_for('static', filename='images/Humanidades.png') }}" alt="Humanidades">
+            <span>Humanidades</span>
+          </div>
+        </div>
+
+        <!-- Tercera fila -->
+        <div class="dept-row-images second-row">
+          <div class="dept-img-card">
+            <img src="{{ url_for('static', filename='images/COMU.png') }}" alt="COMU">
+            <span>COMU</span>
+          </div>
+          <div class="dept-img-card">
+            <img src="{{ url_for('static', filename='images/Educaciones.png') }}" alt="Educaciones">
+            <span>Educaciones</span>
+          </div>
+          <div class="dept-img-card">
+            <img src="{{ url_for('static', filename='images/FisicaQuimica.png') }}" alt="Física y Química">
+            <span>Física y Química</span>
+          </div>
+          <div class="dept-img-card">
+            <img src="{{ url_for('static', filename='images/Ingles.png') }}" alt="Inglés">
+            <span>Inglés</span>
           </div>
         </div>
       </div>
     </div>
   </main>
 
+  <!-- Pie de página -->
   <div class="footer-logo">
     UPR Arecibo
   </div>
