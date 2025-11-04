@@ -598,3 +598,11 @@ footer {
   color: #0a6a3a;
   border: 1px solid #b7f0d1;
 }
+/* Ajuste de tamaño para imágenes de superadmin */
+.superadmin-card img {
+  width: 150px;
+  height: 150px;
+  object-fit: contain;
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
