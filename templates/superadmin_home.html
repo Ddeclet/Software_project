@@ -13,14 +13,20 @@
   <!-- Barra superior principal -->
   <header>
     <div class="logo">
-      <!-- “AC” en círculo como en la maqueta -->
-      <div class="ac-badge">AC</div>
+      <img src="{{ url_for('static', filename='images/logoAC.png') }}" alt="Logo AcademicConnect" class="logo-ac">
       <h1 class="brand-title">AcademicConnect</h1>
     </div>
+
     <nav>
-      <div class="profile-icon"><i class="fa-solid fa-user"></i></div>
-      <i class="fa-solid fa-right-from-bracket"></i>
+      <div class="profile-container">
+        <img src="{{ url_for('static', filename='images/perfil.png') }}" alt="Perfil" class="profile-img">
+      </div>
+
+      <a href="{{ url_for('login') }}">
+        <img src="{{ url_for('static', filename='images/logout.png') }}" alt="Logout" class="logout-icon">
+      </a>
     </nav>
+
   </header>
 
   <!-- Contenido -->

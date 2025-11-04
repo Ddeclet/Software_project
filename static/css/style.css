@@ -606,3 +606,36 @@ footer {
   margin-top: 15px;
   margin-bottom: 10px;
 }
+/* Logo superior izquierdo (superadmin) */
+.logo img,
+.logo-ac {
+  width: 70px;           /* tamaño ideal */
+  height: 70px;
+  object-fit: contain;   /* evita deformar */
+  display: block;
+}
+nav .profile-container {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+nav .profile-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 50%;
+}
+/* ===== Ícono de logout ===== */
+.logout-icon {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  margin-left: -12px;
+  margin-top: 4px;
+}
+
