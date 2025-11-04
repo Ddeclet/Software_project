@@ -468,3 +468,133 @@ footer {
     height: auto;
   }
 }
+
+/* ====== SUPER supersuperadmin HOME ====== */
+.status-bar {
+  background: #222;
+  color: #cfcfcf;
+  font-size: 14px;
+  padding: 8px 16px;
+}
+
+.brand-title {
+  color: #e6e6e6;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.ac-badge {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #e0e0e0;
+  color: #333;
+  display: grid;
+  place-items: center;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.superadmin-main {
+  padding: 40px 60px;
+}
+
+.superadmin-subtitle {
+  margin-top: 8px;
+  font-size: 22px;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 30px;
+}
+
+.superadmin-cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(220px, 1fr));
+  gap: 28px;
+  margin-top: 10px;
+  margin-bottom: 60px;
+}
+
+.superadmin-card {
+  background: #eaeaea;
+  border: 1px solid #d1d1d1;
+  border-radius: 16px;
+  padding: 22px 18px 26px;
+  text-decoration: none;
+  color: inherit;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.12);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+.superadmin-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.18);
+}
+
+.superadmin-card-title {
+  font-weight: 700;
+  text-align: center;
+}
+
+.superadmin-card-icon {
+  font-size: 64px;
+  color: #000;
+}
+
+.upraviso {
+  margin-top: 40px;
+  background: #d9d9d9;
+  padding: 32px 60px;
+}
+
+.upr-wordmark {
+  font-weight: 900;
+  font-size: 48px;
+  letter-spacing: 1px;
+  color: #222;
+  line-height: 0.9;
+}
+.upr-wordmark span {
+  font-weight: 700;
+  font-size: 28px;
+  letter-spacing: 4px;
+}
+
+.superadmin-footer {
+  background: #4b4b4b;
+  color: #fff;
+  padding: 14px 24px;
+  text-align: left;
+  font-size: 14px;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .superadmin-cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Mensajes flash de error o success */
+.flash-messages {
+  margin-bottom: 12px;
+}
+.flash {
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-weight: 600;
+}
+.flash.error {
+  background: #ffe6e6;
+  color: #7a1a1a;
+  border: 1px solid #ffbcbc;
+}
+.flash.success {
+  background: #e6ffef;
+  color: #0a6a3a;
+  border: 1px solid #b7f0d1;
+}

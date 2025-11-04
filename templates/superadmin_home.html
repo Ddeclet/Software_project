@@ -1,0 +1,59 @@
+<!-- templates/superadmin_home.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Homepage (super superadmin) - AcademicConnect</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <script src="https://kit.fontawesome.com/a2d9d6bc50.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+  <!-- Barra superior principal -->
+  <header>
+    <div class="logo">
+      <!-- “AC” en círculo como en la maqueta -->
+      <div class="ac-badge">AC</div>
+      <h1 class="brand-title">AcademicConnect</h1>
+    </div>
+    <nav>
+      <div class="profile-icon"><i class="fa-solid fa-user"></i></div>
+      <i class="fa-solid fa-right-from-bracket"></i>
+    </nav>
+  </header>
+
+  <!-- Contenido -->
+  <main class="superadmin-main">
+    <h2>Inicio</h2>
+    <h3 class="superadmin-subtitle">Sección de superadministración</h3>
+
+    <div class="superadmin-cards">
+      <a class="superadmin-card" href="{{ url_for('calendario') }}">
+        <span class="superadmin-card-title">Modificar calendario académico</span>
+        <img src="{{ url_for('static', filename='images/Calendario.png') }}" alt="Calendario" class="superadmin-card-images">
+      </a>
+
+      <a class="superadmin-card" href="#">
+        <span class="superadmin-card-title">Crear cuenta</span>
+        <img src="{{ url_for('static', filename='images/Cuenta.png') }}" alt="Cuenta" class="superadmin-card-images">
+      </a>
+
+      <a class="superadmin-card" href="#">
+        <span class="superadmin-card-title">Modificar cuenta</span>
+        <img src="{{ url_for('static', filename='images/EditarCuenta.png') }}" alt="Editar Cuenta" class="superadmin-card-images">
+      </a>
+    </div>
+  </main>
+
+  <!-- Franja “UPR Arecibo” -->
+  <div class="upraviso">
+    <div class="upr-wordmark">UPR<br><span>ARECIBO</span></div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="superadmin-footer">
+    Copyright - All rights reserved
+  </footer>
+</body>
+</html>
