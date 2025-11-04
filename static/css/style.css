@@ -639,3 +639,30 @@ nav .profile-img {
   margin-top: 4px;
 }
 
+/* ====== CUADROS CLICKEABLES EN INICIO ====== */
+.card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.card-link .card {
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.card-link .card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.1);
+  cursor: pointer;
+}
+
+/* que las cards clickeables ocupen el mismo ancho que antes */
+.cards-container .card-link {
+  flex: 1;
+  display: flex;        /* para que el div.card se estire */
+}
+
+.cards-container .card-link .card {
+  width: 100%;
+}
+

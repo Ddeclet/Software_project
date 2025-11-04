@@ -43,34 +43,39 @@
       </a>
     </div>
 
+    <!-- CUADROS INTERACTIVOS -->
     <div class="cards-container">
       <!-- Calendario -->
-      <div class="card">
-        <h3>Calendario</h3>
-        <h4>Calendario Académico</h4>
-        <div class="event"><i class="fa-solid fa-calendar-days"></i> 10 Agosto - Inicio de Clases</div>
-        <div class="event"><i class="fa-solid fa-calendar-days"></i> 13 Oct - Feriado: Día de la Raza</div>
-        <div class="event"><i class="fa-solid fa-calendar-days"></i> 15 Dic - Finales</div>
-      </div>
+      <a href="{{ url_for('calendario') }}" class="card-link">
+        <div class="card">
+          <h3>Calendario</h3>
+          <h4>Calendario Académico</h4>
+          <div class="event"><i class="fa-solid fa-calendar-days"></i> 10 Agosto - Inicio de Clases</div>
+          <div class="event"><i class="fa-solid fa-calendar-days"></i> 13 Oct - Feriado: Día de la Raza</div>
+          <div class="event"><i class="fa-solid fa-calendar-days"></i> 15 Dic - Finales</div>
+        </div>
+      </a>
 
       <!-- Horas de oficina -->
-      <div class="card">
-        <h3>Horas de Oficina</h3>
-        <div class="office-hour">
-          <i class="fa-solid fa-user-tie"></i>
-          <div>
-            <strong>Prof. Luis Colón Colón</strong> - Lunes<br>
-            10:00am - 12:00pm
+      <a href="{{ url_for('horas') }}" class="card-link">
+        <div class="card">
+          <h3>Horas de Oficina</h3>
+          <div class="office-hour">
+            <i class="fa-solid fa-user-tie"></i>
+            <div>
+              <strong>Prof. Luis Colón Colón</strong> - Lunes<br>
+              10:00am - 12:00pm
+            </div>
+          </div>
+          <div class="office-hour">
+            <i class="fa-solid fa-user-tie"></i>
+            <div>
+              <strong>Prof. Juan López Gerena</strong> - Miércoles<br>
+              9:00am - 12:00pm
+            </div>
           </div>
         </div>
-        <div class="office-hour">
-          <i class="fa-solid fa-user-tie"></i>
-          <div>
-            <strong>Prof. Juan López Gerena</strong> - Miércoles<br>
-            9:00am - 12:00pm
-          </div>
-        </div>
-      </div>
+      </a>
     </div>
   </main>
 
