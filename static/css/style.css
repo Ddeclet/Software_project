@@ -666,3 +666,13 @@ nav .profile-img {
   width: 100%;
 }
 
+/* icono pequeño dentro de las cards del inicio */
+.card-img {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;   /* no deforma el icono */
+  display: block;
+  margin-bottom: 15px;
+}
+
+
