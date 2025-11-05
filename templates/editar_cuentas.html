@@ -32,57 +32,70 @@
 			
 			<div class="user-list-container">
 				<!-- Profesores -->
+				<!-- Luis Colon -->
 				<div class="user-row">
-					<img src="{{ url_for('static', filename='images/perfil.png') }}" alt="Usuario" class="user-avatar">
-					<div class="user-info">
-						<strong>Luis Colón Colón</strong> (luis.colon19@upr.edu)
-					</div>
-					<div class="user-icons">
-						<img src="{{ url_for('static', filename='images/EditarHorasOficina.png') }}" alt="Calendario" class="action-icon">
-					</div>
+				<img src="{{ url_for('static', filename='images/perfil.png') }}" alt="Usuario" class="user-avatar">
+				<div class="user-info">
+					<strong>Luis Colón Colón</strong> (luis.colon19@upr.edu)
 				</div>
-				
+				<div class="user-icons">
+					<a href="{{ url_for('editar_horas', prof_id='luis-colon') }}">
+					<img src="{{ url_for('static', filename='images/EditarHorasOficina.png') }}" alt="Horas" class="action-icon">
+					</a>
+				</div>
+				</div>
+
+				<!-- Eliana Valenzuela -->
 				<div class="user-row">
-					<img src="{{ url_for('static', filename='images/perfil.png') }}" alt="Usuario" class="user-avatar">
-					<div class="user-info">
-						<strong>Eliana Valenzuela Andrade</strong> (eliana.valenzuela@upr.edu)
-					</div>
-					<div class="user-icons">
-						<img src="{{ url_for('static', filename='images/EditarHorasOficina.png') }}" alt="Calendario" class="action-icon">
-					</div>
+				<img src="{{ url_for('static', filename='images/perfil.png') }}" alt="Usuario" class="user-avatar">
+				<div class="user-info">
+					<strong>Eliana Valenzuela Andrade</strong> (eliana.valenzuela@upr.edu)
 				</div>
-				
+				<div class="user-icons">
+					<a href="{{ url_for('editar_horas', prof_id='eliana-valenzuela') }}">
+					<img src="{{ url_for('static', filename='images/EditarHorasOficina.png') }}" alt="Horas" class="action-icon">
+					</a>
+				</div>
+				</div>
+
+				<!-- Juan Lopez -->
 				<div class="user-row">
-					<img src="{{ url_for('static', filename='images/perfil.png') }}" alt="Usuario" class="user-avatar">
-					<div class="user-info">
-						<strong>Juan Lopez Gerena</strong> (juano.lopez@upr.edu)
-					</div>
-					<div class="user-icons">
-						<img src="{{ url_for('static', filename='images/EditarHorasOficina.png') }}" alt="Calendario" class="action-icon">
-					</div>
+				<img src="{{ url_for('static', filename='images/perfil.png') }}" alt="Usuario" class="user-avatar">
+				<div class="user-info">
+					<strong>Juan Lopez Gerena</strong> (juano.lopez@upr.edu)
 				</div>
-				
+				<div class="user-icons">
+					<a href="{{ url_for('editar_horas', prof_id='juan-lopez') }}">
+					<img src="{{ url_for('static', filename='images/EditarHorasOficina.png') }}" alt="Horas" class="action-icon">
+					</a>
+				</div>
+				</div>
+
+				<!-- Aixa Ramirez-->
 				<div class="user-row">
-					<img src="{{ url_for('static', filename='images/perfil.png') }}" alt="Usuario" class="user-avatar">
-					<div class="user-info">
-						<strong>Aixa Ramirez Toledo</strong> (aixa.ramirez@upr.edu)
-					</div>
-					<div class="user-icons">
-						<img src="{{ url_for('static', filename='images/EditarHorasOficina.png') }}" alt="Calendario" class="action-icon">
-					</div>
+				<img src="{{ url_for('static', filename='images/perfil.png') }}" alt="Usuario" class="user-avatar">
+				<div class="user-info">
+					<strong>Aixa Ramirez Toledo</strong> (aixa.ramirez@upr.edu)
 				</div>
-				
+				<div class="user-icons">
+					<a href="{{ url_for('editar_horas', prof_id='aixa-ramirez') }}">
+					<img src="{{ url_for('static', filename='images/EditarHorasOficina.png') }}" alt="Horas" class="action-icon">
+					</a>
+				</div>
+				</div>
+
+				<!-- Emilio Perez-->
 				<div class="user-row">
-					<img src="{{ url_for('static', filename='images/perfil.png') }}" alt="Usuario" class="user-avatar">
-					<div class="user-info">
-						<strong>Emilio Pérez Arnau</strong> (emilio.perez@upr.edu)
-					</div>
-					<div class="user-icons">
-						<img src="{{ url_for('static', filename='images/EditarHorasOficina.png') }}" alt="Calendario" class="action-icon">
-					</div>
+				<img src="{{ url_for('static', filename='images/perfil.png') }}" alt="Usuario" class="user-avatar">
+				<div class="user-info">
+					<strong>Emilio Pérez Arnau</strong> (emilio.perez@upr.edu)
 				</div>
-				
-				
+				<div class="user-icons">
+					<a href="{{ url_for('editar_horas', prof_id='emilio-perez') }}">
+					<img src="{{ url_for('static', filename='images/EditarHorasOficina.png') }}" alt="Horas" class="action-icon">
+					</a>
+				</div>
+				</div>
 			</div>
 		</main>
 		

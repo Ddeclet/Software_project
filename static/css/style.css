@@ -808,3 +808,71 @@ footer {
   opacity: 0.8;
 }
 
+/* Editar horas de oficina */
+.oh-card {
+  background: #efefef;
+  border: 1px solid #e0e0e0;
+  border-radius: 16px;
+  padding: 18px 20px;
+  margin: 18px 0;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.06);
+  position: relative;
+}
+
+.oh-card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.oh-index { font-weight: 700; color: #333; }
+
+.oh-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.oh-action {
+  width: 22px;
+  height: 22px;
+  cursor: pointer;
+}
+
+.oh-action.danger {
+  width: 26px;
+  height: 27px;
+  filter: saturate(1);
+}
+
+.oh-row {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 10px;
+  padding: 6px 0;
+  align-items: center;
+}
+.oh-label { font-weight: 700; }
+.oh-value { background: transparent; }
+
+.oh-save {
+  display: block;
+  margin: 20px auto 0;
+  background: #e8be3f;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 12px;
+  font-weight: 800;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+.oh-fab {
+  position: fixed;
+  right: 24px;
+  bottom: 55px;
+  width: 65px;
+  height: 65px;
+  cursor: pointer;
+}
+

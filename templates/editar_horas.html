@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Editar horas de oficinas - AcademicConnect</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+  <!-- Barra superior -->
+  <header>
+    <div class="logo">
+      <img src="{{ url_for('static', filename='images/logoAC.png') }}" alt="Logo" class="logo-ac">
+      <h1 class="brand-title">AcademicConnect</h1>
+    </div>
+    <nav>
+      <a href="{{ url_for('superadmin_home') }}" class="nav-link">Inicio</a>
+      <div class="profile-container">
+        <img src="{{ url_for('static', filename='images/perfil.png') }}" alt="Perfil" class="profile-img">
+      </div>
+      <a href="{{ url_for('login') }}">
+        <img src="{{ url_for('static', filename='images/logout.png') }}" alt="Logout" class="logout-icon">
+      </a>
+    </nav>
+  </header>
+
+  <main class="editar-cuentas-main">
+    <h2>Editar horas de oficinas</h2>
+    <h3>{{ prof.nombre }}</h3>
+
+    {% for item in horas %}
+    <section class="oh-card">
+      <div class="oh-card-head">
+        <span class="oh-index">{{ loop.index }}.</span>
+        <div class="oh-actions">
+          <img src="{{ url_for('static', filename='images/editar.png') }}"   alt="Editar"   class="oh-action">
+          <img src="{{ url_for('static', filename='images/eliminar.png') }}" alt="Eliminar" class="oh-action danger">
+        </div>
+      </div>
+
+      <div class="oh-row"><span class="oh-label">Día:</span>          <span class="oh-value">{{ item.dia }}</span></div>
+      <div class="oh-row"><span class="oh-label">Hora de inicio:</span><span class="oh-value">{{ item.inicio }}</span></div>
+      <div class="oh-row"><span class="oh-label">Hora final:</span>   <span class="oh-value">{{ item.fin }}</span></div>
+      <div class="oh-row"><span class="oh-label">Term:</span>         <span class="oh-value">{{ item.term }}</span></div>
+    </section>
+    {% endfor %}
+
+    <button class="oh-save">Guardar Cambios</button>
+
+    <img src="{{ url_for('static', filename='images/agregar.png') }}" alt="Agregar" class="oh-fab">
+  </main>
+
+  <div class="upraviso">
+    <div class="upr-wordmark">UPR<br><span>ARECIBO</span></div>
+  </div>
+
+  <footer class="superadmin-footer">
+    Copyright - All rights reserved
+  </footer>
+</body>
+</html>
