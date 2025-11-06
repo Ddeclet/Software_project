@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Homepage (subadmin) - AcademicConnect</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <script src="https://kit.fontawesome.com/a2d9d6bc50.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+      <img src="{{ url_for('static', filename='images/logoAC.png') }}" alt="Logo AcademicConnect" class="logo-ac">
+      <h1 class="brand-title">AcademicConnect</h1>
+    </div>
+
+    <nav>
+      <div class="profile-container">
+        <img src="{{ url_for('static', filename='images/perfil.png') }}" alt="Perfil" class="profile-img">
+      </div>
+
+      <a href="{{ url_for('logout') }}">
+        <img src="{{ url_for('static', filename='images/logout.png') }}" alt="Logout" class="logout-icon">
+      </a>
+    </nav>
+
+  </header>
+
+  <main class="superadmin-main">
+    <h2>Inicio</h2>
+    <h3 class="superadmin-subtitle">Sección de subadministración</h3>
+
+    <div class="superadmin-cards" style="grid-template-columns: 1fr;">
+      
+      <a class="superadmin-card" href="#">
+        <span class="superadmin-card-title">Modificar cuenta</span>
+        <img src="{{ url_for('static', filename='images/EditarCuenta.png') }}" alt="Editar Cuenta" class="superadmin-card-images">
+      </a>
+    </div>
+  </main>
+
+  <div class="upraviso">
+    <div class="upr-wordmark">UPR<br><span>ARECIBO</span></div>
+  </div>
+
+  <footer class="superadmin-footer">
+    Copyright - All rights reserved
+  </footer>
+</body>
+</html>
