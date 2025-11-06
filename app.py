@@ -4,13 +4,15 @@ import os
 app = Flask(__name__)
 app.secret_key = os.environ.get("FLASK_SECRET_KEY", "dev_secret_key_very_insecure")
 
+# --- COLECCIONES GLOBALES (Simulación de DB) ---
 
-PROFESSOR_NAMES = {
-    "luis.colon19@upr.edu": "Luis Colón Colón",
-    "eliana.valenzuela@upr.edu": "Eliana Valenzuela Andrade",
-    "juano.lopez@upr.edu": "Juan Lopez Gerena",
-    "aixa.ramirez@upr.edu": "Aixa Ramirez Toledo",
-    "emilio.perez@upr.edu": "Emilio Pérez Arnau",
+# Profesores
+PROFESORES = {
+    "luis-colon":        {"nombre": "Prof. Luis Colón Cólon", "email": "luis.colon19@upr.edu"},
+    "eliana-valenzuela": {"nombre": "Prof. Eliana Valenzuela Andrade", "email": "eliana.valenzuela@upr.edu"},
+    "juan-lopez":        {"nombre": "Prof. Juan Lopez Gerena", "email": "juano.lopez@upr.edu"},
+    "aixa-ramirez":      {"nombre": "Prof. Aixa Ramirez Toledo", "email": "aixa.ramirez@upr.edu"},
+    "emilio-perez":      {"nombre": "Prof. Emilio Pérez Arnau", "email": "emilio.perez@upr.edu"},
 }
 
 # Term activo
@@ -18,58 +20,25 @@ TERMS = ["C51"]
 
 # Horas de oficina
 OFFICE_HOURS = {
-    "luis.colon19@upr.edu": [
-        {"day": "Lunes", "start": "11:30 AM", "end": "12:30 PM", "term": "C51"},
-        {"day": "Lunes", "start": "2:30 PM",  "end": "3:00 PM",  "term": "C51"},
-        {"day": "Miércoles", "start": "11:30 AM", "end": "12:30 PM", "term": "C51"},
-        {"day": "Miércoles", "start": "2:30 PM",  "end": "3:00 PM",  "term": "C51"},
+    "luis-colon": [
+        {"dia": "Lunes", "inicio": "11:30", "fin": "12:30", "term": TERM_ACTUAL},
+        {"dia": "Lunes", "inicio": "14:30", "fin": "15:00", "term": TERM_ACTUAL},
+        {"dia": "Miércoles", "inicio": "10:00", "fin": "11:00", "term": TERM_ACTUAL},
     ],
-    "eliana.valenzuela@upr.edu": [
-        {"day": "Lunes", "start": "8:00 AM", "end": "10:00 AM", "term": "C51"},
-        {"day": "Miércoles", "start": "8:00 AM", "end": "10:00 AM", "term": "C51"},
-        {"day": "Viernes", "start": "8:00 AM", "end": "10:00 AM", "term": "C51"},
-    ],
-    "juano.lopez@upr.edu": [
-        {"day": "Lunes", "start": "8:00 AM", "end": "10:30 AM", "term": "C51"},
-        {"day": "Miércoles", "start": "8:00 AM", "end": "10:30 AM", "term": "C51"},
-        {"day": "Martes", "start": "8:00 AM", "end": "8:30 AM", "term": "C51"},
-        {"day": "Jueves", "start": "8:00 AM", "end": "8:30 AM", "term": "C51"},
-    ],
-    "aixa.ramirez@upr.edu": [
-        {"day": "Martes", "start": "1:45 PM", "end": "4:30 PM", "term": "C51"},
-        {"day": "Jueves", "start": "1:45 PM", "end": "4:30 PM", "term": "C51"},
-    ],
-    "emilio.perez@upr.edu": [
-        {"day": "Martes", "start": "7:00 AM", "end": "8:00 AM", "term": "C51"},
-        {"day": "Martes", "start": "10:00 AM", "end": "10:30 AM", "term": "C51"},
-        {"day": "Martes", "start": "4:00 PM", "end": "5:30 PM", "term": "C51"},
-        {"day": "Jueves", "start": "7:00 AM", "end": "8:00 AM", "term": "C51"},
-        {"day": "Jueves", "start": "10:00 AM", "end": "10:30 AM", "term": "C51"},
-        {"day": "Jueves", "start": "4:00 PM", "end": "5:30 PM", "term": "C51"},
-    ],
+    "aixa-ramirez": [
+        {"dia": "Martes", "inicio": "09:00", "fin": "10:00", "term": TERM_ACTUAL},
+    ]
 }
 
-# Credenciales de prueba
+# Usuarios de prueba (incluyendo subadmin)
 USERS = {
-    "javier@gmail.com": {
-        "password": "usuario1234",
-        "role": "user"
-    },
-
-    "javierAdmin@gmail.com": {
-        "password": "admin1234",
-        "role": "superadmin"
-    },
-
-    "javierSub@gmail.com": {
-        "password": "subadmin1234",
-        "role": "subadmin"
-    },
-    "javierProf@gmail.com": {
-        "password": "profesor1234",
-        "role": "profesores"
-    }
+    "javier@gmail.com":      {"password": "usuario1234", "role": "user"},
+    "javierAdmin@gmail.com": {"password": "admin1234",   "role": "superadmin"},
+    "subadmin@upr.edu":      {"password": "subadmin123", "role": "subadmin"},
 }
+
+
+# --- RUTAS DE AUTENTICACIÓN ---
 
 @app.route("/", methods=["GET", "POST"])
 def login():
@@ -80,7 +49,7 @@ def login():
         user = USERS.get(email)
         if user and password == user["password"]:
             
-            # Guardar sesión mínima
+            # Guardar sesión
             session["email"] = email
             session["role"] = user["role"]
 
@@ -89,8 +58,6 @@ def login():
                 return redirect(url_for("superadmin_home"))
             elif user["role"] == "subadmin":
                 return redirect(url_for("subadmin_home"))
-            elif user["role"] == "profesores":
-                return redirect(url_for("profesores_home"))
             else:
                 return redirect(url_for("index"))
         else:
@@ -104,9 +71,11 @@ def logout():
     session.clear()
     return redirect(url_for("login"))
 
+
+# --- RUTAS PRINCIPALES ---
+
 @app.route("/superadmin")
 def superadmin_home():
-    # proteger ruta: solo superadmin
     if session.get("role") != "superadmin":
         flash("Acceso denegado. Inicia sesión como administrador.", "error")
         return redirect(url_for("login"))
@@ -114,23 +83,13 @@ def superadmin_home():
 
 @app.route("/subadmin")
 def subadmin_home():
-    # proteger ruta: solo subadmin
     if session.get("role") != "subadmin":
-        flash("Acceso denegado. Inicia sesión como subadministrador.", "error")
+        flash("Acceso denegado. Permiso de subadministrador requerido.", "error")
         return redirect(url_for("login"))
     return render_template("subadmin_home.html")
 
-@app.route("/profesores")
-def profesores_home():
-    # proteger ruta: solo profesores
-    if session.get("role") != "profesores":
-        flash("Acceso denegado. Inicia sesión como profesores.", "error")
-        return redirect(url_for("login"))
-    return render_template("profesores_home.html")
-
 @app.route("/inicio")
 def index():
-    # opción: permitir acceso solo si hay sesión (user o superadmin)
     if not session.get("email"):
         return redirect(url_for("login"))
     return render_template("index.html")
@@ -147,69 +106,147 @@ def horas():
         return redirect(url_for("login"))
     return render_template("horasDeOficina.html")
 
-@app.route("/editar_cuentas")
-def editar_cuentas():
-    return render_template("editar_cuentas.html")
+# --- GESTIÓN DE CUENTAS Y HORAS (ADMIN/SUBADMIN) ---
 
-@app.route("/editar_horas/<prof_id>")
-def editar_horas(prof_id):
-    if prof_id not in OFFICE_HOURS:
-        abort(404)
+# 🔑 CORRECCIÓN 1: Pasa los datos necesarios al template para listar cuentas
+@app.route("/modificar-cuenta")
+def modificar_cuenta():
+    # Proteger ruta: solo subadmin y superadmin pueden acceder
+    role = session.get("role")
+    if role not in ["superadmin", "subadmin"]:
+        flash("Acceso denegado. Permiso de administrador o subadministrador requerido.", "error")
+        return redirect(url_for("login"))
+    
+    # Pasa las colecciones PROFESORES y OFFICE_HOURS al template
+    return render_template("modificar_cuenta.html", profesores=PROFESORES, office_hours=OFFICE_HOURS)
 
-    prof = {
-        "email": prof_id,
-        "nombre": PROFESSOR_NAMES.get(prof_id, prof_id)
-    }
+@app.route("/editar-info/<prof_id>")
+def editar_info_cuenta(prof_id):
+    # Proteger ruta (solo admin/subadmin)
+    role = session.get("role")
+    if role not in ["superadmin", "subadmin"]:
+        flash("Acceso denegado.", "error")
+        return redirect(url_for("login"))
+        
+    prof = PROFESORES.get(prof_id)
+    if not prof:
+        return abort(404)
+        
+    # Lógica para editar info... (Pendiente de implementación)
+    return f"Página de edición de información para {prof.get('nombre')}"
 
-    horas = [
-        {"dia": h["day"], "inicio": h["start"], "fin": h["end"], "term": h["term"]}
-        for h in OFFICE_HOURS[prof_id]
-    ]
+# 🔑 CORRECCIÓN 2: Soluciona el BuildError y usa la lógica de datos real
+@app.route("/editar-horas/<prof_id>")
+def editar_horas_oficina(prof_id):
+    # Proteger ruta: solo subadmin y superadmin
+    role = session.get("role")
+    if role not in ["superadmin", "subadmin"]:
+        flash("Acceso denegado.", "error")
+        return redirect(url_for("login"))
+    
+    # Obtener la data del profesor de la lista global
+    prof = PROFESORES.get(prof_id)
+    if not prof:
+        return abort(404)
+        
+    # Obtener las horas de oficina
+    horas = OFFICE_HOURS.get(prof_id, [])
+    
+    # Pasamos 'prof', 'prof_id' y 'horas' al template
+    return render_template("editar_horas_oficina.html", prof=prof, prof_id=prof_id, horas=horas)
 
-    return render_template(
-        "editar_horas.html",
-        prof=prof,
-        horas=horas,
-        terms=TERMS
-    )
+# 🔑 FUNCIÓN 3: Agregar hora de oficina (GET para formulario, POST para guardar)
+@app.route("/agregar-hora/<prof_id>", methods=["GET", "POST"])
+def agregar_hora_oficina(prof_id):
+    role = session.get("role")
+    if role not in ["superadmin", "subadmin"]:
+        flash("Acceso denegado.", "error")
+        return redirect(url_for("login"))
+    
+    prof = PROFESORES.get(prof_id)
+    if not prof:
+        return abort(404)
 
-@app.route("/api/office-hour/update", methods=["POST"])
-def api_update_office_hour():
-    data = request.get_json(force=True)
-    email = data.get("email")
-    index = data.get("index")
-    day   = data.get("day")
-    start = data.get("start")
-    end_  = data.get("end")
-    term  = data.get("term")
+    if request.method == "POST":
+        dia = request.form["dia"]
+        inicio = request.form["inicio"]
+        fin = request.form["fin"]
+        
+        nueva_hora = {
+            "dia": dia,
+            "inicio": inicio,
+            "fin": fin,
+            "term": TERM_ACTUAL
+        }
+        
+        # Inicializar la lista si no existe
+        if prof_id not in OFFICE_HOURS:
+            OFFICE_HOURS[prof_id] = []
+            
+        OFFICE_HOURS[prof_id].append(nueva_hora)
+        
+        flash(f"Nueva hora agregada para {prof.get('nombre')}.", "success")
+        return redirect(url_for("editar_horas_oficina", prof_id=prof_id))
+    
+    # Renderizar el formulario (GET)
+    return render_template("agregar_hora_oficina.html", prof=prof, prof_id=prof_id)
 
-    if not (email in OFFICE_HOURS and isinstance(index, int)):
-        return jsonify({"ok": False, "error": "Parámetros inválidos"}), 400
 
-    # Validaciones simples de formato
-    def _valid_time(s):
-        try:
-            hhmm, ap = s.split()
-            hh, mm = hhmm.split(":")
-            hh = int(hh); mm = int(mm)
-        except Exception:
-            return False
-        return (1 <= hh <= 12) and (0 <= mm <= 59) and ap in ("AM", "PM")
+# 🔑 FUNCIÓN 4: Editar hora de oficina (Detalle)
+@app.route("/editar-hora/<prof_id>/<int:hora_id>", methods=["GET", "POST"])
+def editar_hora(prof_id, hora_id):
+    role = session.get("role")
+    if role not in ["superadmin", "subadmin"]:
+        flash("Acceso denegado.", "error")
+        return redirect(url_for("login"))
 
-    if day not in ["Lunes","Martes","Miércoles","Jueves","Viernes","Sábado","Domingo"]:
-        return jsonify({"ok": False, "error": "Día inválido"}), 400
-    if not _valid_time(start) or not _valid_time(end_):
-        return jsonify({"ok": False, "error": "Hora inválida"}), 400
-    if term not in TERMS:
-        return jsonify({"ok": False, "error": "Term inválido"}), 400
+    prof = PROFESORES.get(prof_id)
+    horas = OFFICE_HOURS.get(prof_id, [])
 
-    hours = OFFICE_HOURS[email]
-    if 0 <= index < len(hours):
-        hours[index] = {"day": day, "start": start, "end": end_, "term": term}
-    else:
-        return jsonify({"ok": False, "error": "Índice fuera de rango"}), 400
+    if not prof or hora_id >= len(horas):
+        flash("Hora de oficina o profesor no encontrado.", "error")
+        return redirect(url_for("modificar_cuenta"))
 
-    return jsonify({"ok": True})
+    hora_a_editar = horas[hora_id]
+
+    if request.method == "POST":
+        # Actualizar los datos
+        hora_a_editar["dia"] = request.form["dia"]
+        hora_a_editar["inicio"] = request.form["inicio"]
+        hora_a_editar["fin"] = request.form["fin"]
+        
+        flash("Hora de oficina actualizada exitosamente.", "success")
+        return redirect(url_for("editar_horas_oficina", prof_id=prof_id))
+
+    return render_template("editar_hora_detalle.html", 
+                           prof=prof, 
+                           prof_id=prof_id, 
+                           hora_id=hora_id, 
+                           hora_a_editar=hora_a_editar)
+
+
+# 🔑 FUNCIÓN 5: Eliminar hora de oficina (POST por seguridad)
+@app.route("/eliminar-hora/<prof_id>/<int:hora_id>", methods=["POST"])
+def eliminar_hora(prof_id, hora_id):
+    # Proteger ruta
+    role = session.get("role")
+    if role not in ["superadmin", "subadmin"]:
+        flash("Acceso denegado.", "error")
+        return redirect(url_for("login"))
+
+    horas = OFFICE_HOURS.get(prof_id, [])
+    
+    # Validación de índice
+    if hora_id >= len(horas):
+        flash("Hora de oficina no encontrada.", "error")
+        return redirect(url_for("editar_horas_oficina", prof_id=prof_id))
+    
+    # Eliminar la hora usando el índice
+    del horas[hora_id]
+    
+    flash("Hora de oficina eliminada exitosamente.", "success")
+    return redirect(url_for("editar_horas_oficina", prof_id=prof_id))
+
 
 if __name__ == "__main__":
     app.run(debug=True)

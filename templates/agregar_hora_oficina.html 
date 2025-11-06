@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agregar Hora - {{ prof.nombre }}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <style>
+    /* Estilos del formulario para centrar y estilizar */
+    .form-container {
+        max-width: 600px;
+        margin: 40px auto;
+        padding: 30px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .form-container h2 {
+        text-align: center;
+        color: #333;
+        margin-bottom: 30px;
+    }
+    .form-group {
+        margin-bottom: 20px;
+    }
+    .form-group label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+        color: #555;
+    }
+    .form-group input, .form-group select {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box; /* Asegura que el padding no afecte el ancho total */
+    }
+    .form-actions {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        margin-top: 30px;
+    }
+    .form-actions button, .form-actions a {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none;
+        font-weight: bold;
+        flex-grow: 1;
+    }
+    .btn-submit {
+        background-color: #4CAF50; /* Verde */
+        color: white;
+    }
+    .btn-cancel {
+        background-color: #f44336; /* Rojo */
+        color: white;
+    }
+    .home-icon {
+        width: 28px; height: 28px; object-fit: contain;
+    }
+    .nav-home-link {
+        margin-right: 15px;
+    }
+  </style>
+</head>
+<body>
+  <header> 
+    <div class="logo">
+      <img src="{{ url_for('static', filename='images/logoAC.png') }}" alt="Logo AcademicConnect" class="logo-ac">
+      <h1 class="brand-title">AcademicConnect</h1>
+    </div>
+    <nav>
+      <a href="{{ url_for('subadmin_home') }}" title="Volver al Inicio" class="nav-home-link">
+          <img src="{{ url_for('static', filename='images/home.png') }}" alt="Inicio" class="home-icon">
+      </a>
+      <div class="profile-container">
+        <img src="{{ url_for('static', filename='images/perfil.png') }}" alt="Perfil" class="profile-img">
+      </div>
+      <a href="{{ url_for('logout') }}">
+        <img src="{{ url_for('static', filename='images/logout.png') }}" alt="Logout" class="logout-icon">
+      </a>
+    </nav>
+  </header>
+
+  <main class="superadmin-main">
+    <div class="form-container">
+        <h2>Agregar Hora de Oficina para {{ prof.nombre }}</h2>
+        
+        <form method="POST" action="{{ url_for('agregar_hora_oficina', prof_id=prof_id) }}">
+
+            <div class="form-group">
+                <label for="dia">Día de la Semana</label>
+                <select id="dia" name="dia" required>
+                    <option value="">-- Selecciona un Día --</option>
+                    <option value="Lunes">Lunes</option>
+                    <option value="Martes">Martes</option>
+                    <option value="Miércoles">Miércoles</option>
+                    <option value="Jueves">Jueves</option>
+                    <option value="Viernes">Viernes</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="inicio">Hora de Inicio</label>
+                <input type="time" id="inicio" name="inicio" required>
+            </div>
+
+            <div class="form-group">
+                <label for="fin">Hora de Fin</label>
+                <input type="time" id="fin" name="fin" required>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn-submit">Guardar Hora</button>
+                <a href="{{ url_for('editar_horas_oficina', prof_id=prof_id) }}" class="btn-cancel">Cancelar</a>
+            </div>
+        </form>
+    </div>
+  </main>
+  
+  <div class="upraviso">
+    <div class="upr-wordmark">UPR<br><span>ARECIBO</span></div>
+  </div>
+  <footer class="superadmin-footer">
+    Copyright - All rights reserved
+  </footer>
+</body>
+</html>

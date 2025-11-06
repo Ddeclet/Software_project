@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Elegir Cuenta - AcademicConnect</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <style>
+    /* Mantén los estilos existentes de listado aquí */
+    .listado-container {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 30px;
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .listado-item {
+      display: flex;
+      align-items: center;
+      padding: 15px 0;
+      border-bottom: 1px solid #eee;
+      color: #222;
+      transition: background-color 0.1s ease;
+    }
+    
+    .listado-item:hover {
+      background-color: #f9f9f9;
+    }
+
+    .listado-item:last-child {
+      border-bottom: none;
+    }
+
+    .listado-numero {
+      font-weight: bold;
+      margin-right: 15px;
+      width: 20px;
+      text-align: right;
+    }
+
+    .listado-perfil-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 15px;
+      background-image: url('{{ url_for('static', filename='images/perfil.png') }}');
+      background-size: cover;
+      background-position: center;
+      border: 1px solid #aaa;
+    }
+    
+    .listado-acciones {
+      margin-left: auto;
+      display: flex;
+      gap: 15px;
+      font-size: 1.2em;
+      align-items: center;
+    }
+
+    .action-icon {
+        width: 25px; 
+        height: 25px;
+        object-fit: contain;
+    }
+
+    .home-icon {
+        width: 28px; 
+        height: 28px; 
+        object-fit: contain;
+    }
+    .nav-home-link {
+        margin-right: 15px;
+    }
+    
+    .listado-info {
+        flex-grow: 1;
+        font-size: 1.1em;
+    }
+  </style>
+</head>
+<body>
+    <header>
+      <div class="logo">
+        <img src="{{ url_for('static', filename='images/logoAC.png') }}" alt="Logo AcademicConnect" class="logo-ac">
+        <h1 class="brand-title">AcademicConnect</h1>
+      </div>
+
+      <nav>
+        <a href="{{ url_for('subadmin_home') }}" title="Volver al Inicio" class="nav-home-link">
+            <img src="{{ url_for('static', filename='images/home.png') }}" alt="Inicio" class="home-icon">
+        </a>
+
+        <div class="profile-container">
+          <img src="{{ url_for('static', filename='images/perfil.png') }}" alt="Perfil" class="profile-img">
+        </div>
+
+        <a href="{{ url_for('logout') }}">
+          <img src="{{ url_for('static', filename='images/logout.png') }}" alt="Logout" class="logout-icon">
+        </a>
+      </nav>
+    </header>
+
+    <main class="superadmin-main">
+        <h3 class="superadmin-subtitle">Elige la cuenta a editar</h3>
+
+        <div class="listado-container">
+            
+            {% set count = 0 %}
+            {% for prof_id, prof_data in profesores.items() %}
+            {% set count = count + 1 %}
+            <div class="listado-item">
+                <span class="listado-numero">{{ count }}.</span>
+                <div class="listado-perfil-icon"></div>
+                <span class="listado-info">{{ prof_data.nombre }} ({{ prof_data.email }})</span>
+                <div class="listado-acciones">
+                    <a href="{{ url_for('editar_info_cuenta', prof_id=prof_id) }}" title="Ver/Editar Cuenta">
+                        <img src="{{ url_for('static', filename='images/EditarCuenta.png') }}" alt="Ver/Editar Cuenta" class="action-icon">
+                    </a>
+                    
+                    <a href="{{ url_for('editar_horas_oficina', prof_id=prof_id) }}" title="Editar Horas de Oficina">
+                        <img src="{{ url_for('static', filename='images/editcal.png') }}" alt="Editar Horas" class="action-icon">
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+    </main>
+
+    <div class="upraviso">
+      <div class="upr-wordmark">UPR<br><span>ARECIBO</span></div>
+    </div>
+
+    <footer class="superadmin-footer">
+      Copyright - All rights reserved
+    </footer>
+</body>
+</html>
