@@ -29,26 +29,105 @@
     <h2>Editar horas de oficinas</h2>
     <h3>{{ prof.nombre }}</h3>
 
-    {% for item in horas %}
-    <section class="oh-card">
-      <div class="oh-card-head">
-        <span class="oh-index">{{ loop.index }}.</span>
-        <div class="oh-actions">
-          <img src="{{ url_for('static', filename='images/editar.png') }}"   alt="Editar"   class="oh-action">
-          <img src="{{ url_for('static', filename='images/eliminar.png') }}" alt="Eliminar" class="oh-action danger">
+{% for item in horas %}
+<section class="oh-card">
+  <div class="oh-card-head">
+    <span class="oh-index">{{ loop.index }}.</span>
+    <div class="oh-actions">
+      <!-- EDITAR -->
+      <img
+        src="{{ url_for('static', filename='images/editar.png') }}"
+        alt="Editar"
+        class="oh-action edit"
+        data-index="{{ loop.index0 }}"
+        data-day="{{ item.dia }}"
+        data-start="{{ item.inicio }}"
+        data-end="{{ item.fin }}"
+        data-term="{{ item.term }}"
+        data-email="{{ prof.email }}"
+      >
+      <!-- ELIMINAR (visual) -->
+      <img
+        src="{{ url_for('static', filename='images/eliminar.png') }}"
+        alt="Eliminar"
+        class="oh-action danger"
+      >
+    </div>
+  </div>
+
+  <div class="oh-row"><span class="oh-label">Día:</span>
+    <span class="oh-value" data-role="day">{{ item.dia }}</span></div>
+
+  <div class="oh-row"><span class="oh-label">Hora de inicio:</span>
+    <span class="oh-value" data-role="start">{{ item.inicio }}</span></div>
+
+  <div class="oh-row"><span class="oh-label">Hora final:</span>
+    <span class="oh-value" data-role="end">{{ item.fin }}</span></div>
+
+  <div class="oh-row"><span class="oh-label">Term:</span>
+    <span class="oh-value" data-role="term">{{ item.term }}</span></div>
+</section>
+{% endfor %}
+
+    <img src="{{ url_for('static', filename='images/agregar.png') }}" alt="Agregar" class="add-floating">
+
+  <!-- MODAL Editar horas -->
+    <div id="oh-modal" class="oh-modal hidden" aria-hidden="true">
+      <div class="oh-modal__backdrop"></div>
+      <div class="oh-modal__panel" role="dialog" aria-modal="true">
+        <div class="oh-modal__header">
+          <img src="{{ url_for('static', filename='images/EditarHorasOficina.png') }}" class="oh-modal__icon" alt="">
+          <h3>Editar horas de oficina</h3>
         </div>
+
+        <p class="oh-modal__prof">Prof. {{ prof.nombre }}</p>
+
+        <form id="oh-form">
+          <div class="oh-field">
+            <label>Día</label>
+            <select id="oh-day">
+              {% for d in ["Lunes","Martes","Miércoles","Jueves","Viernes","Sábado","Domingo"] %}
+              <option value="{{ d }}">{{ d }}</option>
+              {% endfor %}
+            </select>
+          </div>
+
+          <div class="oh-field">
+            <label>Hora inicio</label>
+            <div class="oh-time">
+              <select id="oh-sh">{% for h in range(1,13) %}<option>{{ h }}</option>{% endfor %}</select>
+              <span>:</span>
+              <select id="oh-sm">{% for m in range(0,60) %}<option>{{ "%02d"|format(m) }}</option>{% endfor %}</select>
+              <select id="oh-sa"><option>AM</option><option>PM</option></select>
+            </div>
+          </div>
+
+          <div class="oh-field">
+            <label>Hora final</label>
+            <div class="oh-time">
+              <select id="oh-eh">{% for h in range(1,13) %}<option>{{ h }}</option>{% endfor %}</select>
+              <span>:</span>
+              <select id="oh-em">{% for m in range(0,60) %}<option>{{ "%02d"|format(m) }}</option>{% endfor %}</select>
+              <select id="oh-ea"><option>AM</option><option>PM</option></select>
+            </div>
+          </div>
+
+          <div class="oh-field">
+            <label>Term</label>
+            <select id="oh-term">
+              {% for t in terms %}
+              <option value="{{ t }}">{{ t }}</option>
+              {% endfor %}
+            </select>
+          </div>
+
+          <div class="oh-modal__actions">
+            <button type="button" class="btn ghost" id="oh-cancel">Cancelar</button>
+            <button type="submit" class="btn primary" id="oh-save" disabled>Guardar cambios</button>
+          </div>
+        </form>
       </div>
-
-      <div class="oh-row"><span class="oh-label">Día:</span>          <span class="oh-value">{{ item.dia }}</span></div>
-      <div class="oh-row"><span class="oh-label">Hora de inicio:</span><span class="oh-value">{{ item.inicio }}</span></div>
-      <div class="oh-row"><span class="oh-label">Hora final:</span>   <span class="oh-value">{{ item.fin }}</span></div>
-      <div class="oh-row"><span class="oh-label">Term:</span>         <span class="oh-value">{{ item.term }}</span></div>
-    </section>
-    {% endfor %}
-
-    <button class="oh-save">Guardar Cambios</button>
-
-    <img src="{{ url_for('static', filename='images/agregar.png') }}" alt="Agregar" class="oh-fab">
+    </div>
   </main>
 
   <div class="upraviso">
@@ -58,5 +137,136 @@
   <footer class="superadmin-footer">
     Copyright - All rights reserved
   </footer>
+
+  <script>
+// Utilidades
+function parseTime(str) {
+  const [hm, ap] = str.trim().split(" ");
+  const [h, m] = hm.split(":");
+  return {h, m, a: ap};
+}
+function buildTime(h,m,a){ return `${h}:${m} ${a}`; }
+
+// Estado
+let currentIndex = null;
+let currentEmail = null;
+let original = null;
+
+// Referencias
+const modal = document.getElementById('oh-modal');
+const saveBtn = document.getElementById('oh-save');
+const cancelBtn = document.getElementById('oh-cancel');
+
+const daySel = document.getElementById('oh-day');
+const sh = document.getElementById('oh-sh'), sm = document.getElementById('oh-sm'), sa = document.getElementById('oh-sa');
+const eh = document.getElementById('oh-eh'), em = document.getElementById('oh-em'), ea = document.getElementById('oh-ea');
+const termSel = document.getElementById('oh-term');
+
+// Abrir modal con datos
+document.querySelectorAll('.oh-action.edit').forEach(btn => {
+  btn.addEventListener('click', () => {
+    currentIndex = parseInt(btn.dataset.index);
+    currentEmail = btn.dataset.email;
+
+    daySel.value = btn.dataset.day;
+    const s = parseTime(btn.dataset.start);
+    const e = parseTime(btn.dataset.end);
+    sh.value = s.h; sm.value = s.m; sa.value = s.a;
+    eh.value = e.h; em.value = e.m; ea.value = e.a;
+    termSel.value = btn.dataset.term;
+
+    original = {
+      day: daySel.value,
+      start: buildTime(sh.value, sm.value, sa.value),
+      end: buildTime(eh.value, em.value, ea.value),
+      term: termSel.value
+    };
+
+    saveBtn.disabled = true;
+    modal.classList.remove('hidden');
+    modal.setAttribute('aria-hidden', 'false');
+  });
+});
+
+// Cerrar modal
+cancelBtn.addEventListener('click', () => {
+  modal.classList.add('hidden');
+  modal.setAttribute('aria-hidden', 'true');
+});
+
+// Habilitar guardar solo si hay cambios
+[daySel, sh, sm, sa, eh, em, ea, termSel].forEach(el=>{
+  el.addEventListener('change', () => {
+    const now = {
+      day: daySel.value,
+      start: buildTime(sh.value, sm.value, sa.value),
+      end: buildTime(eh.value, em.value, ea.value),
+      term: termSel.value
+    };
+    saveBtn.disabled = JSON.stringify(now) === JSON.stringify(original);
+  });
+});
+
+// Validación simple (hora <=12, minuto <=59 ya lo garantizan los selects)
+function validHour(h){ const n = parseInt(h,10); return n>=1 && n<=12; }
+function validMin(m){ const n = parseInt(m,10); return n>=0 && n<=59; }
+
+// Guardar
+document.getElementById('oh-form').addEventListener('submit', async (e)=>{
+  e.preventDefault();
+  if (saveBtn.disabled) return;
+
+  if (!validHour(sh.value) || !validHour(eh.value) || !validMin(sm.value) || !validMin(em.value)) {
+    alert("Hora inválida. La hora debe ser 1..12 y los minutos 0..59.");
+    return;
+  }
+
+  const payload = {
+    email: currentEmail,
+    index: currentIndex,
+    day: daySel.value,
+    start: buildTime(sh.value, sm.value, sa.value),
+    end: buildTime(eh.value, em.value, ea.value),
+    term: termSel.value
+  };
+
+  const res = await fetch("{{ url_for('api_update_office_hour') }}", {
+    method: "POST",
+    headers: {"Content-Type":"application/json"},
+    body: JSON.stringify(payload)
+  });
+  const data = await res.json();
+  if (!data.ok) {
+    alert("No se pudo guardar: " + (data.error || "error"));
+    return;
+  }
+
+  // Refresca la tarjeta en pantalla (texto) sin recargar, si quieres:
+  // Busca el botón que abrió el modal:
+  const opener = document.querySelector(`.oh-action.edit[data-email="${payload.email}"][data-index="${payload.index}"]`);
+  if (opener) {
+    opener.dataset.day   = payload.day;
+    opener.dataset.start = payload.start;
+    opener.dataset.end   = payload.end;
+    opener.dataset.term  = payload.term;
+
+    // Actualiza textos visibles
+    const card = opener.closest('.oh-card');
+    if (card) {
+      const sSpan = card.querySelector('[data-role="start"]');
+      const eSpan = card.querySelector('[data-role="end"]');
+      const dSpan = card.querySelector('[data-role="day"]');
+      const tSpan = card.querySelector('[data-role="term"]');
+      if (dSpan) dSpan.textContent = payload.day;
+      if (sSpan) sSpan.textContent = payload.start;
+      if (eSpan) eSpan.textContent = payload.end;
+      if (tSpan) tSpan.textContent = payload.term;
+    }
+  }
+
+  modal.classList.add('hidden');
+  modal.setAttribute('aria-hidden', 'true');
+});
+</script>
 </body>
 </html>

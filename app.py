@@ -1,51 +1,51 @@
-from flask import Flask, render_template, request, redirect, url_for, session, flash, abort
+from flask import Flask, render_template, request, redirect, url_for, session, flash, abort, jsonify
 import os
 
 app = Flask(__name__)
 app.secret_key = os.environ.get("FLASK_SECRET_KEY", "dev_secret_key_very_insecure")
 
-# Profesores
-PROFESORES = {
-    "luis-colon":        {"nombre": "Prof. Luis Colón Cólon", "email": "luis.colon19@upr.edu"},
-    "eliana-valenzuela": {"nombre": "Prof. Eliana Valenzuela Andrade", "email": "eliana.valenzuela@upr.edu"},
-    "juan-lopez":        {"nombre": "Prof. Juan Lopez Gerena", "email": "juano.lopez@upr.edu"},
-    "aixa-ramirez":      {"nombre": "Prof. Aixa Ramirez Toledo", "email": "aixa.ramirez@upr.edu"},
-    "emilio-perez":      {"nombre": "Prof. Emilio Pérez Arnau", "email": "emilio.perez@upr.edu"},
+
+PROFESSOR_NAMES = {
+    "luis.colon19@upr.edu": "Luis Colón Colón",
+    "eliana.valenzuela@upr.edu": "Eliana Valenzuela Andrade",
+    "juano.lopez@upr.edu": "Juan Lopez Gerena",
+    "aixa.ramirez@upr.edu": "Aixa Ramirez Toledo",
+    "emilio.perez@upr.edu": "Emilio Pérez Arnau",
 }
 
 # Term activo
-TERM_ACTUAL = "C51"
+TERMS = ["C51"]
 
 # Horas de oficina
 OFFICE_HOURS = {
-    "luis-colon": [
-        {"dia": "Lunes",      "inicio": "11:30am", "fin": "12:30pm", "term": TERM_ACTUAL},
-        {"dia": "Lunes",      "inicio": "2:30pm",  "fin": "3:00pm",  "term": TERM_ACTUAL},
-        {"dia": "Miércoles",  "inicio": "11:30am", "fin": "12:30pm", "term": TERM_ACTUAL},
-        {"dia": "Miércoles",  "inicio": "2:30pm",  "fin": "3:00pm",  "term": TERM_ACTUAL},
+    "luis.colon19@upr.edu": [
+        {"day": "Lunes", "start": "11:30 AM", "end": "12:30 PM", "term": "C51"},
+        {"day": "Lunes", "start": "2:30 PM",  "end": "3:00 PM",  "term": "C51"},
+        {"day": "Miércoles", "start": "11:30 AM", "end": "12:30 PM", "term": "C51"},
+        {"day": "Miércoles", "start": "2:30 PM",  "end": "3:00 PM",  "term": "C51"},
     ],
-    "eliana-valenzuela": [
-        {"dia": "Lunes",      "inicio": "8:00am", "fin": "10:00am", "term": TERM_ACTUAL},
-        {"dia": "Miércoles",  "inicio": "8:00am", "fin": "10:00am", "term": TERM_ACTUAL},
-        {"dia": "Viernes",    "inicio": "8:00am", "fin": "10:00am", "term": TERM_ACTUAL},
+    "eliana.valenzuela@upr.edu": [
+        {"day": "Lunes", "start": "8:00 AM", "end": "10:00 AM", "term": "C51"},
+        {"day": "Miércoles", "start": "8:00 AM", "end": "10:00 AM", "term": "C51"},
+        {"day": "Viernes", "start": "8:00 AM", "end": "10:00 AM", "term": "C51"},
     ],
-    "juan-lopez": [
-        {"dia": "Lunes",      "inicio": "8:00am",  "fin": "10:30am", "term": TERM_ACTUAL},
-        {"dia": "Miércoles",  "inicio": "8:00am",  "fin": "10:30am", "term": TERM_ACTUAL},
-        {"dia": "Martes",     "inicio": "8:00am",  "fin": "8:30am",  "term": TERM_ACTUAL},
-        {"dia": "Jueves",     "inicio": "8:00am",  "fin": "8:30am",  "term": TERM_ACTUAL},
+    "juano.lopez@upr.edu": [
+        {"day": "Lunes", "start": "8:00 AM", "end": "10:30 AM", "term": "C51"},
+        {"day": "Miércoles", "start": "8:00 AM", "end": "10:30 AM", "term": "C51"},
+        {"day": "Martes", "start": "8:00 AM", "end": "8:30 AM", "term": "C51"},
+        {"day": "Jueves", "start": "8:00 AM", "end": "8:30 AM", "term": "C51"},
     ],
-    "aixa-ramirez": [
-        {"dia": "Martes",     "inicio": "1:45pm",  "fin": "4:30pm",  "term": TERM_ACTUAL},
-        {"dia": "Jueves",     "inicio": "1:45pm",  "fin": "4:30pm",  "term": TERM_ACTUAL},
+    "aixa.ramirez@upr.edu": [
+        {"day": "Martes", "start": "1:45 PM", "end": "4:30 PM", "term": "C51"},
+        {"day": "Jueves", "start": "1:45 PM", "end": "4:30 PM", "term": "C51"},
     ],
-    "emilio-perez": [
-        {"dia": "Martes",     "inicio": "7:00am",  "fin": "8:00am",  "term": TERM_ACTUAL},
-        {"dia": "Martes",     "inicio": "10:00am", "fin": "10:30am", "term": TERM_ACTUAL},
-        {"dia": "Martes",     "inicio": "4:00pm",  "fin": "5:30pm",  "term": TERM_ACTUAL},
-        {"dia": "Jueves",     "inicio": "7:00am",  "fin": "8:00am",  "term": TERM_ACTUAL},
-        {"dia": "Jueves",     "inicio": "10:00am", "fin": "10:30am", "term": TERM_ACTUAL},
-        {"dia": "Jueves",     "inicio": "4:00pm",  "fin": "5:30pm",  "term": TERM_ACTUAL},
+    "emilio.perez@upr.edu": [
+        {"day": "Martes", "start": "7:00 AM", "end": "8:00 AM", "term": "C51"},
+        {"day": "Martes", "start": "10:00 AM", "end": "10:30 AM", "term": "C51"},
+        {"day": "Martes", "start": "4:00 PM", "end": "5:30 PM", "term": "C51"},
+        {"day": "Jueves", "start": "7:00 AM", "end": "8:00 AM", "term": "C51"},
+        {"day": "Jueves", "start": "10:00 AM", "end": "10:30 AM", "term": "C51"},
+        {"day": "Jueves", "start": "4:00 PM", "end": "5:30 PM", "term": "C51"},
     ],
 }
 
@@ -153,11 +153,63 @@ def editar_cuentas():
 
 @app.route("/editar_horas/<prof_id>")
 def editar_horas(prof_id):
-    prof = PROFESORES.get(prof_id)
-    if not prof:
-        return abort(404)
-    horas = OFFICE_HOURS.get(prof_id, [])
-    return render_template("editar_horas.html", prof=prof, horas=horas)
+    if prof_id not in OFFICE_HOURS:
+        abort(404)
+
+    prof = {
+        "email": prof_id,
+        "nombre": PROFESSOR_NAMES.get(prof_id, prof_id)
+    }
+
+    horas = [
+        {"dia": h["day"], "inicio": h["start"], "fin": h["end"], "term": h["term"]}
+        for h in OFFICE_HOURS[prof_id]
+    ]
+
+    return render_template(
+        "editar_horas.html",
+        prof=prof,
+        horas=horas,
+        terms=TERMS
+    )
+
+@app.route("/api/office-hour/update", methods=["POST"])
+def api_update_office_hour():
+    data = request.get_json(force=True)
+    email = data.get("email")
+    index = data.get("index")
+    day   = data.get("day")
+    start = data.get("start")
+    end_  = data.get("end")
+    term  = data.get("term")
+
+    if not (email in OFFICE_HOURS and isinstance(index, int)):
+        return jsonify({"ok": False, "error": "Parámetros inválidos"}), 400
+
+    # Validaciones simples de formato
+    def _valid_time(s):
+        try:
+            hhmm, ap = s.split()
+            hh, mm = hhmm.split(":")
+            hh = int(hh); mm = int(mm)
+        except Exception:
+            return False
+        return (1 <= hh <= 12) and (0 <= mm <= 59) and ap in ("AM", "PM")
+
+    if day not in ["Lunes","Martes","Miércoles","Jueves","Viernes","Sábado","Domingo"]:
+        return jsonify({"ok": False, "error": "Día inválido"}), 400
+    if not _valid_time(start) or not _valid_time(end_):
+        return jsonify({"ok": False, "error": "Hora inválida"}), 400
+    if term not in TERMS:
+        return jsonify({"ok": False, "error": "Term inválido"}), 400
+
+    hours = OFFICE_HOURS[email]
+    if 0 <= index < len(hours):
+        hours[index] = {"day": day, "start": start, "end": end_, "term": term}
+    else:
+        return jsonify({"ok": False, "error": "Índice fuera de rango"}), 400
+
+    return jsonify({"ok": True})
 
 if __name__ == "__main__":
     app.run(debug=True)
