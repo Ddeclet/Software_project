@@ -108,7 +108,6 @@ def horas():
 
 # --- GESTIÓN DE CUENTAS Y HORAS (ADMIN/SUBADMIN) ---
 
-# 🔑 CORRECCIÓN 1: Pasa los datos necesarios al template para listar cuentas
 @app.route("/modificar-cuenta")
 def modificar_cuenta():
     # Proteger ruta: solo subadmin y superadmin pueden acceder
@@ -135,7 +134,6 @@ def editar_info_cuenta(prof_id):
     # Lógica para editar info... (Pendiente de implementación)
     return f"Página de edición de información para {prof.get('nombre')}"
 
-# 🔑 CORRECCIÓN 2: Soluciona el BuildError y usa la lógica de datos real
 @app.route("/editar-horas/<prof_id>")
 def editar_horas_oficina(prof_id):
     # Proteger ruta: solo subadmin y superadmin
@@ -155,7 +153,6 @@ def editar_horas_oficina(prof_id):
     # Pasamos 'prof', 'prof_id' y 'horas' al template
     return render_template("editar_horas_oficina.html", prof=prof, prof_id=prof_id, horas=horas)
 
-# 🔑 FUNCIÓN 3: Agregar hora de oficina (GET para formulario, POST para guardar)
 @app.route("/agregar-hora/<prof_id>", methods=["GET", "POST"])
 def agregar_hora_oficina(prof_id):
     role = session.get("role")
@@ -192,7 +189,6 @@ def agregar_hora_oficina(prof_id):
     return render_template("agregar_hora_oficina.html", prof=prof, prof_id=prof_id)
 
 
-# 🔑 FUNCIÓN 4: Editar hora de oficina (Detalle)
 @app.route("/editar-hora/<prof_id>/<int:hora_id>", methods=["GET", "POST"])
 def editar_hora(prof_id, hora_id):
     role = session.get("role")
@@ -225,7 +221,6 @@ def editar_hora(prof_id, hora_id):
                            hora_a_editar=hora_a_editar)
 
 
-# 🔑 FUNCIÓN 5: Eliminar hora de oficina (POST por seguridad)
 @app.route("/eliminar-hora/<prof_id>/<int:hora_id>", methods=["POST"])
 def eliminar_hora(prof_id, hora_id):
     # Proteger ruta
