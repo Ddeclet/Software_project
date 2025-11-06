@@ -12,10 +12,10 @@
   <div class="login-container"> 
     <!-- Logo superior -->
     <div class="login-logo">
-      <div class="logo-circle">
-        <i class="fa-solid fa-calendar-days"></i>
+       <div class="logo-icon">
+        <img src="{{ url_for('static', filename='images/logoAC.png') }}" alt="LogoAC" class="logoAC-login">
       </div>
-      <span class="logo-text">AC</span>
+      <!-- <span class="logo-text">AC</span> -->
     </div>
 
     <h1 class="login-title">Iniciar sesión</h1>
@@ -48,11 +48,6 @@
   <button type="submit" class="login-btn">Login</button>
 </form>
 
-
-    <p class="login-footer-text">
-      ¿No tienes cuenta?
-      <a href="#" class="signup-link">Sign Up</a>
-    </p>
   </div>
 
 </body>

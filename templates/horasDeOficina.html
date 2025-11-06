@@ -16,7 +16,9 @@
       <h1>AcademicConnect</h1>
     </div>
     <nav>
-      <div class="profile-icon"><i class="fa-solid fa-user"></i></div>
+       <div class="profile-icon">
+        <img src="{{ url_for('static', filename='images/perfil.png') }}" alt="Perfil" class="profile-img">
+      </div>
       <a href="{{ url_for('index') }}">Inicio</a>
       <a href="{{ url_for('calendario') }}">Calendario</a>
       <a href="{{ url_for('horas') }}" class="active">Departamentos</a>
@@ -48,10 +50,10 @@
             <img src="{{ url_for('static', filename='images/logo_MATE.png') }}" alt="MATE">
             <span>MATE</span>
           </div>
-          <div class="dept-img-card">
+          <!-- <div class="dept-img-card">
             <img src="{{ url_for('static', filename='images/ENFE.png') }}" alt="ENFE">
             <span>ENFE</span>
-          </div>
+          </div> -->
         </div>
 
         <!-- Segunda fila -->
@@ -61,9 +63,13 @@
             <span>ADEM</span>
           </div>
           <div class="dept-img-card">
+            <img src="{{ url_for('static', filename='images/logo_INGL.png') }}" alt="Inglés">
+            <span>Inglés</span>
+          </div>
+          <!-- <div class="dept-img-card">
             <img src="{{ url_for('static', filename='images/Biologia.png') }}" alt="Biología">
             <span>Biología</span>
-          </div>
+          </div> -->
           <div class="dept-img-card">
             <img src="{{ url_for('static', filename='images/logo_HUMA.png') }}" alt="Humanidades">
             <span>Humanidades</span>
@@ -84,10 +90,7 @@
             <img src="{{ url_for('static', filename='images/logo_FISI_QUIM.png') }}" alt="Física y Química">
             <span>Física y Química</span>
           </div>
-          <div class="dept-img-card">
-            <img src="{{ url_for('static', filename='images/logo_INGL.png') }}" alt="Inglés">
-            <span>Inglés</span>
-          </div>
+          
         </div>
       </div>
     </div>

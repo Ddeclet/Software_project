@@ -367,6 +367,21 @@ footer {
   text-decoration: underline;
 }
 
+.login-logo {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.logoAC-login {
+  width: 300px;   /* Ajusta el tamaño del logo */
+  height: auto;   
+  object-fit: contain;
+  margin-top: -60px;
+  margin-bottom: -60px;
+}
+
+
 /* ==========================
    HORAS DE OFICINA (FIGMA STYLE)
 ========================== */
@@ -405,19 +420,11 @@ footer {
 
 /* ===== AJUSTE FINAL DE ALINEACIÓN ===== */
 .dept-big-body {
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
-  justify-content: center;
-  align-items: center;
-}
-
-.dept-row-images {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 80px;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px 80px;
+  justify-items: center;
+  padding: 20px;
 }
 
 .dept-img-card {
@@ -443,19 +450,19 @@ footer {
 }
 
 .dept-img-card span {
+  margin-bottom: 30px;
   font-weight: 700;
   font-size: 1.25rem;
   color: #222;
 }
 
-.second-row {
-  margin-left: 0;
-}
- 
+/* Responsivo */
 @media (max-width: 900px) {
-  .dept-row-images {
-    gap: 50px;
+  .dept-big-body {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px 50px;
   }
+
   .dept-img-card img {
     width: 200px;
     height: 120px;
@@ -463,11 +470,16 @@ footer {
 }
 
 @media (max-width: 600px) {
+  .dept-big-body {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
   .dept-img-card img {
     width: 100%;
     height: auto;
   }
 }
+
 
 /* ====== SUPER supersuperadmin HOME ====== */
 .status-bar {

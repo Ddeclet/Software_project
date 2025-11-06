@@ -12,11 +12,13 @@
   <!-- Barra superior -->
   <header>
     <div class="logo">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Academic_cap.svg/2048px-Academic_cap.svg.png" alt="Logo">
+      <img src="{{ url_for('static', filename='images/logoAC.png') }}" alt="Logo">
       <h1>AcademicConnect</h1>
     </div>
     <nav>
-      <div class="profile-icon"><i class="fa-solid fa-user"></i></div>
+       <div class="profile-icon">
+        <img src="{{ url_for('static', filename='images/perfil.png') }}" alt="Perfil" class="profile-img">
+      </div>
       <a href="{{ url_for('index') }}">Inicio</a>
       <a href="{{ url_for('calendario') }}">Calendario</a>
       <a href="{{ url_for('horas') }}">Horas de oficina</a>
