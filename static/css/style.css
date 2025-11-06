@@ -875,4 +875,9 @@ footer {
   height: 65px;
   cursor: pointer;
 }
+.green-checkmark {
+    color: green;
+    font-size: 1.2em;
+    font-weight: bold;
+}
 

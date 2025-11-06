@@ -64,6 +64,10 @@ USERS = {
     "javierSub@gmail.com": {
         "password": "subadmin1234",
         "role": "subadmin"
+    },
+    "javierProf@gmail.com": {
+        "password": "profesor1234",
+        "role": "profesores"
     }
 }
 
@@ -85,6 +89,8 @@ def login():
                 return redirect(url_for("superadmin_home"))
             elif user["role"] == "subadmin":
                 return redirect(url_for("subadmin_home"))
+            elif user["role"] == "profesores":
+                return redirect(url_for("profesores_home"))
             else:
                 return redirect(url_for("index"))
         else:
@@ -113,6 +119,14 @@ def subadmin_home():
         flash("Acceso denegado. Inicia sesión como subadministrador.", "error")
         return redirect(url_for("login"))
     return render_template("subadmin_home.html")
+
+@app.route("/profesores")
+def profesores_home():
+    # proteger ruta: solo profesores
+    if session.get("role") != "profesores":
+        flash("Acceso denegado. Inicia sesión como profesores.", "error")
+        return redirect(url_for("login"))
+    return render_template("profesores_home.html")
 
 @app.route("/inicio")
 def index():
