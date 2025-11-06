@@ -51,6 +51,8 @@
         src="{{ url_for('static', filename='images/eliminar.png') }}"
         alt="Eliminar"
         class="oh-action danger"
+        data-index="{{ loop.index0 }}"
+        data-email="{{ prof.email }}"
       >
     </div>
   </div>
@@ -263,9 +265,55 @@ document.getElementById('oh-form').addEventListener('submit', async (e)=>{
       if (tSpan) tSpan.textContent = payload.term;
     }
   }
-
   modal.classList.add('hidden');
   modal.setAttribute('aria-hidden', 'true');
+});
+
+/* Icono de eliminar funcional */
+function reindexCards() {
+  document.querySelectorAll('.oh-card').forEach((card, i) => {
+    const n = i + 1;
+    const idxEl = card.querySelector('.oh-index');
+    if (idxEl) idxEl.textContent = n + '.';
+
+    const editBtn = card.querySelector('.oh-action.edit');
+    const delBtn  = card.querySelector('.oh-action.danger');
+    if (editBtn) editBtn.dataset.index = i;
+    if (delBtn)  delBtn.dataset.index  = i;
+  });
+}
+
+/* Eliminar: llama API y quita la tarjeta */
+document.querySelectorAll('.oh-action.danger').forEach(btn => {
+  btn.addEventListener('click', async () => {
+    const index = parseInt(btn.dataset.index, 10);
+    const email = btn.dataset.email;
+
+    if (!confirm('¿Seguro que deseas eliminar esta hora de oficina?')) return;
+
+    try {
+      const res = await fetch("{{ url_for('api_delete_office_hour') }}", {
+        method: "POST",
+        headers: {"Content-Type":"application/json"},
+        body: JSON.stringify({ email, index })
+      });
+      const data = await res.json();
+
+      if (!data.ok) {
+        alert("No se pudo eliminar: " + (data.error || "error"));
+        return;
+      }
+
+      // Borra del DOM y reindexa
+      const card = btn.closest('.oh-card');
+      if (card) card.remove();
+      reindexCards();
+
+    } catch (err) {
+      alert("Error de red eliminando el registro");
+      console.error(err);
+    }
+  });
 });
 </script>
 </body>

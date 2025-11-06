@@ -249,6 +249,21 @@ def agregar_hora_oficina(prof_id):
     # Renderizar el formulario (GET)
     return render_template("agregar_hora_oficina.html", prof=prof, prof_id=prof_id)
 
+@app.route("/api/office-hour/delete", methods=["POST"])
+def api_delete_office_hour():
+    data = request.get_json(force=True)
+    email = data.get("email")
+    index = data.get("index")
+
+    if email not in OFFICE_HOURS or not isinstance(index, int):
+        return jsonify({"ok": False, "error": "Parámetros inválidos"}), 400
+
+    hours = OFFICE_HOURS[email]
+    if 0 <= index < len(hours):
+        hours.pop(index)
+        return jsonify({"ok": True})
+
+    return jsonify({"ok": False, "error": "Índice fuera de rango"}), 400
 
 if __name__ == "__main__":
     app.run(debug=True)
