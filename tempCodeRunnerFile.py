@@ -17,7 +17,6 @@ PROFESORES = {
 
 # Term activo
 TERMS = ["C51"]
-TERM_ACTUAL = TERMS[0]
 
 # Horas de oficina
 OFFICE_HOURS = {
