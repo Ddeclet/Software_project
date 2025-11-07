@@ -23,7 +23,9 @@
         <a href="{{ url_for('index') }}">Inicio</a>
         <a href="{{ url_for('calendario') }}">Calendario</a>
         <a href="{{ url_for('horas') }}">Horas de oficina</a>
-        <i class="fa-solid fa-right-from-bracket"></i>
+        <a href="{{ url_for('logout') }}">
+          <img src="{{ url_for('static', filename='images/logout.png') }}" alt="Logout" class="logout-icon">
+        </a>
         {% else %}
         <div class="profile-icon">
           <img src="{{ url_for('static', filename='images/perfil.png') }}" alt="Perfil" class="profile-img">
@@ -31,7 +33,9 @@
         <a href="{{ url_for('profesores_home') }}" class="active">Inicio</a>
         <a href="{{ url_for('calendario') }}">Calendario</a>
         <a href="{{ url_for('horas') }}">Horas de oficina</a>
-        <img src="{{ url_for('static', filename='images/logout.png') }}" alt="Logout" class="logout-icon">
+        <a href="{{ url_for('logout') }}">
+          <img src="{{ url_for('static', filename='images/logout.png') }}" alt="Logout" class="logout-icon">
+        </a>
       {% endif %}
     </nav>
   </header>

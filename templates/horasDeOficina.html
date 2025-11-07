@@ -22,7 +22,9 @@
       <a href="{{ url_for('index') }}">Inicio</a>
       <a href="{{ url_for('calendario') }}">Calendario</a>
       <a href="{{ url_for('horas') }}" class="active">Departamentos</a>
-      <i class="fa-solid fa-right-from-bracket"></i>
+      <a href="{{ url_for('logout') }}">
+        <img src="{{ url_for('static', filename='images/logout.png') }}" alt="Logout" class="logout-icon">
+      </a>
     </nav>
   </header>
 
