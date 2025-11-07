@@ -960,6 +960,120 @@ footer {
   width: 54px; height: 54px;
 }
 
+/* ==========================
+   CONFIRMAR CITAS
+========================== */
+.confirmar-container {
+  width: 90%;
+  max-width: 800px;
+  margin: 30px auto 80px auto;
+}
+
+.confirmar-container h2 {
+  font-size: 1.8rem;
+  color: #222;
+  margin-bottom: 8px;
+}
+
+.prof-name {
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin-bottom: 30px;
+}
+
+.cita-card {
+  background-color: #f8f8f8;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 25px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.cita-card p {
+  margin: 8px 0;
+  font-size: 1rem;
+  color: #333;
+}
+
+.opciones {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.opciones label {
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.opciones input[type="radio"] {
+  accent-color: #0078d7;
+  transform: scale(1.1);
+}
+
+.opciones .fa-check {
+  color: #2e8b57;
+}
+
+.opciones .fa-xmark {
+  color: #c0392b;
+}
+
+/* Header simplificado */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #555;
+  color: white;
+  padding: 10px 20px;
+}
+
+header .logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+header .logo img {
+  width: 35px;
+}
+
+header .profile-icons {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+header .profile-icons i {
+  font-size: 1.3rem;
+  color: white;
+  cursor: pointer;
+}
+
+header .profile-icons i:hover {
+  color: #ccc;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  background-color: #f0f0f0;
+  padding: 20px 0;
+  font-size: 0.9rem;
+  color: #333;
+}
+
+.footer-logo img {
+  width: 100px;
+  display: block;
+  margin: 0 auto 10px auto;
+}
+
 /* Modal (añadir calendario - superadmin) */
 .ac-hidden { display: none; }
 

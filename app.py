@@ -265,5 +265,30 @@ def api_delete_office_hour():
 
     return jsonify({"ok": False, "error": "Índice fuera de rango"}), 400
 
+@app.route('/confirmar_citas')
+def confirmar_citas():
+    # Simulación de datos reales desde base de datos
+    profesor = "Luis Colón"
+    citas = [
+        {
+            "id": 1,
+            "estudiante": "Sebastian Soto Delgado",
+            "dia": "Martes",
+            "hora_inicio": "10:30",
+            "hora_fin": "11:00"
+        },
+        {
+            "id": 2,
+            "estudiante": "Dereck Declet",
+            "dia": "Jueves",
+            "hora_inicio": "11:30",
+            "hora_fin": "12:00"
+        }
+    ]
+
+    return render_template("confirmar_citas.html", profesor=profesor, citas=citas)
+
+
+
 if __name__ == "__main__":
     app.run(debug=True)

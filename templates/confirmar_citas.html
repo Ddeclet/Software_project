@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Confirmar Citas - AcademicConnect</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <script src="https://kit.fontawesome.com/8b2a1c3c0a.js" crossorigin="anonymous"></script>
+</head>
+<body class="prof_home">
+
+  <header>
+    <div class="logo">
+      <img src="{{ url_for('static', filename='images/logoAC.png') }}" alt="Logo AcademicConnect">
+      <h1>AcademicConnect</h1>
+    </div>
+    <div class="profile-icons">
+      <i class="fa-solid fa-user-circle"></i>
+      <a href="{{ url_for('logout') }}"><i class="fa-solid fa-right-from-bracket"></i></a>
+    </div>
+    <nav>
+      <div class="profile-icon">
+        <img src="{{ url_for('static', filename='images/perfil.png') }}" alt="Perfil" class="profile-img">
+      </div>
+      <a href="{{ url_for('profesores_home') }}" class="active">Inicio</a>
+      <a href="{{ url_for('calendario') }}">Calendario</a>
+      <a href="{{ url_for('horas') }}">Horas de oficina</a>
+      <a href="{{ url_for('logout') }}">
+        <img src="{{ url_for('static', filename='images/logout.png') }}" alt="Logout" class="logout-icon">
+      </a>
+    </nav>
+  </header>
+
+  <main class="confirmar-container">
+  <h2>Confirmar citas</h2>
+  <p class="prof-name">Prof. {{ profesor }}</p>
+
+  {% for cita in citas %}
+  <div class="cita-card">
+    <p><strong>Estudiante:</strong><br> {{ cita.estudiante }}</p>
+    <p><strong>Día y hora:</strong><br> {{ cita.dia }}, {{ cita.hora_inicio }} - {{ cita.hora_fin }}</p>
+
+    <div class="opciones">
+      <label>
+        <input type="radio" name="cita{{ cita.id }}" value="confirmar">
+        Confirmar <i class="fa-solid fa-check"></i>
+      </label>
+      <label>
+        <input type="radio" name="cita{{ cita.id }}" value="denegar">
+        Denegar <i class="fa-solid fa-xmark"></i>
+      </label>
+    </div>
+  </div>
+  {% endfor %}
+</main>
+
+
+  <!-- Pie de página -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-logo">
+        <img src="{{ url_for('static', filename='images/Arecibo.png') }}" alt="">
+      </div>
+      <div class="footer-info">
+        <a href="https://upra.edu/contactenos/"><p id="location-link"><i class="fa-solid fa-location-dot icon"></i> Carr. 653 Km. 0.8 Sector Las Dunas, Arecibo</p></a>
+        <p><i class="fa-solid fa-phone icon"></i> 787-815-0000 / Fax 787-880-4972</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

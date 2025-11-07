@@ -31,25 +31,28 @@
   <!-- Contenido principal -->
   <main>
     <h2>Inicio</h2>
-    <p class="intro">
+    <h3 class="intro">
       Bienvenido a Academic Connect, tu aplicación para gestionar el calendario académico y las horas de oficina de los profesores.
-    </p>
+    </h3>
 
     <!-- BOTONES RÁPIDOS -->
     <div class="quick-actions">
-      <a class="quick-btn" href="{{ url_for('profesores_home') }}">
+      <a class="quick-btn" href="{{ url_for('confirmar_citas') }}">
+        <img src="{{ url_for('static', filename='images/confirmar_logo.png') }}" width="70" height="70" alt="confrimar">
         <i class="fa-solid fa-calendar-days"></i>
-        Confirmar Cita
+          <span>Confirmar Cita</span>
       </a>
 
       <a class="quick-btn" href="{{ url_for('calendario') }}">
         <i class="fa-solid fa-calendar-days"></i>
-        Calendario
+        <img src="{{ url_for('static', filename='images/calendario.png') }}" width="70" height="70" alt="calendario">
+          <span>Calendario</span>
       </a>
 
-      <a class="quick-btn" href="{{ url_for('horas') }}">
+      <a class="quick-btn" href="{{ url_for('profesores_home') }}">
         <i class="fa-solid fa-user-tie"></i>
-        Horas de oficina
+        <img src="{{ url_for('static', filename='images/EditarHorasOficina.png') }}" width="70" height="70" alt="editarHorasOficina">Calendario
+          <span>Horas de oficina</span>
       </a>
 
 
@@ -70,7 +73,7 @@
       </a>
 
       <!-- Horas de oficina -->
-      <a href="{{ url_for('horas') }}" class="card-link">
+      <a href="{{ url_for('profesores_home') }}" class="card-link">
         <div class="card">
           <img src="{{ url_for('static', filename='images/Cuenta.png') }}" alt="Horas de oficina" class="card-img">
           <h3>Horas de Oficina</h3>
