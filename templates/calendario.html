@@ -53,7 +53,9 @@
   <!-- Contenido principal -->
   <main>
     <div class="calendar-header">
-      <div class="info-icon"><i class="fa-solid fa-circle-info"></i></div>
+      <div class="info-icon" id="infoBtn" role="button" aria-label="Ayuda">
+	      <img src="{{ url_for('static', filename='images/i.png') }}" alt="Información">
+      </div>
       <div>
         <h2>Calendario Académico</h2>
         <h3>Primer Semestre 2025–2026</h3>
@@ -195,6 +197,64 @@
     </script>
     {% endif %}
 
+    <!-- Icono de información -->
+    <div id="infoModal" class="ac-modal ac-hidden" aria-hidden="true">
+      <div class="ac-modal__backdrop" role="presentation"></div>
+
+      <div class="ac-modal__panel" role="dialog" aria-modal="true" aria-labelledby="infoTitle">
+        <div class="ac-modal__header">
+          <h3 id="infoTitle">Información</h3>
+        </div>
+
+        {% if session.role == "superadmin" %}
+          <!-- Contenido para superadmin -->
+          <div class="tip-box">
+            <ol>
+              <li>El archivo del calendario académico debe ser <code>.docx</code>.</li>
+              <li>Seleccione y arrastre el archivo al lugar correspondiente.</li>
+              <li>Seleccione el botón de <b>Subir</b> para actualizar el calendario.</li>
+            </ol>
+          </div>
+        {% else %}
+          <!-- Contenido para usuarios/profesores -->
+          <div class="tip-box">
+            <ol>
+              <li>Seleccione el botón de <b>“Sincronizar calendario”</b>.</li>
+              <li>Abra el archivo <code>.ICS</code> en su dispositivo y seleccione la aplicación de calendario.</li>
+              <li>Seleccione <b>“Agregar Todos”</b> para agregar todos los eventos.</li>
+            </ol>
+          </div>
+        {% endif %}
+
+        <div class="ac-modal__actions">
+          <button type="button" class="ac-btn ac-btn--primary" id="closeInfoBtn">Entendido</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      (function () {
+      // --- Icono de información
+      const infoBtn     = document.getElementById('infoBtn');
+      const infoModal   = document.getElementById('infoModal');
+      const infoBackdrop= infoModal?.querySelector('.ac-modal__backdrop');
+      const closeInfo   = document.getElementById('closeInfoBtn');
+
+      function openInfo() {
+        infoModal.classList.remove('ac-hidden');
+        infoModal.setAttribute('aria-hidden','false');
+      }
+      function closeInfoModal() {
+        infoModal.classList.add('ac-hidden');
+        infoModal.setAttribute('aria-hidden','true');
+      }
+
+      infoBtn?.addEventListener('click', openInfo);
+      closeInfo?.addEventListener('click', closeInfoModal);
+      infoBackdrop?.addEventListener('click', closeInfoModal);
+      window.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeInfoModal(); });
+    })();
+    </script>
   </main>
 
   <!-- Pie -->
