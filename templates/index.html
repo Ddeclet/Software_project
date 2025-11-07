@@ -6,6 +6,7 @@
   <title>AcademicConnect</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
   <script src="https://kit.fontawesome.com/a2d9d6bc50.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
 
@@ -21,7 +22,7 @@
       </div>
       <a href="{{ url_for('index') }}" class="active">Inicio</a>
       <a href="{{ url_for('calendario') }}">Calendario</a>
-      <a href="{{ url_for('horas') }}">Horas de oficina</a>
+      <a href="{{ url_for('horas') }}">Departamentos</a>
       <a href="{{ url_for('logout') }}">
         <img src="{{ url_for('static', filename='images/logout.png') }}" alt="Logout" class="logout-icon">
       </a>
@@ -43,7 +44,7 @@
       </a>
       <a class="quick-btn" href="{{ url_for('horas') }}">
         <i class="fa-solid fa-user-tie"></i>
-        Horas de oficina
+        Departamentos
       </a>
     </div>
 
@@ -85,13 +86,17 @@
     </div>
   </main>
 
-  <!-- Pie -->
-  <div class="footer-logo">
-    UPR Arecibo
-  </div>
-  <footer>
-    Copyright - All rights reserved 
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-logo">
+        <img src="{{ url_for('static', filename='images/Arecibo.png') }}" alt="">
+      </div>
+      <div class="footer-info">
+        <a href="https://upra.edu/contactenos/"><p id="location-link"><i class="fa-solid fa-location-dot icon"></i> Carr. 653 Km. 0.8 Sector Las Dunas, Arecibo</p></a>
+        <p><i class="fa-solid fa-phone icon"></i> 787-815-0000 / Fax 787-880-4972</p>
+      </div>
+    </div>
   </footer>
-
 </body>
 </html>

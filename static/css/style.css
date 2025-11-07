@@ -79,21 +79,47 @@ p.intro {
 }
 
 /* ====== FOOTER ====== */
-.footer-logo {
-  background-color: #eaeaea;
-  padding: 30px;
-  text-align: center;
-  color: #333;
-  font-weight: bold;
+.footer {
+  background: linear-gradient(
+    135deg,
+    #f1c949 33%,   /* Color 1 hasta 33% */
+    #d4ac0d 33%,  /* Inicio color 2 */
+    #d4ac0d 66%,  /* Color 2 hasta 66% */
+    #b7950b 66%,  /* Inicio color 3 */
+    #b7950b 100%  /* Color 3 hasta el final */
+  );
+  color: #000;
+  padding: 20px;
+  font-family: Arial, sans-serif;
 }
 
-footer {
-  background-color: #555;
-  color: white;
-  padding: 15px 30px;
-  text-align: center;
-  font-size: 14px;
-  margin-top: 50px;
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.footer-logo img {
+  max-height: 60px;
+}
+
+.footer-info {
+  font-size: 16px;
+}
+
+.footer-info .icon {
+  margin-right: 10px;
+  font-size: 18px;
+  color: #000000;
+}
+
+#location-link {
+  color: black;
+}
+
+a {
+  text-decoration: none;
 }
 
 /* ==========================
