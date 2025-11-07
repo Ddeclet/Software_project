@@ -16,10 +16,12 @@
     </div>
     <nav>
       {% if session.role == "superadmin" %}
-					<a href="{{ url_for('superadmin_home') }}" class="nav-link">Inicio</a>
-					<div class="profile-container">
+					<div class="profile-icon">
 						<img src="{{ url_for('static', filename='images/perfil.png') }}" alt="Perfil" class="profile-img">
 					</div>
+          <a href="{{ url_for('superadmin_home') }}" class="nav-link">Inicio</a>
+          <a href="{{ url_for('calendario') }}" class="nav-link">Calendario</a>
+					<a href="{{ url_for('horas') }}" class="nav-link">Departamentos</a>
 					<a href="{{ url_for('login') }}">
 						<img src="{{ url_for('static', filename='images/logout.png') }}" alt="Logout" class="logout-icon">
 					</a>
