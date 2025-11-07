@@ -959,3 +959,76 @@ footer {
   bottom: 28px; /* antes estaba más alto */
   width: 54px; height: 54px;
 }
+
+/* Modal (añadir calendario - superadmin) */
+.ac-hidden { display: none; }
+
+.ac-modal {
+  position: fixed; inset: 0;
+  z-index: 1000;
+}
+.ac-modal__backdrop {
+  position: absolute; inset: 0;
+  background: rgba(0,0,0,.45);
+  backdrop-filter: blur(2px);
+}
+.ac-modal__panel {
+  position: relative;
+  width: min(680px, 92vw);
+  margin: 8vh auto 0;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 20px 60px rgba(0,0,0,.25);
+  padding: 24px 28px 20px;
+}
+.ac-modal__header h3 {
+  margin: 0 0 12px;
+  font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+  font-weight: 800;
+}
+.ac-modal__actions {
+  display: flex; justify-content: flex-end; gap: 10px;
+  margin-top: 18px;
+}
+
+/* Dropzone */
+.ac-dropzone {
+  border: 2px dashed #d9d9d9;
+  border-radius: 16px;
+  padding: 28px;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  color: #333;
+  outline: none;
+}
+.ac-dropzone svg { color: #7a7a7a; margin-bottom: 10px; }
+.ac-dropzone__title { margin: 6px 0 4px; }
+.ac-muted { color: #6b7280; font-size: .92rem; }
+
+.ac-dropzone--over {
+  border-color: #f1c949;
+  background: #fff9e0;
+}
+
+/* Botones (añadir calendario - superadmin) */
+.ac-btn {
+  border: none;
+  border-radius: 10px;
+  padding: 10px 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform .05s ease, box-shadow .15s ease;
+  background: #f1f1f1;
+}
+.ac-btn:hover { transform: translateY(-1px); }
+.ac-btn--primary {
+  background: #e8be3f; color: #000;
+  box-shadow: 0 2px 6px rgba(0,0,0,.12);
+}
+.ac-btn--primary:disabled {
+  opacity: .5; cursor: not-allowed; transform: none;
+}
+.ac-btn--ghost {
+  background: #efefef; color: #111;
+}

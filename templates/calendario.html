@@ -58,7 +58,12 @@
         <h2>Calendario Académico</h2>
         <h3>Primer Semestre 2025–2026</h3>
       </div>
-      <button class="sync-btn">Sincronizar calendario</button>
+      {% if session.role == "superadmin" %}
+        <button class="sync-btn" id="addCalBtn">Añadir calendario</button>
+      {% else %}
+        <button class="sync-btn">Sincronizar calendario</button>
+      {% endif %}
+
     </div>
 
     <section class="calendar-container">
@@ -75,6 +80,121 @@
         <div class="day">27</div><div class="day event yellow"><b>28</b><br>Receso académico</div><div class="day">29</div><div class="day">30</div><div class="day">31</div>
       </div>
     </section>
+
+    {% if session.role == "superadmin" %}
+    <!-- Modal Añadir calendario -->
+    <div id="addCalModal" class="ac-modal ac-hidden" aria-hidden="true">
+      <div class="ac-modal__backdrop" role="presentation"></div>
+
+      <div class="ac-modal__panel" role="dialog" aria-modal="true" aria-labelledby="addCalTitle">
+        <div class="ac-modal__header">
+          <h3 id="addCalTitle">Añadir calendario</h3>
+        </div>
+
+        <form id="uploadForm" enctype="multipart/form-data" novalidate>
+          <div id="dropArea" class="ac-dropzone" tabindex="0">
+            <!-- Icono de la nube -->
+            <svg width="44" height="44" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M7 18h9a4 4 0 0 0 .7-7.95A6 6 0 0 0 6 9a4 4 0 0 0 1 9Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M12 7v6m0 0-2-2m2 2 2-2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+
+            <p class="ac-dropzone__title"><strong>Selecciona el archivo y arrástralo aquí</strong></p>
+            <p class="ac-muted">archivo <code>.docx</code> no más de 10&nbsp;MB</p>
+
+            <input id="fileInput" type="file" name="file" accept=".docx" hidden>
+            <button type="button" class="ac-btn" id="selectFile">SELECT FILE</button>
+
+            <p id="fileName" class="ac-muted" style="margin-top:8px;"></p>
+          </div>
+
+          <div class="ac-modal__actions">
+            <button type="button" class="ac-btn ac-btn--ghost" id="cancelAdd">Cancelar</button>
+            <button type="submit" class="ac-btn ac-btn--primary" id="uploadBtn" disabled>Subir</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    {% endif %}
+    
+    {% if session.role == "superadmin" %}
+    <script>
+    (function () {
+      const addBtn   = document.getElementById('addCalBtn');
+      const modal    = document.getElementById('addCalModal');
+      const backdrop = modal?.querySelector('.ac-modal__backdrop');
+      const cancel   = document.getElementById('cancelAdd');
+
+      const drop     = document.getElementById('dropArea');
+      const input    = document.getElementById('fileInput');
+      const pickBtn  = document.getElementById('selectFile');
+      const fileName = document.getElementById('fileName');
+      const upload   = document.getElementById('uploadBtn');
+      const form     = document.getElementById('uploadForm');
+
+      const MAX_MB = 10;
+
+      function openModal() {
+        modal.classList.remove('ac-hidden');
+        modal.setAttribute('aria-hidden','false');
+      }
+      function closeModal() {
+        modal.classList.add('ac-hidden');
+        modal.setAttribute('aria-hidden','true');
+        // Reiniciar
+        input.value = '';
+        fileName.textContent = '';
+        upload.disabled = true;
+      }
+
+      function validateFile(file){
+        if (!file) return false;
+        const okExt = /\.docx$/i.test(file.name);
+        const okSize = file.size <= MAX_MB*1024*1024;
+        if (!okExt) { alert('Solo se acepta archivo .docx'); return false; }
+        if (!okSize){ alert('El archivo supera 10 MB'); return false; }
+        return true;
+      }
+
+      function setFile(file){
+        if (!validateFile(file)) return;
+        fileName.textContent = `Archivo seleccionado: ${file.name}`;
+        upload.disabled = false;
+      }
+
+      // Abrir / cerrar
+      addBtn?.addEventListener('click', openModal);
+      cancel?.addEventListener('click', closeModal);
+      backdrop?.addEventListener('click', closeModal);
+      window.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeModal(); });
+
+      // Elegir mediante el botón
+      pickBtn?.addEventListener('click', ()=> input.click());
+      input?.addEventListener('change', (e)=> setFile(e.target.files?.[0]));
+
+      // Drag and Drop
+      ['dragenter','dragover'].forEach(evt=>{
+        drop?.addEventListener(evt, (e)=>{ e.preventDefault(); e.stopPropagation(); drop.classList.add('ac-dropzone--over'); });
+      });
+      ['dragleave','drop'].forEach(evt=>{
+        drop?.addEventListener(evt, (e)=>{ e.preventDefault(); e.stopPropagation(); drop.classList.remove('ac-dropzone--over'); });
+      });
+      drop?.addEventListener('drop', (e)=>{
+        const file = e.dataTransfer?.files?.[0];
+        if (file) setFile(file);
+      });
+
+      // Submit
+      form?.addEventListener('submit', async (e)=>{
+        e.preventDefault();
+        if (!input.files?.[0]) return;
+
+        closeModal();
+      });
+    })();
+    </script>
+    {% endif %}
+
   </main>
 
   <!-- Pie -->
