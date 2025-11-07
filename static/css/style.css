@@ -269,16 +269,23 @@ a {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   gap: 5px;
+  grid-auto-rows: 110px;
 }
 
 .day {
+  height: 82%;
   border: 1px solid #ddd;
-  min-height: 80px;
   text-align: left;
   padding: 8px;
   font-size: 14px;
   border-radius: 4px;
   background-color: #fafafa;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  overflow: hidden;
+  align-items: flex-start;
+  justify-content: flex-start;
 }
 
 .day.event.yellow {
