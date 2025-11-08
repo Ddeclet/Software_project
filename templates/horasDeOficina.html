@@ -41,11 +41,18 @@
         <!-- Primera fila -->
         <div class="dept-row-images">
           <div class="dept-img-card">
-            <a href="{{ url_for('departamento_ccom') }}">
-              <img src="{{ url_for('static', filename='images/CCOM.png') }}" alt="CCOM">
-            </a>
+            {% if session.role == "superadmin" %}
+              <a href="{{ url_for('editar_cuentas') }}">
+                <img src="{{ url_for('static', filename='images/CCOM.png') }}" alt="CCOM">
+              </a>
+            {% else %}
+              <a href="{{ url_for('departamento_ccom') }}">
+                <img src="{{ url_for('static', filename='images/CCOM.png') }}" alt="CCOM">
+              </a>
+            {% endif %}
             <span>CCOM</span>
           </div>
+           
           <div class="dept-img-card">
             <img src="{{ url_for('static', filename='images/GTEC.png') }}" alt="GTEC">
             <span>GTEC</span>
