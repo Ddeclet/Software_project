@@ -127,7 +127,8 @@ def profesores_home():
     if session.get("role") != "profesores":
         flash("Acceso denegado. Inicia sesión como profesores.", "error")
         return redirect(url_for("login"))
-    return render_template("profesores_home.html")
+
+    return render_template("profesores_home.html", prof_id="luis.colon19@upr.edu")
 
 @app.route("/inicio")
 def index():
