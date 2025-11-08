@@ -149,6 +149,39 @@ def horas():
         return redirect(url_for("login"))
     return render_template("horasDeOficina.html")
 
+@app.route("/departamentos/ccom")
+def departamento_ccom():
+    
+    if not session.get("email"):
+        return redirect(url_for("login"))
+
+    
+    ccom_prof_ids = [
+        "luis.colon19@upr.edu",
+        "juano.lopez@upr.edu",
+        "eliana.valenzuela@upr.edu",
+        "aixa.ramirez@upr.edu",
+        "emilio.perez@upr.edu",
+    ]
+
+    profesores = []
+    for pid in ccom_prof_ids:
+        nombre = PROFESSOR_NAMES.get(pid, pid)
+        horas_brutas = OFFICE_HOURS.get(pid, [])
+
+       
+        horarios = []
+        for h in horas_brutas:
+            horarios.append(f"{h['day']} {h['start']} - {h['end']}")
+
+        profesores.append({
+            "nombre": f"Prof. {nombre}",
+            "email": pid,
+            "horarios": horarios
+        })
+
+    return render_template("departamento_ccom.html", profesores=profesores)
+
 @app.route("/editar_cuentas")
 def editar_cuentas():
     return render_template("editar_cuentas.html")
@@ -293,3 +326,5 @@ def confirmar_citas():
 
 if __name__ == "__main__":
     app.run(debug=True)
+
+

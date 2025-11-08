@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Horas de oficina - CCOM</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+  <!-- barra superior (igual que las otras páginas) -->
+  <header>
+    <div class="logo">
+      <img src="{{ url_for('static', filename='images/logoAC.png') }}" alt="Logo">
+      <h1>AcademicConnect</h1>
+    </div>
+    <nav>
+      <div class="profile-icon">
+        <img src="{{ url_for('static', filename='images/perfil.png') }}" alt="Perfil" class="profile-img">
+      </div>
+      <a href="{{ url_for('index') }}">Inicio</a>
+      <a href="{{ url_for('calendario') }}">Calendario</a>
+      <a href="{{ url_for('horas') }}">Departamentos</a>
+      <a href="{{ url_for('logout') }}">
+        <img src="{{ url_for('static', filename='images/logout.png') }}" alt="Logout" class="logout-icon">
+      </a>
+    </nav>
+  </header>
+
+  <main class="ccom-page">
+    <h1>Horas de oficina</h1>
+    <p class="ccom-subtitle">
+      Para gestionar las horas de oficina de los profesores del departamento de CCOM.
+    </p>
+
+    <div class="ccom-box">
+      <h2 class="ccom-title">Lista de profesores</h2>
+
+      <div class="ccom-list">
+        {% for prof in profesores %}
+        <div class="ccom-row">
+          <!-- izquierda -->
+          <div class="ccom-left">
+            <img src="{{ url_for('static', filename='images/perfil.png') }}" alt="Foto" class="ccom-avatar">
+            <div class="ccom-info">
+              <p class="ccom-name">{{ prof.nombre }}</p>
+              <p class="ccom-email">{{ prof.email }}</p>
+            </div>
+          </div>
+
+          <!-- derecha -->
+          <div class="ccom-right">
+            {% for h in prof.horarios %}
+              <p class="ccom-hour">{{ h }}</p>
+            {% endfor %}
+          </div>
+        </div>
+        {% if not loop.last %}
+        <hr class="ccom-divider">
+        {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </main>
+
+  <!-- footer opcional -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-logo">
+        <img src="{{ url_for('static', filename='images/Arecibo.png') }}" alt="">
+      </div>
+      <div class="footer-info">
+        <a href="https://upra.edu/contactenos/"><p id="location-link"><i class="fa-solid fa-location-dot icon"></i> Carr. 653 Km. 0.8 Sector Las Dunas, Arecibo</p></a>
+        <p><i class="fa-solid fa-phone icon"></i> 787-815-0000 / Fax 787-880-4972</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

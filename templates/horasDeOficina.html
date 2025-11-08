@@ -16,27 +16,15 @@
       <h1>AcademicConnect</h1>
     </div>
     <nav>
-       {% if session.role == "user" %}
-        <div class="profile-icon">
-          <img src="{{ url_for('static', filename='images/perfil.png') }}" alt="Perfil" class="profile-img">
-        </div>
-        <a href="{{ url_for('index') }}">Inicio</a>
-        <a href="{{ url_for('calendario') }}">Calendario</a>
-        <a href="{{ url_for('horas') }}" class="active">Departamentos</a>
-        <a href="{{ url_for('logout') }}">
-          <img src="{{ url_for('static', filename='images/logout.png') }}" alt="Logout" class="logout-icon">
-        </a>
-      {% else %}
-        <div class="profile-icon">
-            <img src="{{ url_for('static', filename='images/perfil.png') }}" alt="Perfil" class="profile-img">
-          </div>
-          <a href="{{ url_for('superadmin_home') }}">Inicio</a>
-          <a href="{{ url_for('calendario') }}">Calendario</a>
-          <a href="{{ url_for('horas') }}" class="active">Departamentos</a>
-          <a href="{{ url_for('logout') }}">
-            <img src="{{ url_for('static', filename='images/logout.png') }}" alt="Logout" class="logout-icon">
-          </a>
-      {% endif %}
+      <div class="profile-icon">
+        <img src="{{ url_for('static', filename='images/perfil.png') }}" alt="Perfil" class="profile-img">
+      </div>
+      <a href="{{ url_for('index') }}">Inicio</a>
+      <a href="{{ url_for('calendario') }}">Calendario</a>
+      <a href="{{ url_for('horas') }}" class="active">Departamentos</a>
+      <a href="{{ url_for('logout') }}">
+        <img src="{{ url_for('static', filename='images/logout.png') }}" alt="Logout" class="logout-icon">
+      </a>
     </nav>
   </header>
 
@@ -52,14 +40,10 @@
       <div class="dept-big-body">
         <!-- Primera fila -->
         <div class="dept-row-images">
-          <div class="dept-img-card">            
-            {% if session.role == "superadmin" %}
-              <a href="{{ url_for('editar_cuentas') }}">
-                <img src="{{ url_for('static', filename='images/CCOM.png') }}" alt="CCOM">
-              </a>
-            {% else %}
+          <div class="dept-img-card">
+            <a href="{{ url_for('departamento_ccom') }}">
               <img src="{{ url_for('static', filename='images/CCOM.png') }}" alt="CCOM">
-            {% endif %}
+            </a>
             <span>CCOM</span>
           </div>
           <div class="dept-img-card">
@@ -70,10 +54,6 @@
             <img src="{{ url_for('static', filename='images/logo_MATE.png') }}" alt="MATE">
             <span>MATE</span>
           </div>
-          <!-- <div class="dept-img-card">
-            <img src="{{ url_for('static', filename='images/ENFE.png') }}" alt="ENFE">
-            <span>ENFE</span>
-          </div> -->
         </div>
 
         <!-- Segunda fila -->
@@ -86,10 +66,6 @@
             <img src="{{ url_for('static', filename='images/logo_INGL.png') }}" alt="Inglés">
             <span>Inglés</span>
           </div>
-          <!-- <div class="dept-img-card">
-            <img src="{{ url_for('static', filename='images/Biologia.png') }}" alt="Biología">
-            <span>Biología</span>
-          </div> -->
           <div class="dept-img-card">
             <img src="{{ url_for('static', filename='images/logo_HUMA.png') }}" alt="Humanidades">
             <span>Humanidades</span>
@@ -110,7 +86,6 @@
             <img src="{{ url_for('static', filename='images/logo_FISI_QUIM.png') }}" alt="Física y Química">
             <span>Física y Química</span>
           </div>
-          
         </div>
       </div>
     </div>
@@ -123,7 +98,11 @@
         <img src="{{ url_for('static', filename='images/Arecibo.png') }}" alt="">
       </div>
       <div class="footer-info">
-        <a href="https://upra.edu/contactenos/"><p id="location-link"><i class="fa-solid fa-location-dot icon"></i> Carr. 653 Km. 0.8 Sector Las Dunas, Arecibo</p></a>
+        <a href="https://upra.edu/contactenos/">
+          <p id="location-link">
+            <i class="fa-solid fa-location-dot icon"></i> Carr. 653 Km. 0.8 Sector Las Dunas, Arecibo
+          </p>
+        </a>
         <p><i class="fa-solid fa-phone icon"></i> 787-815-0000 / Fax 787-880-4972</p>
       </div>
     </div>
