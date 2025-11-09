@@ -295,35 +295,58 @@ def agregar_hora_oficina(prof_id):
     if role not in ["superadmin", "subadmin", "profesores"]:
         flash("Acceso denegado.", "error")
         return redirect(url_for("login"))
-    
-    prof = PROFESSOR_NAMES.get(prof_id)
 
-    
+    prof = PROFESSOR_NAMES.get(prof_id)
     if not prof:
         return abort(404)
 
+    def _to12h(hhmm_24: str) -> str:
+        hh, mm = hhmm_24.split(":")
+        hh = int(hh); mm = int(mm)
+        ap = "AM" if hh < 12 else "PM"
+        hh12 = 12 if hh % 12 == 0 else hh % 12
+        return f"{hh12}:{str(mm).zfill(2)} {ap}"
+
+    def _from_selects(prefix: str) -> str | None:
+        h = request.form.get(f"{prefix}-h")
+        m = request.form.get(f"{prefix}-m")
+        ap = request.form.get(f"{prefix}-ap")
+        if h is None or m is None or ap is None:
+            return None
+        try:
+            hi = int(h); mi = int(m)
+            if not (1 <= hi <= 12 and 0 <= mi <= 59 and ap in ("AM", "PM")):
+                return None
+        except ValueError:
+            return None
+        return f"{hi}:{str(mi).zfill(2)} {ap}"
+
     if request.method == "POST":
-        dia = request.form["dia"]
-        inicio = request.form["inicio"]
-        fin = request.form["fin"]
-        
+        dia = request.form.get("dia", "").strip()
+
+        inicio = _from_selects("inicio")
+        fin = _from_selects("fin")
+
+        if inicio is None and "inicio" in request.form:
+            inicio = _to12h(request.form["inicio"])
+        if fin is None and "fin" in request.form:
+            fin = _to12h(request.form["fin"])
+
+        if not dia or inicio is None or fin is None:
+            flash("Datos incompletos o inválidos. Verifica día y horas.", "error")
+            return redirect(request.url)
+
         nueva_hora = {
             "day": dia,
             "start": inicio,
             "end": fin,
             "term": TERMS[0]
         }
-        
-        # Inicializar la lista si no existe
-        if prof_id not in OFFICE_HOURS:
-            OFFICE_HOURS[prof_id] = []
-            
-        OFFICE_HOURS[prof_id].append(nueva_hora)
-        
+
+        OFFICE_HOURS.setdefault(prof_id, []).append(nueva_hora)
         flash(f"Nueva hora agregada para {prof}.", "success")
         return redirect(url_for("editar_horas", prof_id=prof_id))
-    
-    # Renderizar el formulario (GET)
+
     return render_template("agregar_hora_oficina.html", prof=prof, prof_id=prof_id)
 
 @app.route("/api/office-hour/delete", methods=["POST"])
