@@ -70,20 +70,29 @@
 </head>
 <body>
   <header> 
+    
     <div class="logo">
       <img src="{{ url_for('static', filename='images/logoAC.png') }}" alt="Logo AcademicConnect" class="logo-ac">
       <h1 class="brand-title">AcademicConnect</h1>
     </div>
     <nav>
-      <a href="{{ url_for('subadmin_home') }}" title="Volver al Inicio" class="nav-home-link">
-          <img src="{{ url_for('static', filename='images/home.png') }}" alt="Inicio" class="home-icon">
-      </a>
-      <div class="profile-container">
-        <img src="{{ url_for('static', filename='images/perfil.png') }}" alt="Perfil" class="profile-img">
-      </div>
-      <a href="{{ url_for('logout') }}">
-        <img src="{{ url_for('static', filename='images/logout.png') }}" alt="Logout" class="logout-icon">
-      </a>
+      {% if session.role == "superadmin" %}
+          <div class="profile-icon">
+            <img src="{{ url_for('static', filename='images/perfil.png') }}" alt="Perfil" class="profile-img">
+          </div>
+          <a href="{{ url_for('superadmin_home') }}">Inicio</a>
+
+      {%elif session.role == "subadmin"%}
+          <div class="profile-icon">
+            <img src="{{ url_for('static', filename='images/perfil.png') }}" alt="Perfil" class="profile-img">
+          </div>
+          <a href="{{ url_for('subadmin_home') }}" class="active">Inicio</a>
+      {% else %}
+          <div class="profile-icon">
+            <img src="{{ url_for('static', filename='images/perfil.png') }}" alt="Perfil" class="profile-img">
+          </div>
+          <a href="{{ url_for('profesores_home') }}" class="active">Inicio</a>
+      {% endif %}
     </nav>
   </header>
 

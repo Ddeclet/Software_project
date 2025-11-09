@@ -23,7 +23,7 @@
 					<a href="{{ url_for('superadmin_home') }}" class="nav-link">Inicio</a>
 					<a href="{{ url_for('calendario') }}" class="nav-link">Calendario</a>
 					<a href="{{ url_for('horas') }}" class="nav-link">Departamentos</a>
-					<a href="{{ url_for('login') }}">
+					<a href="{{ url_for('logout') }}">
 						<img src="{{ url_for('static', filename='images/logout.png') }}" alt="Logout" class="logout-icon">
 					</a>
 				{% else %}
@@ -31,7 +31,7 @@
 					<div class="profile-container">
 						<img src="{{ url_for('static', filename='images/perfil.png') }}" alt="Perfil" class="profile-img">
 					</div>
-					<a href="{{ url_for('login') }}">
+					<a href="{{ url_for('logout') }}">
 						<img src="{{ url_for('static', filename='images/logout.png') }}" alt="Logout" class="logout-icon">
 					</a>
 				{% endif %}

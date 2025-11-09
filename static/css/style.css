@@ -1104,6 +1104,12 @@ footer {
   color: #c0392b;
 }
 
+#guardar {
+    display: block;
+    margin: 0 auto;
+    width: fit-content;
+  }
+  
 /* Header simplificado */
 header {
   display: flex;
