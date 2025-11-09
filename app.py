@@ -52,21 +52,21 @@ OFFICE_HOURS = {
 
 # Credenciales de prueba
 USERS = {
-    "javier@gmail.com": {
+    "juan.delpueblo@upr.edu": {
         "password": "usuario1234",
         "role": "user"
     },
 
-    "javierAdmin@gmail.com": {
-        "password": "admin1234",
+    "super.admin@upr.edu": {
+        "password": "superAdmin789",
         "role": "superadmin"
     },
 
-    "javierSub@gmail.com": {
-        "password": "subadmin1234",
+    "sub.admin@upr.edu": {
+        "password": "subAdmin789",
         "role": "subadmin"
     },
-    "javierProf@gmail.com": {
+    "luis.colon19@upr.edu": {
         "password": "profesor1234",
         "role": "profesores"
     }
