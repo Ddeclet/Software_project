@@ -73,12 +73,21 @@
       <div class="calendar-grid">
         <!-- Filas del calendario -->
         <div class="day empty"></div><div class="day empty"></div><div class="day">1</div><div class="day">2</div><div class="day">3</div><div class="day">4</div><div class="day">5</div>
-        <div class="day event yellow">6</div><div class="day">7</div><div class="day">8</div><div class="day">9</div><div class="day">10</div><div class="day">11</div><div class="day">12</div>
+        <div class="day">6</div><div class="day">7</div><div class="day">8</div><div class="day">9</div><div class="day">10</div><div class="day">11</div><div class="day">12</div>
         <div class="day event yellow"><b>13</b><br>Feriado: Día de la Raza</div>
-        <div class="day">14</div><div class="day">15</div><div class="day">16</div><div class="day">17</div><div class="day">18</div><div class="day">19</div>
+        <div class="day">14</div><div class="day">15</div>
+        {% if session.role == "user" %}
+          <div class="day event green"><b>16</b><br>Reunión con Prof. Luis Colón (virtual)</div>
+        {% elif session.role == "profesores" %}
+          <div class="day event green"><b>16</b><br>Reunión con Juan del Pueblo (virtual)</div>
+        {% else %}
+          <div class="day">16</div>
+        {% endif %}
+
+
+        <div class="day">17</div><div class="day">18</div><div class="day">19</div>
         <div class="day">20</div><div class="day">21</div><div class="day">22</div><div class="day event yellow"><b>23</b><br>Evaluación Parcial</div>
-        <div class="day">24</div>
-        <div class="day event green"><b>26</b><br>Reunión general de facultad</div>
+        <div class="day">24</div><div class="day">25</div><div class="day">26</div>
         <div class="day">27</div><div class="day event yellow"><b>28</b><br>Receso académico</div><div class="day">29</div><div class="day">30</div><div class="day">31</div>
       </div>
     </section>
