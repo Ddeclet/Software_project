@@ -85,15 +85,29 @@
         <p class="appt-prof-email">{{ email }}</p>
 
         <div class="time-slots">
-          {% for h in horas %}
-            <button class="time-slot-btn">
-              {{ h.start }} - {{ h.end }}
-            </button>
-          {% endfor %}
-          {% if not horas %}
-            <p>No hay horarios registrados para este profesor.</p>
-          {% endif %}
-        </div>
+            {% for h in horas %}
+              <a
+                class="time-slot-btn"
+                href="{{ url_for(
+                        'cita_confirmada',
+                        prof=nombre,
+                        email=email,
+                        fecha='jueves, 18 de octubre de 2025',
+                        hora=h.start ~ ' - ' ~ h.end,
+                        modalidad='Presencial',
+                        lugar='Departamento de CCOM',
+                        cita_id='AC-' ~ loop.index|string
+                      ) }}"
+              >
+                {{ h.start }} - {{ h.end }}
+              </a>
+            {% endfor %}
+            {% if not horas %}
+              <p>No hay horarios registrados para este profesor.</p>
+            {% endif %}
+          </div>
+          
+          
 
         <div class="modality">
           <p>Modalidad:</p>

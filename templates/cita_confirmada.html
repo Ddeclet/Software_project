@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Cita en espera de confirmación</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+  <!-- barra superior igual que las demás -->
+  <header>
+    <div class="logo">
+      <img src="{{ url_for('static', filename='images/logoAC.png') }}" alt="Logo">
+      <h1>AcademicConnect</h1>
+    </div>
+    <nav>
+      <div class="profile-icon">
+        <img src="{{ url_for('static', filename='images/perfil.png') }}" alt="Perfil" class="profile-img">
+      </div>
+      <a href="{{ url_for('index') }}">Inicio</a>
+      <a href="{{ url_for('calendario') }}">Calendario</a>
+      <a href="{{ url_for('horas') }}">Horas de oficina</a>
+      <a href="{{ url_for('logout') }}">
+        <img src="{{ url_for('static', filename='images/logout.png') }}" alt="Logout" class="logout-icon">
+      </a>
+    </nav>
+  </header>
+
+  <main class="confirm-main">
+    <div class="confirm-icon-wrap">
+      <img src="{{ url_for('static', filename='images/checkMark.jpg') }}" alt="Listo" class="confirm-icon">
+    </div>
+    <h1 class="confirm-title">¡Tu cita está en espera de ser confirmada!</h1>
+    <p class="confirm-subtitle">Hemos enviado una confirmación a tu correo</p>
+
+    <div class="confirm-card">
+      <h2>Detalles de la cita</h2>
+
+      <div class="confirm-grid">
+        <div>
+          <p class="label">Profesor(a)</p>
+          <p class="value">{{ prof }}</p>
+          {% if email %}
+          <p class="email">{{ email }}</p>
+          {% endif %}
+        </div>
+        <div>
+          <p class="label">Modalidad</p>
+          <p class="value">{{ modalidad }}</p>
+        </div>
+
+        <div>
+          <p class="label">Fecha</p>
+          <p class="value">{{ fecha }}</p>
+        </div>
+        <div>
+          <p class="label">Lugar</p>
+          <p class="value">{{ lugar }}</p>
+        </div>
+
+        <div>
+          <p class="label">Hora</p>
+          <p class="value">{{ hora }}</p>
+        </div>
+        <div>
+          <p class="label">ID de la Cita</p>
+          <p class="value">{{ cita_id }}</p>
+        </div>
+      </div>
+
+      <div class="confirm-actions">
+        <a class="confirm-btn primary" href="{{ url_for('index') }}">Volver inicio</a>
+        <a class="confirm-btn" href="{{ url_for('agendar_cita', email=email) }}">Editar</a>
+        <button class="confirm-btn danger" type="button">Cancelar cita</button>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-logo">
+        <img src="{{ url_for('static', filename='images/Arecibo.png') }}" alt="">
+      </div>
+      <div class="footer-info">
+        <a href="https://upra.edu/contactenos/"><p id="location-link"><i class="fa-solid fa-location-dot icon"></i> Carr. 653 Km. 0.8 Sector Las Dunas, Arecibo</p></a>
+        <p><i class="fa-solid fa-phone icon"></i> 787-815-0000 / Fax 787-880-4972</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

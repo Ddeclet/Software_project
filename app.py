@@ -199,6 +199,28 @@ def agendar_cita(email):
         horas=horas
     )
 
+@app.route("/cita_confirmada")
+def cita_confirmada():
+   
+    prof = request.args.get("prof", "Profesor(a)")
+    email = request.args.get("email", "")
+    fecha = request.args.get("fecha", "jueves, 18 de octubre de 2025")
+    hora = request.args.get("hora", "11:00 am - 11:30 am")
+    modalidad = request.args.get("modalidad", "Presencial")
+    lugar = request.args.get("lugar", "Departamento de CCOM")
+    cita_id = request.args.get("cita_id", "XX-XXXXX")
+
+    return render_template(
+        "cita_confirmada.html",
+        prof=prof,
+        email=email,
+        fecha=fecha,
+        hora=hora,
+        modalidad=modalidad,
+        lugar=lugar,
+        cita_id=cita_id,
+    )
+
 
 
 @app.route("/editar_cuentas")
