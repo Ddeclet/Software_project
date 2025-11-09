@@ -436,7 +436,7 @@ a {
 
 
 /* ==========================
-   HORAS DE OFICINA (FIGMA STYLE)
+   HORAS DE OFICINA 
 ========================== */
 .hours-main {
   max-width: 1200px;
@@ -1577,6 +1577,150 @@ footer {
     text-align: left;
   }
 }
+
+/* ======== PÁGINA ARREGLAR CITA ======== */
+.appointment-main {
+  padding: 40px 60px 70px;
+}
+
+.appointment-main h1 {
+  font-size: 32px;
+  margin-bottom: 6px;
+}
+
+.appointment-main .intro {
+  margin-bottom: 25px;
+  font-size: 15px;
+}
+
+.appointment-card {
+  background: #eaeaea;
+  border: 1px solid #d0d0d0;
+  border-radius: 24px;
+  padding: 28px 30px;
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+  box-shadow: 0 4px 16px rgba(0,0,0,.045);
+  max-width: 850px;        /* 🔹 Limita el ancho total del cuadro */
+  margin: 0 auto;          /* 🔹 Centra el cuadro en la pantalla */
+}
+
+
+/* calendario */
+.fake-calendar {
+  background: #fff;
+  border-radius: 14px;
+  width: 260px;
+  padding: 18px 18px 20px;
+  box-shadow: 0 8px 25px rgba(0,0,0,.08);
+}
+
+.calendar-header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  font-weight: 600;
+}
+
+.cal-arrows span {
+  display: inline-block;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.calendar-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+  font-size: 0.7rem;
+  gap: 5px;
+  margin-bottom: 8px;
+  color: #444;
+}
+
+.calendar-days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+}
+
+.calendar-days span {
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  border-radius: 8px;
+  font-size: 0.7rem;
+  background: #fff;
+}
+
+.calendar-days span.muted {
+  opacity: .4;
+}
+
+.day-selected {
+  background: #505AD1;
+  color: #fff;
+}
+
+
+.appointment-right {
+  flex: none;               
+  width: 320px;             
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: flex-start;  
+}
+
+
+.appt-prof-name {
+  font-weight: 700;
+  margin-bottom: -8px;
+}
+
+.appt-prof-email {
+  font-size: 0.85rem;
+  color: #555;
+}
+
+.time-slots {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 210px;
+}
+
+.time-slot-btn {
+  background: #e8be3f;
+  border: none;
+  border-radius: 9px;
+  padding: 8px 16px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  box-shadow: 0 2px 5px rgba(0,0,0,.12);
+  cursor: pointer;
+  text-align: left;
+}
+
+.time-slot-btn:hover {
+  filter: brightness(1.03);
+}
+
+.modality {
+  margin-top: 10px;
+}
+
+.modality-option {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-right: 16px;
+  font-size: 0.9rem;
+}
+
 
 
 

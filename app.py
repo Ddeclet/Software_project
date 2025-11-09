@@ -154,7 +154,6 @@ def departamento_ccom():
     
     if not session.get("email"):
         return redirect(url_for("login"))
-
     
     ccom_prof_ids = [
         "luis.colon19@upr.edu",
@@ -181,6 +180,26 @@ def departamento_ccom():
         })
 
     return render_template("departamento_ccom.html", profesores=profesores)
+
+@app.route("/agendar_cita/<email>")
+def agendar_cita(email):
+    if not session.get("email"):
+        return redirect(url_for("login"))
+
+    nombre = PROFESSOR_NAMES.get(email)
+    if not nombre:
+        abort(404)
+
+    horas = OFFICE_HOURS.get(email, [])
+
+    return render_template(
+        "agendar_cita.html",
+        nombre=nombre,
+        email=email,
+        horas=horas
+    )
+
+
 
 @app.route("/editar_cuentas")
 def editar_cuentas():

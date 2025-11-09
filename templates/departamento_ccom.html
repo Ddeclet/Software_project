@@ -3,12 +3,77 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Horas de oficina - CCOM</title>
+  <title>Horas de oficina - AcademicConnect</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <script src="https://kit.fontawesome.com/a2d9d6bc50.js" crossorigin="anonymous"></script>
+
+  <style>
+    .hours-container {
+      max-width: 1100px;
+      margin: 40px auto;
+      text-align: center;
+    }
+    .hours-container h2 {
+      font-size: 2rem;
+      margin-bottom: 8px;
+    }
+    .hours-container p {
+      color: #444;
+      margin-bottom: 25px;
+    }
+    .professor-card {
+      background-color: #f0f0f0;
+      border-radius: 20px;
+      padding: 25px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 18px;
+      transition: background 0.2s ease;
+    }
+    .professor-card:hover {
+      background: #eaeaea;
+    }
+    .prof-info {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .prof-info img {
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+    }
+    .prof-details {
+      text-align: left;
+    }
+    .prof-details h3 {
+      font-size: 1.1rem;
+      margin: 0;
+    }
+    .prof-details p {
+      font-size: 0.9rem;
+      margin: 2px 0;
+      color: #555;
+    }
+    .prof-hours {
+      text-align: right;
+      font-size: 0.95rem;
+      line-height: 1.5;
+      color: #333;
+    }
+    .prof-row-link {
+      text-decoration: none;
+      color: inherit;
+    }
+    .prof-row-link:hover {
+      color: #111;
+    }
+  </style>
 </head>
 <body>
 
-  <!-- barra superior (igual que las otras páginas) -->
+  <!-- Barra superior -->
   <header>
     <div class="logo">
       <img src="{{ url_for('static', filename='images/logoAC.png') }}" alt="Logo">
@@ -20,50 +85,39 @@
       </div>
       <a href="{{ url_for('index') }}">Inicio</a>
       <a href="{{ url_for('calendario') }}">Calendario</a>
-      <a href="{{ url_for('horas') }}">Departamentos</a>
+      <a href="{{ url_for('horas') }}" class="active">Departamentos</a>
       <a href="{{ url_for('logout') }}">
         <img src="{{ url_for('static', filename='images/logout.png') }}" alt="Logout" class="logout-icon">
       </a>
     </nav>
   </header>
 
-  <main class="ccom-page">
-    <h1>Horas de oficina</h1>
-    <p class="ccom-subtitle">
-      Para gestionar las horas de oficina de los profesores del departamento de CCOM.
-    </p>
+  <main class="hours-container">
+    <h2>Horas de oficina</h2>
+    <p>Para gestionar las horas de oficina de los profesores del departamento de CCOM.</p>
+    <h3>Lista de profesores</h3>
 
-    <div class="ccom-box">
-      <h2 class="ccom-title">Lista de profesores</h2>
-
-      <div class="ccom-list">
-        {% for prof in profesores %}
-        <div class="ccom-row">
-          <!-- izquierda -->
-          <div class="ccom-left">
-            <img src="{{ url_for('static', filename='images/perfil.png') }}" alt="Foto" class="ccom-avatar">
-            <div class="ccom-info">
-              <p class="ccom-name">{{ prof.nombre }}</p>
-              <p class="ccom-email">{{ prof.email }}</p>
-            </div>
-          </div>
-
-          <!-- derecha -->
-          <div class="ccom-right">
-            {% for h in prof.horarios %}
-              <p class="ccom-hour">{{ h }}</p>
-            {% endfor %}
+    {% for prof in profesores %}
+    <a class="prof-row-link" href="{{ url_for('agendar_cita', email=prof.email) }}">
+      <div class="professor-card">
+        <div class="prof-info">
+          <img src="{{ url_for('static', filename='images/perfil.png') }}" alt="Perfil">
+          <div class="prof-details">
+            <h3>{{ prof.nombre }}</h3>
+            <p>{{ prof.email }}</p>
           </div>
         </div>
-        {% if not loop.last %}
-        <hr class="ccom-divider">
-        {% endif %}
-        {% endfor %}
+        <div class="prof-hours">
+          {% for h in prof.horarios %}
+            <div>{{ h }}</div>
+          {% endfor %}
+        </div>
       </div>
-    </div>
+    </a>
+    {% endfor %}
   </main>
 
-  <!-- footer opcional -->
+  <!-- Pie de página -->
   <footer class="footer">
     <div class="footer-content">
       <div class="footer-logo">
