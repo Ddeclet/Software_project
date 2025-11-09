@@ -246,7 +246,8 @@ def editar_horas(prof_id):
         "editar_horas.html",
         prof=prof,
         horas=horas,
-        terms=TERMS
+        terms=TERMS,
+        prof_id=prof_id
     )
 
 
@@ -291,11 +292,12 @@ def api_update_office_hour():
 @app.route("/agregar-hora/<prof_id>", methods=["GET", "POST"])
 def agregar_hora_oficina(prof_id):
     role = session.get("role")
-    if role not in ["superadmin", "subadmin"]:
+    if role not in ["superadmin", "subadmin", "profesores"]:
         flash("Acceso denegado.", "error")
         return redirect(url_for("login"))
     
     prof = PROFESSOR_NAMES.get(prof_id)
+
     
     if not prof:
         return abort(404)
@@ -306,9 +308,9 @@ def agregar_hora_oficina(prof_id):
         fin = request.form["fin"]
         
         nueva_hora = {
-            "dia": dia,
-            "inicio": inicio,
-            "fin": fin,
+            "day": dia,
+            "start": inicio,
+            "end": fin,
             "term": TERMS[0]
         }
         
@@ -318,8 +320,8 @@ def agregar_hora_oficina(prof_id):
             
         OFFICE_HOURS[prof_id].append(nueva_hora)
         
-        flash(f"Nueva hora agregada para {prof.get('nombre')}.", "success")
-        return redirect(url_for("editar_horas_oficina", prof_id=prof_id))
+        flash(f"Nueva hora agregada para {prof}.", "success")
+        return redirect(url_for("editar_horas", prof_id=prof_id))
     
     # Renderizar el formulario (GET)
     return render_template("agregar_hora_oficina.html", prof=prof, prof_id=prof_id)
@@ -362,8 +364,6 @@ def confirmar_citas():
     ]
 
     return render_template("confirmar_citas.html", profesor=profesor, citas=citas)
-
-
 
 if __name__ == "__main__":
     app.run(debug=True)

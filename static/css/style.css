@@ -73,6 +73,7 @@ nav a:hover {
   overflow: hidden;            /* recorta los bordes de la imagen */
   display:flex; align-items:center; justify-content:center;
   outline: none;
+  margin-right: 30px;
 }
 
 .profile-icon:hover {
@@ -741,6 +742,7 @@ nav .profile-container {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-right: 50px;
 }
 nav .profile-img {
   width: 100%;

@@ -89,7 +89,7 @@
 
   <main class="superadmin-main">
     <div class="form-container">
-        <h2>Agregar Hora de Oficina para {{ prof.nombre }}</h2>
+        <h2>Agregar Hora de Oficina para {{ prof }}</h2>
         
         <form method="POST" action="{{ url_for('agregar_hora_oficina', prof_id=prof_id) }}">
 
@@ -117,7 +117,7 @@
 
             <div class="form-actions">
                 <button type="submit" class="btn-submit">Guardar Hora</button>
-                <a href="{{ url_for('editar_horas_oficina', prof_id=prof_id) }}" class="btn-cancel">Cancelar</a>
+                <a href="{{ url_for('editar_horas', prof_id=prof_id) }}" class="btn-cancel">Cancelar</a>
             </div>
         </form>
     </div>

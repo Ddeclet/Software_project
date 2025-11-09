@@ -50,6 +50,16 @@
   </header>
 
   <main class="editar-cuentas-main">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <div class="flash-messages">
+          {% for category, msg in messages %}
+            <div class="flash {{ category }}">{{ msg }}</div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+
     <h2>Editar horas de oficinas</h2>
     <h3>{{ prof.nombre }}</h3>
 
@@ -94,8 +104,9 @@
     <span class="oh-value" data-role="term">{{ item.term }}</span></div>
 </section>
 {% endfor %}
-
+  <a href="{{ url_for('agregar_hora_oficina', prof_id= prof.email) }}">
     <img src="{{ url_for('static', filename='images/agregar.png') }}" alt="Agregar" class="add-floating">
+  </a>
 
   <!-- MODAL Editar horas -->
     <div id="oh-modal" class="oh-modal hidden" aria-hidden="true">
