@@ -16,6 +16,7 @@
       <h1>AcademicConnect</h1>
     </div>
     <nav>
+      {% if session.role == "user" %}
       <div class="profile-icon">
         <img src="{{ url_for('static', filename='images/perfil.png') }}" alt="Perfil" class="profile-img">
       </div>
@@ -25,6 +26,17 @@
       <a href="{{ url_for('logout') }}">
         <img src="{{ url_for('static', filename='images/logout.png') }}" alt="Logout" class="logout-icon">
       </a>
+      {% else %}
+      <div class="profile-icon">
+        <img src="{{ url_for('static', filename='images/perfil.png') }}" alt="Perfil" class="profile-img">
+      </div>
+      <a href="{{ url_for('superadmin_home') }}">Inicio</a>
+      <a href="{{ url_for('calendario') }}">Calendario</a>
+      <a href="{{ url_for('horas') }}" class="active">Departamentos</a>
+      <a href="{{ url_for('logout') }}">
+        <img src="{{ url_for('static', filename='images/logout.png') }}" alt="Logout" class="logout-icon">
+      </a>
+      {% endif %}
     </nav>
   </header>
 
