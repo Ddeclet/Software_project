@@ -63,7 +63,7 @@
       {% if session.role == "superadmin" %}
         <button class="sync-btn" id="addCalBtn">Añadir calendario</button>
       {% else %}
-        <button class="sync-btn">Sincronizar calendario</button>
+        <a href="static/files/calendario.ics"><button class="sync-btn">Descargar calendario</button></a>
       {% endif %}
 
     </div>

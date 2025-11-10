@@ -1,0 +1,451 @@
+BEGIN:VCALENDAR
+PRODID:-//Gemini//UPR Arecibo Calendario Académico C51//ES
+VERSION:2.0
+CALSCALE:GREGORIAN
+NAME:Calendario UPR Arecibo 2025-2026 (C51)
+X-WR-CALNAME:Calendario UPR Arecibo 2025-2026 (C51)
+DESCRIPTION:Calendario Académico Subgraduado 2025-2026 (C51) de la Universidad de Puerto Rico en Arecibo, enmendado el 21 de octubre de 2025.
+TIMEZONE-ID:America/Puerto_Rico
+X-WR-TIMEZONE:America/Puerto_Rico
+BEGIN:VTIMEZONE
+TZID:America/Puerto_Rico
+BEGIN:STANDARD
+TZOFFSETFROM:-0400
+TZOFFSETTO:-0400
+TZNAME:AST
+DTSTART:19700101T000000
+END:STANDARD
+END:VTIMEZONE
+
+BEGIN:VEVENT
+UID:UPRA-C51-20250804@gemini.google.com
+DTSTAMP:20251110T143727Z
+DTSTART;VALUE=DATE:20250804
+DTEND;VALUE=DATE:20250805
+SUMMARY:Integración Labores Administrativas
+[cite_start]DESCRIPTION:Integración Labores Administrativas. [cite: 35]
+END:VEVENT
+
+BEGIN:VEVENT
+UID:UPRA-C51-20250805-01@gemini.google.com
+DTSTAMP:20251110T143727Z
+DTSTART;VALUE=DATE:20250805
+DTEND;VALUE=DATE:20250808
+SUMMARY:Jornada de Integración Estudiantil (Nuevo Ingreso)
+[cite_start]DESCRIPTION:Jornada de Integración Estudiantil para Estudiantes Nuevo Ingreso. [cite: 35]
+END:VEVENT
+
+BEGIN:VEVENT
+UID:UPRA-C51-20250805-02@gemini.google.com
+DTSTAMP:20251110T143727Z
+DTSTART;VALUE=DATE:20250805
+DTEND;VALUE=DATE:20250809
+SUMMARY:Inicio Proceso Admisión Maestría Psicología
+[cite_start]DESCRIPTION:Inicia el proceso para solicitar Admisión al Programa Graduado de Maestría en Psicología con especialidad en Liderazgo y Gestión Social. [cite: 35]
+END:VEVENT
+
+BEGIN:VEVENT
+UID:UPRA-C51-20250805-03@gemini.google.com
+DTSTAMP:20251110T143727Z
+DTSTART;VALUE=DATE:20250805
+DTEND;VALUE=DATE:20250809
+SUMMARY:Período de confirmación y pago de matrícula presencial
+[cite_start]DESCRIPTION:Período de confirmación y pago de matrícula presencial para los estudiantes que no realizaron el pago durante el proceso de matrícula por internet. [cite: 35]
+END:VEVENT
+
+BEGIN:VEVENT
+UID:UPRA-C51-20250808-01@gemini.google.com
+DTSTAMP:20251110T143727Z
+DTSTART;TZID=America/Puerto_Rico:20250808T000000
+DTEND;TZID=America/Puerto_Rico:20250808T120000
+SUMMARY:Último día Pago de Matrícula (a tiempo)
+[cite_start]DESCRIPTION:Último día de Pago de Matrícula a tiempo hasta las 12:00 pm. [cite: 35]
+END:VEVENT
+
+BEGIN:VEVENT
+UID:UPRA-C51-20250808-02@gemini.google.com
+DTSTAMP:20251110T143727Z
+DTSTART;TZID=America/Puerto_Rico:20250808T120000
+SUMMARY:Cancelación de cursos por falta de pago
+[cite_start]DESCRIPTION:Se cancelan los cursos por falta de pago y confirmación de matrícula a partir de las 12:00m. [cite: 35]
+END:VEVENT
+
+BEGIN:VEVENT
+UID:UPRA-C51-20250811@gemini.google.com
+DTSTAMP:20251110T143727Z
+DTSTART;VALUE=DATE:20250811
+DTEND;VALUE=DATE:20250812
+SUMMARY:Período de ajustes y evaluación de matrícula
+[cite_start]DESCRIPTION:Período de ajustes, evaluación de matrícula y cierre de secciones de ser necesario. [cite: 35]
+END:VEVENT
+
+BEGIN:VEVENT
+UID:UPRA-C51-20250811-02@gemini.google.com
+DTSTAMP:20251110T143727Z
+DTSTART;VALUE=DATE:20250811
+DTEND;VALUE=DATE:20250814
+SUMMARY:Período de Matrícula Tardía (con recargo)
+[cite_start]DESCRIPTION:Período de Matrícula Tardía con recargo. [cite: 35]
+END:VEVENT
+
+BEGIN:VEVENT
+UID:UPRA-C51-20250812@gemini.google.com
+DTSTAMP:20251110T143727Z
+DTSTART;VALUE=DATE:20250812
+DTEND;VALUE=DATE:20250813
+SUMMARY:INICIO DE CLASES
+[cite_start]DESCRIPTION:COMIENZA EL PERIODO LECTIVO y CLASES REGULARES.\nInicia el proceso de Asesoría Académica. [cite: 35]
+END:VEVENT
+
+BEGIN:VEVENT
+UID:UPRA-C51-20250816@gemini.google.com
+DTSTAMP:20251110T143727Z
+DTSTART;VALUE=DATE:20250816
+DTEND;VALUE=DATE:20250817
+SUMMARY:Comienzan las clases sabatinas
+[cite_start]DESCRIPTION:Comienzan las clases sabatinas. [cite: 35]
+END:VEVENT
+
+BEGIN:VEVENT
+UID:UPRA-C51-20250825@gemini.google.com
+DTSTAMP:20251110T143727Z
+DTSTART;VALUE=DATE:20250825
+DTEND;VALUE=DATE:20250826
+SUMMARY:Último día Baja (parcial o total) con reembolso 50%
+[cite_start]DESCRIPTION:Termina el período para darse de Baja parcial o total con derecho a reembolso del 50% del cargo de matrícula por créditos pagados. [cite: 35]
+END:VEVENT
+
+BEGIN:VEVENT
+UID:UPRA-C51-20250826@gemini.google.com
+DTSTAMP:20251110T143727Z
+DTSTART;VALUE=DATE:20250826
+DTEND;VALUE=DATE:20250827
+SUMMARY:Último día Revisión Progreso Académico (ayudas)
+[cite_start]DESCRIPTION:Último día para someter al Decanato de Asuntos Estudiantiles la Revisión de Progreso Académico para fines de ayudas económicas. [cite: 35]
+END:VEVENT
+
+BEGIN:VEVENT
+UID:UPRA-C51-20250901@gemini.google.com
+DTSTAMP:20251110T143727Z
+DTSTART;VALUE=DATE:20250901
+DTEND;VALUE=DATE:20250902
+SUMMARY:Feriado: Día del Trabajo
+[cite_start]DESCRIPTION:Feriado: Día del Trabajo. [cite: 35]
+END:VEVENT
+
+BEGIN:VEVENT
+UID:UPRA-C51-20250915@gemini.google.com
+DTSTAMP:20251110T143727Z
+DTSTART;VALUE=DATE:20250915
+DTEND;VALUE=DATE:20250916
+SUMMARY:Último día para remover Incompletos (Estudiantes)
+[cite_start]DESCRIPTION:Último día para que los estudiantes remuevan Calificaciones Provisionales o Incompletos del Segundo Semestre 2024-2025. [cite: 35]
+END:VEVENT
+
+BEGIN:VEVENT
+UID:UPRA-C51-20250918@gemini.google.com
+DTSTAMP:20251110T143727Z
+DTSTART;VALUE=DATE:20250918
+DTEND;VALUE=DATE:20250919
+SUMMARY:Último día Solicitudes A TIEMPO
+[cite_start]DESCRIPTION:Último día para radicar solicitudes A TIEMPO de:\n- Reclasificación [cite: 37][cite_start]\n- Readmisión [cite: 37][cite_start]\n- Traslados a otras Unidades UPR [cite: 37][cite_start]\n- Permiso Especial (Segundo Semestre 2025-2026 y Verano 2026) [cite: 37][cite_start]\n- Admisión a Segundos Bachilleratos, Segundas Concentraciones, Menores y Certificaciones Profesionales [cite: 37]
+END:VEVENT
+
+BEGIN:VEVENT
+UID:UPRA-C51-20250930-01@gemini.google.com
+DTSTAMP:20251110T143727Z
+DTSTART;VALUE=DATE:20250930
+DTEND;VALUE=DATE:20251001
+SUMMARY:Último día Solicitud de Transferencia (Privadas)
+[cite_start]DESCRIPTION:Último día para radicar en la Oficina de Admisiones la solicitud de Transferencia para el Segundo Semestre 2025-2026 para estudiantes procedentes de universidades privadas. [cite: 37]
+END:VEVENT
+
+BEGIN:VEVENT
+UID:UPRA-C51-20250930-02@gemini.google.com
+DTSTAMP:20251110T143727Z
+DTSTART;VALUE=DATE:20250930
+DTEND;VALUE=DATE:20251001
+SUMMARY:Último día Solicitud Graduación A TIEMPO
+[cite_start]DESCRIPTION:Último día para radicar la solicitud de Graduación A TIEMPO para estudiantes que completan requisitos en:\n- Diciembre 2025 [cite: 37][cite_start]\n- Mayo 2026 y Verano 2026 [cite: 37]
+END:VEVENT
+
+BEGIN:VEVENT
+UID:UPRA-C51-20251008@gemini.google.com
+DTSTAMP:20251110T143727Z
+DTSTART;VALUE=DATE:20251008
+DTEND;VALUE=DATE:20251009
+SUMMARY:Se reúnen clases de lunes
+[cite_start]DESCRIPTION:Se reúnen clases de lunes. [cite: 37]
+END:VEVENT
+
+BEGIN:VEVENT
+UID:UPRA-C51-20251013@gemini.google.com
+DTSTAMP:20251110T143727Z
+DTSTART;VALUE=DATE:20251013
+DTEND;VALUE=DATE:20251014
+SUMMARY:Feriado: Día de la Raza
+[cite_start]DESCRIPTION:Feriado: Día de la Raza. [cite: 37]
+END:VEVENT
+
+BEGIN:VEVENT
+UID:UPRA-C51-20251014-01@gemini.google.com
+DTSTAMP:20251110T143727Z
+DTSTART;VALUE=DATE:20251014
+DTEND;VALUE=DATE:20251015
+SUMMARY:Último día Solicitud Revisión de Calificaciones
+[cite_start]DESCRIPTION:Último día para que estudiantes o profesores sometan al Decanato Asociado de Asuntos Académicos la Solicitud de Revisión de Calificaciones (Cambios de Nota). [cite: 37]
+END:VEVENT
+
+BEGIN:VEVENT
+UID:UPRA-C51-20251014-02@gemini.google.com
+DTSTAMP:20251110T143727Z
+DTSTART;VALUE=DATE:20251014
+DTEND;VALUE=DATE:20251015
+SUMMARY:Último día Solicitud Exámenes de Reto
+[cite_start]DESCRIPTION:Último día para someter al Departamento Académico la Solicitud para Exámenes de Reto. [cite: 37]
+END:VEVENT
+
+BEGIN:VEVENT
+UID:UPRA-C51-20251015@gemini.google.com
+DTSTAMP:20251110T143727Z
+DTSTART;VALUE=DATE:20251015
+DTEND;VALUE=DATE:20251016
+SUMMARY:Último día para remover Incompletos (Profesores)
+[cite_start]DESCRIPTION:Último día para que los profesores remuevan notas provisionales (Incompletos) del Segundo Semestre 2024-2025 y Verano 2025. [cite: 37]
+END:VEVENT
+
+BEGIN:VEVENT
+UID:UPRA-C51-20251016@gemini.google.com
+DTSTAMP:20251110T143727Z
+DTSTART;TZID=America/Puerto_Rico:20251016T100000
+DTEND;TZID=America/Puerto_Rico:20251016T143000
+SUMMARY:Receso Académico: Asamblea Estudiantil
+[cite_start]DESCRIPTION:Receso Académico en horario de 10:00-2:30pm- Asamblea Estudiantil. [cite: 37]
+END:VEVENT
+
+BEGIN:VEVENT
+UID:UPRA-C51-20251023@gemini.google.com
+DTSTAMP:20251110T143727Z
+DTSTART;VALUE=DATE:20251023
+DTEND;VALUE=DATE:20251024
+SUMMARY:Último día Solicitudes TARDÍAS
+[cite_start]DESCRIPTION:Último día para radicar solicitudes TARDÍAS de:\n- Reclasificación [cite: 37][cite_start]\n- Traslados a otras Unidades UPR [cite: 37][cite_start]\n- Permiso Especial (Segundo Semestre 2025-2026 y Verano 2026) [cite: 39][cite_start]\n- Admisión a Segundos Bachilleratos, Segundas Concentraciones, Menores y Certificaciones Profesionales [cite: 39][cite_start]\n- Admisión al Programa Graduado (Maestría en Psicología) [cite: 39]
+END:VEVENT
+
+BEGIN:VEVENT
+UID:UPRA-C51-20251028-01-ENMENDADO@gemini.google.com
+DTSTAMP:20251110T143727Z
+DTSTART;TZID=America/Puerto_Rico:20251028T080000
+DTEND;TZID=America/Puerto_Rico:20251028T143000
+SUMMARY:Receso Académico: Reunión Ordinaria de Claustro
+DESCRIPTION:Receso Académico hasta las 2:30pm: Reunión Ordinaria de Claustro. (Según enmendado Cert. 2024-2025-39) [cite_start][cite: 5]
+END:VEVENT
+
+BEGIN:VEVENT
+UID:UPRA-C51-20251028-02-ENMENDADO@gemini.google.com
+DTSTAMP:20251110T143727Z
+DTSTART;TZID=America/Puerto_Rico:20251028T143000
+DTEND;TZID=America/Puerto_Rico:20251028T173000
+SUMMARY:Reposición Clases (Jueves, 16 oct)
+DESCRIPTION:En horario de 2:30pm a 5:30pm se reponen clases del jueves, 16 de octubre de 2025 (afectadas por Asamblea Estudiantil). (Clases de jueves). (Según enmendado Cert. 2024-2025-39) [cite_start][cite: 5]
+END:VEVENT
+
+BEGIN:VEVENT
+UID:UPRA-C51-20251028-03-ENMENDADO@gemini.google.com
+DTSTAMP:20251110T143727Z
+DTSTART;TZID=America/Puerto_Rico:20251028T173000
+DTEND;TZID=America/Puerto_Rico:20251028T205000
+SUMMARY:Reposición Clases (Lunes, 6 oct)
+DESCRIPTION:En horario de 5:30 a 8:50pm se reponen clases del lunes, 6 de octubre de 2025 (afectadas por suspensión de energía eléctrica). (Clases de lunes). (Según enmendado Cert. 2024-2025-39) [cite_start][cite: 5]
+END:VEVENT
+
+BEGIN:VEVENT
+UID:UPRA-C51-20251029@gemini.google.com
+DTSTAMP:20251110T143727Z
+DTSTART;VALUE=DATE:20251029
+DTEND;VALUE=DATE:20251113
+SUMMARY:Período de Matrícula por Internet
+[cite_start]DESCRIPTION:Período de Matrícula por Internet. [cite: 39]
+END:VEVENT
+
+BEGIN:VEVENT
+UID:UPRA-C51-20251111@gemini.google.com
+DTSTAMP:20251110T143727Z
+DTSTART;VALUE=DATE:20251111
+DTEND;VALUE=DATE:20251112
+SUMMARY:Feriado: Día del Veterano
+[cite_start]DESCRIPTION:Feriado: Día del Veterano. [cite: 39]
+END:VEVENT
+
+BEGIN:VEVENT
+UID:UPRA-C51-20251118@gemini.google.com
+DTSTAMP:20251110T143727Z
+DTSTART;VALUE=DATE:20251118
+DTEND;VALUE=DATE:20251119
+SUMMARY:Último día Solicitud Graduación TARDÍA
+[cite_start]DESCRIPTION:Último día para radicar la solicitud de Graduación TARDÍA para estudiantes que completan requisitos en:\n- Diciembre 2025 [cite: 39][cite_start]\n- Mayo 2026 y Verano 2026 [cite: 39]
+END:VEVENT
+
+BEGIN:VEVENT
+UID:UPRA-C51-20251119@gemini.google.com
+DTSTAMP:20251110T143727Z
+DTSTART;VALUE=DATE:20251119
+DTEND;VALUE=DATE:20251120
+SUMMARY:Feriado: Día de la Puertorriqueñidad
+[cite_start]DESCRIPTION:Feriado: Día de la Puertorriqueñidad y el Descubrimiento de PR. [cite: 39]
+END:VEVENT
+
+BEGIN:VEVENT
+UID:UPRA-C51-20251120-01@gemini.google.com
+DTSTAMP:20251110T143727Z
+DTSTART;VALUE=DATE:20251120
+DTEND;VALUE=DATE:20251121
+SUMMARY:Último día de clases de jueves
+[cite_start]DESCRIPTION:Último día de clases de jueves. [cite: 39]
+END:VEVENT
+
+BEGIN:VEVENT
+UID:UPRA-C51-20251120-02@gemini.google.com
+DTSTAMP:20251110T143727Z
+DTSTART;VALUE=DATE:20251120
+DTEND;VALUE=DATE:20251121
+SUMMARY:Último día para someter Bajas Parciales
+[cite_start]DESCRIPTION:Último día para someter Bajas Parciales. [cite: 39]
+END:VEVENT
+
+BEGIN:VEVENT
+UID:UPRA-C51-20251121@gemini.google.com
+DTSTAMP:20251110T143727Z
+DTSTART;VALUE=DATE:20251121
+DTEND;VALUE=DATE:20251122
+SUMMARY:Último día clases de viernes
+[cite_start]DESCRIPTION:Último día clases de viernes. [cite: 39]
+END:VEVENT
+
+BEGIN:VEVENT
+UID:UPRA-C51-20251122@gemini.google.com
+DTSTAMP:20251110T143727Z
+DTSTART;VALUE=DATE:20251122
+DTEND;VALUE=DATE:20251123
+SUMMARY:Último día de clases de sábado
+[cite_start]DESCRIPTION:Último día de clases de sábado. [cite: 39]
+END:VEVENT
+
+BEGIN:VEVENT
+UID:UPRA-C51-20251127@gemini.google.com
+DTSTAMP:20251110T143727Z
+DTSTART;VALUE=DATE:20251127
+DTEND;VALUE=DATE:20251128
+SUMMARY:Feriado: Acción de Gracias
+[cite_start]DESCRIPTION:Feriado: Acción de Gracias. [cite: 39]
+END:VEVENT
+
+BEGIN:VEVENT
+UID:UPRA-C51-20251128@gemini.google.com
+DTSTAMP:20251110T143727Z
+DTSTART;VALUE=DATE:20251128
+DTEND;VALUE=DATE:20251130
+SUMMARY:Receso Académico y Administrativo
+[cite_start]DESCRIPTION:Receso Académico y Administrativo. [cite: 39]
+END:VEVENT
+
+BEGIN:VEVENT
+UID:UPRA-C51-20251201@gemini.google.com
+DTSTAMP:20251110T143727Z
+DTSTART;VALUE=DATE:20251201
+DTEND;VALUE=DATE:20251202
+SUMMARY:Último día clases de lunes
+[cite_start]DESCRIPTION:Último día clases de lunes. [cite: 39]
+END:VEVENT
+
+BEGIN:VEVENT
+UID:UPRA-C51-20251202@gemini.google.com
+DTSTAMP:20251110T143727Z
+DTSTART;VALUE=DATE:20251202
+DTEND;VALUE=DATE:20251203
+SUMMARY:Último día clases de martes
+[cite_start]DESCRIPTION:Último día clases de martes. [cite: 39]
+END:VEVENT
+
+BEGIN:VEVENT
+UID:UPRA-C51-20251203-01@gemini.google.com
+DTSTAMP:20251110T143727Z
+DTSTART;VALUE=DATE:20251203
+DTEND;VALUE=DATE:20251204
+SUMMARY:Último día clases de miércoles
+[cite_start]DESCRIPTION:Último día clases de miércoles. [cite: 41]
+END:VEVENT
+
+BEGIN:VEVENT
+UID:UPRA-C51-20251203-02@gemini.google.com
+DTSTAMP:20251110T143727Z
+DTSTART;TZID=America/Puerto_Rico:20251203T000000
+DTEND;TZID=America/Puerto_Rico:20251203T150000
+SUMMARY:Último día de Bajas Totales
+[cite_start]DESCRIPTION:Último día de Bajas Totales hasta las 3:00 pm. [cite: 41]
+END:VEVENT
+
+BEGIN:VEVENT
+UID:UPRA-C51-20251203-03@gemini.google.com
+DTSTAMP:20251110T143727Z
+DTSTART;VALUE=DATE:20251203
+DTEND;VALUE=DATE:20251204
+SUMMARY:Último día Readmisión Tardía
+[cite_start]DESCRIPTION:Último día para radicar la solicitud de Readmisión Tardía. [cite: 41]
+END:VEVENT
+
+BEGIN:VEVENT
+UID:UPRA-C51-20251203-04@gemini.google.com
+DTSTAMP:20251110T143727Z
+DTSTART;VALUE=DATE:20251203
+DTEND;VALUE=DATE:20251204
+SUMMARY:Último día Transferencia Tardía (Privadas)
+[cite_start]DESCRIPTION:Último día para radicar, en la Oficina de Admisiones la solicitud de Transferencia Tardía para el Segundo Semestre 2025-2026 para estudiantes procedentes de universidades privadas. [cite: 41]
+END:VEVENT
+
+BEGIN:VEVENT
+UID:UPRA-C51-20251204@gemini.google.com
+DTSTAMP:20251110T143727Z
+DTSTART;VALUE=DATE:20251204
+DTEND;VALUE=DATE:20251205
+SUMMARY:Día de repaso
+DESCRIPTION:Día de repaso. [cite_start]No se podrán administrar exámenes finales, parciales o ninguna otra tarea académica durante este día. [cite: 41]
+END:VEVENT
+
+BEGIN:VEVENT
+UID:UPRA-C51-20251205@gemini.google.com
+DTSTAMP:20251110T143727Z
+DTSTART;VALUE=DATE:20251205
+DTEND;VALUE=DATE:20251207
+SUMMARY:Período de exámenes finales (1/2)
+[cite_start]DESCRIPTION:Período de exámenes finales regulares y exámenes de reto (5 y 6 de diciembre). [cite: 41]
+END:VEVENT
+
+BEGIN:VEVENT
+UID:UPRA-C51-20251208@gemini.google.com
+DTSTAMP:20251110T143727Z
+DTSTART;VALUE=DATE:20251208
+DTEND;VALUE=DATE:20251210
+SUMMARY:Período de exámenes finales (2/2)
+[cite_start]DESCRIPTION:Período de exámenes finales regulares y exámenes de reto (8 y 9 de diciembre). [cite: 41]
+END:VEVENT
+
+BEGIN:VEVENT
+UID:UPRA-C51-20251211-01@gemini.google.com
+DTSTAMP:20251110T143727Z
+DTSTART;TZID=America/Puerto_Rico:20251211T000000
+DTEND;TZID=America/Puerto_Rico:20251211T120000
+SUMMARY:Entrega de calificaciones finales
+[cite_start]DESCRIPTION:Termina el período para rendir los informes de calificaciones finales antes de las 12:00pm. [cite: 41]
+END:VEVENT
+
+BEGIN:VEVENT
+UID:UPRA-C51-20251211-02@gemini.google.com
+DTSTAMP:20251110T143727Z
+DTSTART;VALUE=DATE:20251211
+DTEND;VALUE=DATE:20251212
+SUMMARY:FIN DEL PERÍODO LECTIVO
+[cite_start]DESCRIPTION:Termina el período lectivo. [cite: 41]
+END:VEVENT
+
+END:VCALENDAR
