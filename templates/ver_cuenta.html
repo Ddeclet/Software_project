@@ -36,17 +36,28 @@
 
     <form class="perfil-form">
       <label>Nombre</label>
-      <input type="text" value="Juan" readonly>
+      <input type="text" value="{{ nombre }}" readonly>
 
-      <label>Apellidos</label>
-      <input type="text" value="Del Pueblo" readonly>
+      <label>Primer apellido</label>
+      <input type="text" value="{{ apellido1 }}" readonly>
+
+      <label>Segundo apellido</label>
+      <input type="text" value="{{ apellido2 }}" readonly>
 
       <label>Email</label>
-      <input type="email" value="juan.delpueblo@upr.edu" readonly>
-
-      <a  href="{{ url_for('index') }}" class="home-btn">Volver a Pagina Principal</a>
-
+      <input type="email" value="{{ email }}" readonly>
+      
+      {% if session.role == "user" %}      
+        <a href="{{ url_for('index') }}" class="home-btn">Volver a Página Principal</a>
+      {% elif session.role == "profesores" %}
+        <a href="{{ url_for('profesores_home') }}" class="home-btn">Volver a Página Principal</a>
+      {% elif session.role == "superadmin" %}
+        <a href="{{ url_for('superadmin_home') }}" class="home-btn">Volver a Página Principal</a>
+      {% else %}
+        <a href="{{ url_for('subadmin_home') }}" class="home-btn">Volver a Página Principal</a>
+      {% endif %}
     </form>
+
   </main>
 
   <!-- Pie -->

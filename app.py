@@ -390,7 +390,47 @@ def confirmar_citas():
 
 @app.route('/ver_cuenta')
 def ver_cuenta():
-    return render_template("ver_cuenta.html")
+    email = session.get("email")
+
+    if not email:
+        flash("Debes iniciar sesión.", "error")
+        return redirect(url_for("login"))
+
+    # Obtener role y password
+    user_data = USERS.get(email)
+
+    if not user_data:
+        abort(404)
+
+    # Ver si el usuario es profesor y tiene nombre completo en el diccionario
+    nombre_completo = PROFESSOR_NAMES.get(email)
+
+    nombre = ""
+    apellido1 = ""
+    apellido2 = ""
+
+    if nombre_completo:
+        partes = nombre_completo.split()
+        if len(partes) == 3:
+            nombre = partes[0]
+            apellido1 = partes[1]
+            apellido2 = partes[2]
+
+    if email == "juan.delpueblo@upr.edu":
+        nombre = "Juan"
+        apellido1 = "Del Pueblo"
+        apellido2 = ""
+
+    return render_template(
+        "ver_cuenta.html",
+        email=email,
+        nombre=nombre,
+        apellido1=apellido1,
+        apellido2=apellido2,
+        role=user_data["role"]
+    )
+
+
 
 if __name__ == "__main__":
     app.run(debug=True)
