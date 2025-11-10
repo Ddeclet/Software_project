@@ -7,6 +7,17 @@ body {
   background-color: #fff;
   color: #222;
 }
+
+.letter-border {
+  text-shadow: 
+    -.5px -.5px 0 #000, 
+     .5px -.5px 0 #000,  
+    -.5px  .5px 0 #000,  
+     .5px  .5px 0 #000;
+     font-size: 25px; 
+     font-weight:bolder; 
+     color: #e8be3f;
+}
  
 /* ====== BARRA SUPERIOR ====== */
 header {
