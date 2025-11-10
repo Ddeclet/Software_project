@@ -17,7 +17,7 @@
     <nav>
       {% if session.role == "superadmin" %}
 					<div class="profile-icon">
-						<img src="{{ url_for('static', filename='images/perfil.png') }}" alt="Perfil" class="profile-img">
+                        <a href="{{ url_for('ver_cuenta') }}"><img src="{{ url_for('static', filename='images/perfil.png') }}" alt="Perfil" class="profile-img"></a>
 					</div>
           <a href="{{ url_for('superadmin_home') }}" class="nav-link">Inicio</a>
           <a href="{{ url_for('calendario') }}" class="nav-link">Calendario</a>
@@ -28,7 +28,7 @@
         
         {% elif session.role == "subadmin" %}
         <div class="profile-icon">
-						<img src="{{ url_for('static', filename='images/perfil.png') }}" alt="Perfil" class="profile-img">
+                        <a href="{{ url_for('ver_cuenta') }}"><img src="{{ url_for('static', filename='images/perfil.png') }}" alt="Perfil" class="profile-img"></a>
 					</div>
           <a href="{{ url_for('subadmin_home') }}" class="nav-link">Inicio</a>
           <!-- <a href="{{ url_for('calendario') }}" class="nav-link">Calendario</a> -->
@@ -38,7 +38,7 @@
 
 				{% else %}
 					<div class="profile-icon">
-						<img src="{{ url_for('static', filename='images/perfil.png') }}" alt="Perfil" class="profile-img">
+                        <a href="{{ url_for('ver_cuenta') }}"><img src="{{ url_for('static', filename='images/perfil.png') }}" alt="Perfil" class="profile-img"></a>
 					</div>
           <a href="{{ url_for('profesores_home') }}" class="nav-link">Inicio</a>
           <a href="{{ url_for('calendario') }}" class="nav-link">Calendario</a>

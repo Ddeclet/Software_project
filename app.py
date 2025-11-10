@@ -388,6 +388,10 @@ def confirmar_citas():
 
     return render_template("confirmar_citas.html", profesor=profesor, citas=citas)
 
+@app.route('/ver_cuenta')
+def ver_cuenta():
+    return render_template("ver_cuenta.html")
+
 if __name__ == "__main__":
     app.run(debug=True)
 

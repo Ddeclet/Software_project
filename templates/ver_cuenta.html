@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Confirmar Citas - AcademicConnect</title>
+  <title>Perfil - AcademicConnect</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-  <script src="https://kit.fontawesome.com/8b2a1c3c0a.js" crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/a2d9d6bc50.js" crossorigin="anonymous"></script>
 </head>
-<body class="prof_home">
+<body class="prof-home">
 
   <header>
     <div class="logo">
@@ -22,40 +22,34 @@
       <a href="{{ url_for('calendario') }}">Calendario</a>
       <a href="{{ url_for('horas') }}">Horas de oficina</a>-->
       <a href="{{ url_for('logout') }}">
-        <img src="{{ url_for('static', filename='images/logout.png') }}" alt="Logout" class="logout-icon">
+        <img src="{{ url_for('static', filename='images/logout.png') }}" alt="Logo" class="logout-icon">
       </a>
     </nav>
   </header>
 
-  <main class="confirmar-container">
-  <h2>Confirmar citas</h2>
-  <p class="prof-name">Prof. {{ profesor }}</p>
-
-  {% for cita in citas %}
-  <div class="cita-card">
-    <p><strong>Estudiante:</strong><br> {{ cita.estudiante }}</p>
-    <p><strong>Día y hora:</strong><br> {{ cita.dia }}, {{ cita.hora_inicio }} - {{ cita.hora_fin }}</p>
-
-    <div class="opciones">
-      <label>
-        <input type="radio" name="cita{{ cita.id }}" value="confirmar">
-        Confirmar <span class="green-checkmark">&#10003;</span><i class="fa-solid fa-check"></i>
-      </label>
-      <label>
-        <input type="radio" name="cita{{ cita.id }}" value="denegar">
-        Denegar <span class="denegada">&#9940;</span><i class="fa-solid fa-xmark"></i>
-      </label>
+  <!-- Contenido principal -->
+  <main class="perfil-container">
+    <div class="perfil-header">
+      <img src="{{ url_for('static', filename='images/perfil.png') }}" alt="Perfil" class="profile-icon" style="height: 25%; width: 25%;">
+      <h2>Perfil</h2>
     </div>
-  </div>
-  {% endfor %}
 
-  <a class="quick-btn" id="guardar" href="{{ url_for('profesores_home') }}">
-      <span>Guardar</span>
-  </a>
-</main>
+    <form class="perfil-form">
+      <label>Nombre</label>
+      <input type="text" value="Juan" readonly>
 
+      <label>Apellidos</label>
+      <input type="text" value="Del Pueblo" readonly>
 
-  <!-- Pie de página -->
+      <label>Email</label>
+      <input type="email" value="juan.delpueblo@upr.edu" readonly>
+
+      <a  href="{{ url_for('index') }}" class="home-btn">Volver a Pagina Principal</a>
+
+    </form>
+  </main>
+
+  <!-- Pie -->
   <footer class="footer">
     <div class="footer-content">
       <div class="footer-logo">
@@ -67,6 +61,7 @@
       </div>
     </div>
   </footer>
+
 
 </body>
 </html>

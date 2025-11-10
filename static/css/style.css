@@ -1895,8 +1895,71 @@ footer {
   color: #000 !important;     
 }
 
+/* ===== Página de Perfil ===== */
+.perfil-container {
+  background: #f4f4f4;
+  max-width: 600px;
+  margin: 60px auto;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
 
+.perfil-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 25px;
+}
 
+.perfil-icon {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: #ddd;
+}
+
+.perfil-form label {
+  display: block;
+  margin: 10px 0 5px;
+  font-weight: bold;
+  color: #333;
+}
+
+.perfil-form input {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  background: #f1b92e;
+  color: #111;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.perfil-form input[readonly] {
+  cursor: default;
+}
+
+.home-btn {
+  display: block;
+  margin: 30px auto 0;
+  background: #f1b92e;
+  color: #000;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 25px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+  text-align: center;
+    width: 50%;
+}
+
+.home-btn:hover {
+  background: #e0aa22;
+}
 
 
 

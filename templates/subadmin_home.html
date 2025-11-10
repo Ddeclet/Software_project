@@ -17,7 +17,7 @@
 
     <nav>
       <div class="profile-container">
-        <img src="{{ url_for('static', filename='images/perfil.png') }}" alt="Perfil" class="profile-img">
+          <a href="{{ url_for('ver_cuenta') }}"><img src="{{ url_for('static', filename='images/perfil.png') }}" alt="Perfil" class="profile-img"></a>
       </div>
 
       <a href="{{ url_for('logout') }}">
