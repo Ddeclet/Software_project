@@ -34,7 +34,7 @@
   {% for cita in citas %}
   <div class="cita-card">
     <p><strong>Estudiante:</strong><br> {{ cita.estudiante }}</p>
-    <p><strong>Día y hora:</strong><br> {{ cita.dia }}, {{ cita.hora_inicio }} - {{ cita.hora_fin }}</p>
+    <p><strong>Día y hora:</strong><br> {{ cita.dia }}, {{cita.fecha}} <br> {{ cita.hora_inicio }} - {{ cita.hora_fin }}</p>
 
     <div class="opciones">
       <label>

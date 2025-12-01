@@ -128,7 +128,18 @@ def profesores_home():
         flash("Acceso denegado. Inicia sesión como profesores.", "error")
         return redirect(url_for("login"))
 
-    return render_template("profesores_home.html", prof_id="luis.colon19@upr.edu")
+    prof_id = "luis.colon19@upr.edu"
+    profesores = []
+    horas_brutas = OFFICE_HOURS.get(prof_id, [])
+
+    horarios = []
+    for h in horas_brutas:
+        horarios.append(f"{h['day']} {h['start']} - {h['end']}")
+
+    profesores.append({
+        "horarios": horarios
+    })
+    return render_template("profesores_home.html", prof_id= prof_id, profesores=profesores)
 
 @app.route("/inicio")
 def index():
@@ -375,14 +386,17 @@ def confirmar_citas():
             "estudiante": "Sebastian Soto Delgado",
             "dia": "Martes",
             "hora_inicio": "10:30",
-            "hora_fin": "11:00"
+            "hora_fin": "11:00",
+            "fecha": "3 / noviembre"
         },
         {
             "id": 2,
             "estudiante": "Dereck Declet",
             "dia": "Jueves",
             "hora_inicio": "11:30",
-            "hora_fin": "12:00"
+            "hora_fin": "12:00",
+            "fecha": "5 / noviembre"
+
         }
     ]
 

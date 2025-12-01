@@ -73,7 +73,20 @@
         </div>
       </a>
 
-      <!-- Horas de oficina -->
+      <!-- Horas de oficina del profesor -->
+      <a href="{{ url_for('editar_horas', prof_id=prof_id) }}" class="card-link">
+        <div class="card">
+          <img src="{{ url_for('static', filename='images/EditarHorasOficina.png') }}" width="70" height="70" alt="editarHorasOficina">
+          <h3>Horas de Oficina</h3>
+          {% for prof in profesores %}
+            {% for h in  prof.horarios%}
+              <div><h4>{{ h }}</h4></div>
+            {% endfor %}
+          {% endfor %}
+        </div>
+      </a>
+
+      <!-- Reuniones pendientes  -->
       <a href="{{ url_for('confirmar_citas') }}" class="card-link">
         <div class="card">
           <img src="{{ url_for('static', filename='images/Cuenta.png') }}" alt="Horas de oficina" class="card-img">
