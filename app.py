@@ -15,38 +15,39 @@ PROFESSOR_NAMES = {
 
 # Term activo
 TERMS = ["C51"]
+SEMESTRE = ["Primer Semestre 25-26"]
 
 
 # Horas de oficina
 OFFICE_HOURS = {
     "luis.colon19@upr.edu": [
-        {"day": "Lunes", "start": "11:30 AM", "end": "12:30 PM", "term": "C51"},
-        {"day": "Lunes", "start": "2:30 PM",  "end": "3:00 PM",  "term": "C51"},
-        {"day": "Miércoles", "start": "11:30 AM", "end": "12:30 PM", "term": "C51"},
-        {"day": "Miércoles", "start": "2:30 PM",  "end": "3:00 PM",  "term": "C51"},
+        {"day": "Lunes", "start": "11:30 AM", "end": "12:30 PM", "term": "C51", "semestre": "Primer Semestre 25-26"},
+        {"day": "Lunes", "start": "2:30 PM",  "end": "3:00 PM",  "term": "C51", "semestre": "Primer Semestre 25-26"},
+        {"day": "Miércoles", "start": "11:30 AM", "end": "12:30 PM", "term": "C51", "semestre": "Primer Semestre 25-26"},
+        {"day": "Miércoles", "start": "2:30 PM",  "end": "3:00 PM",  "term": "C51", "semestre": "Primer Semestre 25-26"},
     ],
     "eliana.valenzuela@upr.edu": [
-        {"day": "Lunes", "start": "8:00 AM", "end": "10:00 AM", "term": "C51"},
-        {"day": "Miércoles", "start": "8:00 AM", "end": "10:00 AM", "term": "C51"},
-        {"day": "Viernes", "start": "8:00 AM", "end": "10:00 AM", "term": "C51"},
+        {"day": "Lunes", "start": "8:00 AM", "end": "10:00 AM", "term": "C51", "semestre": "Primer Semestre 25-26"},
+        {"day": "Miércoles", "start": "8:00 AM", "end": "10:00 AM", "term": "C51", "semestre": "Primer Semestre 25-26"},
+        {"day": "Viernes", "start": "8:00 AM", "end": "10:00 AM", "term": "C51", "semestre": "Primer Semestre 25-26"},
     ],
     "juano.lopez@upr.edu": [
-        {"day": "Lunes", "start": "8:00 AM", "end": "10:30 AM", "term": "C51"},
-        {"day": "Miércoles", "start": "8:00 AM", "end": "10:30 AM", "term": "C51"},
-        {"day": "Martes", "start": "8:00 AM", "end": "8:30 AM", "term": "C51"},
-        {"day": "Jueves", "start": "8:00 AM", "end": "8:30 AM", "term": "C51"},
+        {"day": "Lunes", "start": "8:00 AM", "end": "10:30 AM", "term": "C51", "semestre": "Primer Semestre 25-26"},
+        {"day": "Miércoles", "start": "8:00 AM", "end": "10:30 AM", "term": "C51", "semestre": "Primer Semestre 25-26"},
+        {"day": "Martes", "start": "8:00 AM", "end": "8:30 AM", "term": "C51", "semestre": "Primer Semestre 25-26"},
+        {"day": "Jueves", "start": "8:00 AM", "end": "8:30 AM", "term": "C51", "semestre": "Primer Semestre 25-26"},
     ],
     "aixa.ramirez@upr.edu": [
-        {"day": "Martes", "start": "1:45 PM", "end": "4:30 PM", "term": "C51"},
-        {"day": "Jueves", "start": "1:45 PM", "end": "4:30 PM", "term": "C51"},
+        {"day": "Martes", "start": "1:45 PM", "end": "4:30 PM", "term": "C51", "semestre": "Primer Semestre 25-26"},
+        {"day": "Jueves", "start": "1:45 PM", "end": "4:30 PM", "term": "C51", "semestre": "Primer Semestre 25-26"},
     ],
     "emilio.perez@upr.edu": [
-        {"day": "Martes", "start": "7:00 AM", "end": "8:00 AM", "term": "C51"},
-        {"day": "Martes", "start": "10:00 AM", "end": "10:30 AM", "term": "C51"},
-        {"day": "Martes", "start": "4:00 PM", "end": "5:30 PM", "term": "C51"},
-        {"day": "Jueves", "start": "7:00 AM", "end": "8:00 AM", "term": "C51"},
-        {"day": "Jueves", "start": "10:00 AM", "end": "10:30 AM", "term": "C51"},
-        {"day": "Jueves", "start": "4:00 PM", "end": "5:30 PM", "term": "C51"},
+        {"day": "Martes", "start": "7:00 AM", "end": "8:00 AM", "term": "C51", "semestre": "Primer Semestre 25-26"},
+        {"day": "Martes", "start": "10:00 AM", "end": "10:30 AM", "term": "C51", "semestre": "Primer Semestre 25-26"},
+        {"day": "Martes", "start": "4:00 PM", "end": "5:30 PM", "term": "C51", "semestre": "Primer Semestre 25-26"},
+        {"day": "Jueves", "start": "7:00 AM", "end": "8:00 AM", "term": "C51", "semestre": "Primer Semestre 25-26"},
+        {"day": "Jueves", "start": "10:00 AM", "end": "10:30 AM", "term": "C51", "semestre": "Primer Semestre 25-26"},
+        {"day": "Jueves", "start": "4:00 PM", "end": "5:30 PM", "term": "C51", "semestre": "Primer Semestre 25-26"},
     ],
 }
 
@@ -249,14 +250,15 @@ def editar_horas(prof_id):
     }
 
     horas = [
-        {"dia": h["day"], "inicio": h["start"], "fin": h["end"], "term": h["term"]}
+        {"dia": h["day"], "inicio": h["start"], "fin": h["end"], "term": h["term"], "semestre" : h["semestre"]}
         for h in OFFICE_HOURS[prof_id]
     ]
-
+    print(horas)
     return render_template(
         "editar_horas.html",
         prof=prof,
         horas=horas,
+        semestre = SEMESTRE,
         terms=TERMS,
         prof_id=prof_id
     )
@@ -270,6 +272,7 @@ def api_update_office_hour():
     day   = data.get("day")
     start = data.get("start")
     end_  = data.get("end")
+    semestre  = data.get("semestre")
     term  = data.get("term")
 
     if not (email in OFFICE_HOURS and isinstance(index, int)):
@@ -289,12 +292,14 @@ def api_update_office_hour():
         return jsonify({"ok": False, "error": "Día inválido"}), 400
     if not _valid_time(start) or not _valid_time(end_):
         return jsonify({"ok": False, "error": "Hora inválida"}), 400
+    if semestre not in SEMESTRE:
+        return jsonify({"ok": False, "error": "Semestre inválido"}), 400
     if term not in TERMS:
         return jsonify({"ok": False, "error": "Term inválido"}), 400
 
     hours = OFFICE_HOURS[email]
     if 0 <= index < len(hours):
-        hours[index] = {"day": day, "start": start, "end": end_, "term": term}
+        hours[index] = {"day": day, "start": start, "end": end_, "semestre": semestre, "term": term}
     else:
         return jsonify({"ok": False, "error": "Índice fuera de rango"}), 400
 
@@ -351,7 +356,8 @@ def agregar_hora_oficina(prof_id):
             "day": dia,
             "start": inicio,
             "end": fin,
-            "term": TERMS[0]
+            "term": TERMS[0],
+            "semestre": SEMESTRE[0]
         }
 
         OFFICE_HOURS.setdefault(prof_id, []).append(nueva_hora)
@@ -373,7 +379,7 @@ def api_delete_office_hour():
     if 0 <= index < len(hours):
         hours.pop(index)
         return jsonify({"ok": True})
-
+        
     return jsonify({"ok": False, "error": "Índice fuera de rango"}), 400
 
 @app.route('/confirmar_citas')

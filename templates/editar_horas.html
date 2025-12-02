@@ -93,9 +93,11 @@
         data-day="{{ item.dia }}"
         data-start="{{ item.inicio }}"
         data-end="{{ item.fin }}"
+        data-semestre="{{ item.semestre }}"
         data-term="{{ item.term }}"
         data-email="{{ prof.email }}"
       >
+      
       <!-- ELIMINAR (visual) -->
       <img
         src="{{ url_for('static', filename='images/eliminar.png') }}"
@@ -115,6 +117,9 @@
 
   <div class="oh-row"><span class="oh-label">Hora final:</span>
     <span class="oh-value" data-role="end">{{ item.fin }}</span></div>
+
+  <div class="oh-row"><span class="oh-label">Semestre:</span>
+    <span class="oh-value" data-role="semestre">{{ item.semestre }}</span></div>
 
   <div class="oh-row"><span class="oh-label">Term:</span>
     <span class="oh-value" data-role="term">{{ item.term }}</span></div>
@@ -166,6 +171,16 @@
           </div>
 
           <div class="oh-field">
+            <label>Semestre</label>
+            <select id="oh-semestre">
+              {% for s in semestre %}
+              <option value="{{ s }}">{{ s }}</option>
+              {% endfor %}
+            </select>
+          </div>
+
+
+          <div class="oh-field">
             <label>Term</label>
             <select id="oh-term">
               {% for t in terms %}
@@ -196,7 +211,7 @@
     </div>
   </footer>
 
-  <script>
+<script>
 // Utilidades
 function parseTime(str) {
   const [hm, ap] = str.trim().split(" ");
@@ -216,8 +231,13 @@ const saveBtn = document.getElementById('oh-save');
 const cancelBtn = document.getElementById('oh-cancel');
 
 const daySel = document.getElementById('oh-day');
-const sh = document.getElementById('oh-sh'), sm = document.getElementById('oh-sm'), sa = document.getElementById('oh-sa');
-const eh = document.getElementById('oh-eh'), em = document.getElementById('oh-em'), ea = document.getElementById('oh-ea');
+const sh  = document.getElementById('oh-sh');
+const sm  = document.getElementById('oh-sm');
+const sa  = document.getElementById('oh-sa');
+const eh  = document.getElementById('oh-eh');
+const em  = document.getElementById('oh-em');
+const ea  = document.getElementById('oh-ea');
+const semestreSel = document.getElementById('oh-semestre');
 const termSel = document.getElementById('oh-term');
 
 // Abrir modal con datos
@@ -232,12 +252,15 @@ document.querySelectorAll('.oh-action.edit').forEach(btn => {
     sh.value = s.h; sm.value = s.m; sa.value = s.a;
     eh.value = e.h; em.value = e.m; ea.value = e.a;
     termSel.value = btn.dataset.term;
+    semestreSel.value = btn.dataset.semestre;
 
+    // Guardar estado original para detectar cambios
     original = {
       day: daySel.value,
       start: buildTime(sh.value, sm.value, sa.value),
       end: buildTime(eh.value, em.value, ea.value),
-      term: termSel.value
+      term: termSel.value,
+      semestre: semestreSel.value
     };
 
     saveBtn.disabled = true;
@@ -253,19 +276,22 @@ cancelBtn.addEventListener('click', () => {
 });
 
 // Habilitar guardar solo si hay cambios
-[daySel, sh, sm, sa, eh, em, ea, termSel].forEach(el=>{
+[
+  daySel, sh, sm, sa, eh, em, ea, termSel, semestreSel 
+].forEach(el => {
   el.addEventListener('change', () => {
     const now = {
       day: daySel.value,
       start: buildTime(sh.value, sm.value, sa.value),
       end: buildTime(eh.value, em.value, ea.value),
-      term: termSel.value
+      term: termSel.value,
+      semestre: semestreSel.value   
     };
     saveBtn.disabled = JSON.stringify(now) === JSON.stringify(original);
   });
 });
 
-// Validación simple (hora <=12, minuto <=59 ya lo garantizan los selects)
+// Validación simple
 function validHour(h){ const n = parseInt(h,10); return n>=1 && n<=12; }
 function validMin(m){ const n = parseInt(m,10); return n>=0 && n<=59; }
 
@@ -285,7 +311,8 @@ document.getElementById('oh-form').addEventListener('submit', async (e)=>{
     day: daySel.value,
     start: buildTime(sh.value, sm.value, sa.value),
     end: buildTime(eh.value, em.value, ea.value),
-    term: termSel.value
+    term: termSel.value,
+    semestre: semestreSel.value 
   };
 
   const res = await fetch("{{ url_for('api_update_office_hour') }}", {
@@ -293,39 +320,43 @@ document.getElementById('oh-form').addEventListener('submit', async (e)=>{
     headers: {"Content-Type":"application/json"},
     body: JSON.stringify(payload)
   });
+
   const data = await res.json();
   if (!data.ok) {
     alert("No se pudo guardar: " + (data.error || "error"));
     return;
   }
 
-  // Refresca la tarjeta en pantalla (texto) sin recargar, si quieres:
-  // Busca el botón que abrió el modal:
+  // Refrescar la tarjeta en pantalla
   const opener = document.querySelector(`.oh-action.edit[data-email="${payload.email}"][data-index="${payload.index}"]`);
   if (opener) {
-    opener.dataset.day   = payload.day;
-    opener.dataset.start = payload.start;
-    opener.dataset.end   = payload.end;
-    opener.dataset.term  = payload.term;
+    opener.dataset.day     = payload.day;
+    opener.dataset.start   = payload.start;
+    opener.dataset.end     = payload.end;
+    opener.dataset.term    = payload.term;
+    opener.dataset.semestre = payload.semestre;  
 
-    // Actualiza textos visibles
     const card = opener.closest('.oh-card');
     if (card) {
-      const sSpan = card.querySelector('[data-role="start"]');
-      const eSpan = card.querySelector('[data-role="end"]');
-      const dSpan = card.querySelector('[data-role="day"]');
-      const tSpan = card.querySelector('[data-role="term"]');
+      const sSpan  = card.querySelector('[data-role="start"]');
+      const eSpan  = card.querySelector('[data-role="end"]');
+      const dSpan  = card.querySelector('[data-role="day"]');
+      const tSpan  = card.querySelector('[data-role="term"]');
+      const semSpan = card.querySelector('[data-role="semestre"]'); 
+
       if (dSpan) dSpan.textContent = payload.day;
       if (sSpan) sSpan.textContent = payload.start;
       if (eSpan) eSpan.textContent = payload.end;
       if (tSpan) tSpan.textContent = payload.term;
+      if (semSpan) semSpan.textContent = payload.semestre;
     }
   }
+
   modal.classList.add('hidden');
   modal.setAttribute('aria-hidden', 'true');
 });
 
-/* Icono de eliminar funcional */
+/* Reindexar tarjetas */
 function reindexCards() {
   document.querySelectorAll('.oh-card').forEach((card, i) => {
     const n = i + 1;
@@ -339,7 +370,7 @@ function reindexCards() {
   });
 }
 
-/* Eliminar: llama API y quita la tarjeta */
+/* Eliminar */
 document.querySelectorAll('.oh-action.danger').forEach(btn => {
   btn.addEventListener('click', async () => {
     const index = parseInt(btn.dataset.index, 10);
@@ -353,14 +384,13 @@ document.querySelectorAll('.oh-action.danger').forEach(btn => {
         headers: {"Content-Type":"application/json"},
         body: JSON.stringify({ email, index })
       });
-      const data = await res.json();
 
+      const data = await res.json();
       if (!data.ok) {
         alert("No se pudo eliminar: " + (data.error || "error"));
         return;
       }
 
-      // Borra del DOM y reindexa
       const card = btn.closest('.oh-card');
       if (card) card.remove();
       reindexCards();
@@ -372,5 +402,6 @@ document.querySelectorAll('.oh-action.danger').forEach(btn => {
   });
 });
 </script>
+
 </body>
 </html>
