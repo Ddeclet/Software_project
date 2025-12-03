@@ -253,7 +253,7 @@ def editar_horas(prof_id):
         {"dia": h["day"], "inicio": h["start"], "fin": h["end"], "term": h["term"], "semestre" : h["semestre"]}
         for h in OFFICE_HOURS[prof_id]
     ]
-    print(horas)
+    
     return render_template(
         "editar_horas.html",
         prof=prof,
